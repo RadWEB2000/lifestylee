@@ -1,16 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +12,68 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <menu>
+          <li>Technologie</li>
+          <li>Newsy</li>
+          <li>Zdrowie</li>
+          <li>Beauty</li>
+          <li>Rolnictwo</li>
+          <li>Budownictwo</li>
+          <li>E-commerce</li>
+          <li>Biznes</li>
+          <li>Psychologia</li>
+          <li>Religia</li>
+          <li>Sport</li>
+          <li>Kultura</li>
+        </menu>
+        <nav>
+          <div>LifeStylee</div>
+          <menu>
+            <li>
+              <p>Technologia</p>
+              <ul>
+                <li>Elektronika</li>
+                <li>Sztuczna inteligencja</li>
+                <li>Programowanie</li>
+                <li>IoT</li>
+                <li>Gadżety</li>
+                <li>Open Source</li>
+                <li>Robotyka</li>
+                <li>Systemy operacyjne</li>
+                <li>Apple</li>
+                <li>Kosmos</li>
+                <li>Druk 3D</li>
+                <li>Fotografie</li>
+                <li>Automatyzacje</li>
+                <li>VR</li>
+                <li>Infreastruktura IT</li>
+              </ul>
+            </li>
+            <li>
+              <p></p>
+              <ul>
+                <li></li>
+              </ul>
+            </li>
+            <li>
+              <p></p>
+              <ul>
+                <li></li>
+              </ul>
+            </li>
+            <li>
+              <p></p>
+              <ul>
+                <li></li>
+              </ul>
+            </li>
+          </menu>
+          <form className="" action="" method="">
+            <input type="search" className="" />
+            <button>szukaj</button>
+          </form>
+        </nav>
         {children}
       </body>
     </html>
