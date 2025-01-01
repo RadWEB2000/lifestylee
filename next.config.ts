@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
-
+// import { rewrites as subdomains } from "./src/lib/configs/rewrites";
 const nextConfig: NextConfig = {
-  /* config options here */
+  // async rewrites() {
+  //   return [...subdomains];
+  // },
 };
 
 export default nextConfig;

@@ -1,4 +1,8 @@
+import main from "@/data/main";
+import { subdomains } from "@/data/subdomains";
+import { rewrites } from "@/lib/configs/rewrites";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,22 +14,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // console.log("rewrites: ", rewrites);
+  // console.log("subdomains: ", subdomains);
+  const domains = subdomains.map((subdomain) => subdomain.url.split(".")[0]);
+  // console.log(domains);
   return (
-    <html lang="en">
+    <html lang="pl_PL">
       <body>
         <menu>
-          <li>Technologie</li>
-          <li>Newsy</li>
-          <li>Zdrowie</li>
-          <li>Beauty</li>
-          <li>Rolnictwo</li>
-          <li>Budownictwo</li>
-          <li>E-commerce</li>
-          <li>Biznes</li>
-          <li>Psychologia</li>
-          <li>Religia</li>
-          <li>Sport</li>
-          <li>Kultura</li>
+          {main.subdomains.map((item) => {
+            return (
+              <Link
+                style={{
+                  backgroundColor: item.color.background,
+                  color: item.color.foreground,
+                }}
+                href={item.url}
+                key={item.title}
+                {...item.props}
+              >
+                {item.title}
+              </Link>
+            );
+          })}
         </menu>
         <nav>
           <div>LifeStylee</div>

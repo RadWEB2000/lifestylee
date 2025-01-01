@@ -19,7 +19,28 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/buttons/*": ["./src/components/UI/Buttons/*"],
+      "@/cards/*": ["./src/components/UI/Cards/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/configs/*": ["./src/lib/configs/*"],
+      "@/css/*": ["./src/styles/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/footer/*": ["./src/components/Layout/Footer/*"],
+      "@/func/*": ["./src/lib/functions/*"],
+      "@/hooks/*": ["./src/lib/hooks/*"],
+      "@/ico/*": ["./src/assets/icons/*"],
+      "@/img/*": ["./src/assets/images/*"],
+      "@/layout/*": ["./src/components/Layout/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/nav/*": ["./src/components/Layout/Navigation/*"],
+      "@/ts/*": ["./src/types/*"],
+      "@/ui/*": ["./src/components/UI/*"],
+      "@/video/*": ["./src/assets/videos/*"],
+      "@/views/*": ["./src/components/Views/*"],
+      "@/v-home/*": ["./src/components/Views/HomeView/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
