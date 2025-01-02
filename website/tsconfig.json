@@ -18,17 +18,19 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@/app/*": ["./src/app/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/buttons/*": ["./src/components/UI/Buttons/*"],
       "@/cards/*": ["./src/components/UI/Cards/*"],
-      "@/components/*": ["./src/components/*"],
+      "@/carousels/*": ["./src/components/Utils/Carousel/*"],
       "@/configs/*": ["./src/lib/configs/*"],
+      "@/components/*": ["./src/components/*"],
       "@/css/*": ["./src/styles/*"],
       "@/data/*": ["./src/data/*"],
-      "@/footer/*": ["./src/components/Layout/Footer/*"],
+      "@/fonts/*": ["./src/assets/fonts/*"],
       "@/func/*": ["./src/lib/functions/*"],
       "@/hooks/*": ["./src/lib/hooks/*"],
       "@/ico/*": ["./src/assets/icons/*"],
@@ -39,8 +41,7 @@
       "@/ts/*": ["./src/types/*"],
       "@/ui/*": ["./src/components/UI/*"],
       "@/video/*": ["./src/assets/videos/*"],
-      "@/views/*": ["./src/components/Views/*"],
-      "@/v-home/*": ["./src/components/Views/HomeView/*"]
+      "@/views/*": ["./src/components/Views/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

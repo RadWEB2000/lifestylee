@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark light;
+}
+
+::after,
+::before {
+  content: "";
+  position: absolute;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--color);
+  font-family: var(--inter);
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  transition: 15ms ease-in-out background-color, 15ms ease-in-out color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  all: unset;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+li,
+ol,
+ul {
+  list-style: unset;
+}
