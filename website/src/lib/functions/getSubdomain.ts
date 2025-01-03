@@ -24,7 +24,7 @@ export async function getSubdomain() {
   }
   betterValidate();
 
-  const currentSubdomain: tLink | false =
+  const currentSubdomain: (tLink & { color: string }) | false =
     domains.length >= 2 &&
     main.subdomains.filter((item) => item.url.includes(subdomain))[0];
 

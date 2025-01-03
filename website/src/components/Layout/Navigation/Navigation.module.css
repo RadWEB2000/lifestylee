@@ -1,14 +1,8 @@
-.wrapper,
-.brand,
-.brand__main,
-.brand__subdomain {
+.wrapper {
+  /* background: red; */
   align-items: center;
   display: flex;
   justify-content: flex-start;
-}
-
-.wrapper {
-  /* background: red; */
   background-color: color-mix(
     in srgb,
     var(--clr-primary) 65%,
@@ -19,24 +13,4 @@
   top: 0;
   z-index: 999;
   padding: 0.45rem 2rem;
-}
-
-.brand {
-  /* background: purple; */
-  gap: 7.25px;
-}
-
-.brand__main {
-  font-weight: 900;
-  transition: 25ms linear color;
-}
-
-.brand__main:focus,
-.brand__main:focus-within,
-.brand__main:hover {
-  color: var(--clr-special);
-}
-
-.logo {
-  filter: invert(1);
 }

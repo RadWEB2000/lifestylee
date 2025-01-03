@@ -10,7 +10,8 @@ export const main: main = {
   subdomains: [
     {
       title: "Rodzina",
-      url: "https://rodzina.localhost:3000",
+      url: "localhost:3000",
+      color: "#e9bc30",
       props: {
         "aria-label": "Blog o rodzinie",
         "aria-labelledby": "Blog o rodzinie",
@@ -19,7 +20,8 @@ export const main: main = {
     },
     {
       title: "Technologia",
-      url: "https://technologia.localhost:3000",
+      url: "technologia.localhost:3000",
+      color: "#02a4ef",
       props: {
         "aria-label": "Blog o branży technologicznej",
         "aria-labelledby": "Blog o branży technologicznej",
@@ -28,7 +30,8 @@ export const main: main = {
     },
     {
       title: "Biznes",
-      url: "https://biznes.localhost:3000",
+      url: "biznes.localhost:3000",
+      color: "#e73e34",
       props: {
         "aria-label": "Blog dla przedsiębiorców",
         "aria-labelledby": "Blog dla przedsiębiorców",
@@ -37,7 +40,8 @@ export const main: main = {
     },
     {
       title: "Rolnictwo",
-      url: "https://rolnictwo.localhost:3000",
+      url: "rolnictwo.localhost:3000",
+      color: "#8cd253",
       props: {
         "aria-label": "Branżowy portal dla rolników",
         "aria-labelledby": "Branżowy portal dla rolników",
@@ -46,7 +50,8 @@ export const main: main = {
     },
     {
       title: "Polityka",
-      url: "https://polityka.localhost:3000",
+      url: "polityka.localhost:3000",
+      color: "#c7bea2",
       props: {
         "aria-label": "Najważniejsze wieści ze świata polityki",
         "aria-labelledby": "Najważniejsze wieści ze świata polityki",
@@ -55,7 +60,8 @@ export const main: main = {
     },
     {
       title: "Transport",
-      url: "https://transport.localhost:3000",
+      url: "transport.localhost:3000",
+      color: "#7d79a9",
       props: {
         "aria-label": "Nowości z branży transportowej",
         "aria-labelledby": "Nowości z branży transportowej",
@@ -64,7 +70,8 @@ export const main: main = {
     },
     {
       title: "Beauty",
-      url: "https://beauty.localhost:3000",
+      url: "beauty.localhost:3000",
+      color: "#edacb5",
       props: {
         "aria-label": "Portal branżowy o świecie mody",
         "aria-labelledby": "Portal branżowy o świecie mody",
@@ -73,7 +80,8 @@ export const main: main = {
     },
     {
       title: "Hobby",
-      url: "https://hobby.localhost:3000",
+      url: "hobby.localhost:3000",
+      color: "#eeb37f",
       props: {
         "aria-label": "Ciekawostki o Twoim hobby",
         "aria-labelledby": "Ciekawostki o Twoim hobby",
@@ -83,6 +91,7 @@ export const main: main = {
     {
       title: "Podróże",
       url: "https://podroze.localhost:3000",
+      color: "#70779c",
       props: {
         "aria-label": "Blog o podróżach małych i dużych",
         "aria-labelledby": "Blog o podróżach małych i dużych",
@@ -103,6 +112,14 @@ export const main: main = {
         props: {
           hrefLang: "pl_PL",
         },
+      },
+    },
+    search: {
+      field: {
+        placeholder: "Szukaj",
+      },
+      button: {
+        title: "Szukaj",
       },
     },
   },

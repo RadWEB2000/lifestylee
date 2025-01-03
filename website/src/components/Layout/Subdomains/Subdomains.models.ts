@@ -1,3 +1,7 @@
 export type tSubdomains = {
-  subdomains: tLink[];
+  subdomains: Array<
+    tLink & {
+      color: string;
+    }
+  >;
 };

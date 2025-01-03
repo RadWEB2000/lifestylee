@@ -1,0 +1,69 @@
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  gap: 0.5em;
+  margin: auto 0 auto auto;
+  /* width: 30px; */
+  /* background-color: blue; */
+}
+
+.field {
+  background-color: color-mix(
+    in srgb,
+    var(--clr-secondary) 45%,
+    var(--clr-primary)
+  );
+  color: var(--clr-color);
+  width: 12em;
+  padding: 0.5em 0.375em;
+  line-height: 1.2;
+  font-size: 0.895em;
+  outline: none;
+  border: none;
+  transition: 0.25s linear width;
+  border-radius: 0.15em;
+}
+
+.field::placeholder {
+  color: white;
+}
+
+.field:focus-visible,
+.button:focus-visible {
+  box-shadow: 0 0 0 0.15em var(--clr-color);
+}
+
+.field:focus,
+.field:not(:placeholder-shown) {
+  width: 30em;
+}
+
+.button {
+  width: 3rem;
+  height: 3rem;
+  /* background: purple; */
+}
+
+.icon {
+  height: 80%;
+  width: 80%;
+  margin: auto;
+}
+
+.icon path {
+  transition: 0.25s linear fill;
+}
+
+.button:focus > .icon path,
+.button:focus-within > .icon path,
+.button:hover > .icon path {
+  fill: var(--clr-special);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field {
+    transition: none;
+  }
+}

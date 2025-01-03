@@ -43,7 +43,6 @@ declare global {
 
   type tSVGFile = {
     attributes?: SVGAttributes<SVGElement>;
-    className?: string;
   };
 
   type tTheme = "dark" | "light";

@@ -33,6 +33,7 @@ body {
 
 button {
   all: unset;
+  cursor: pointer;
 }
 
 html {
@@ -43,4 +44,12 @@ li,
 ol,
 ul {
   list-style: unset;
+}
+
+input,
+textarea {
+  all: unset;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  appearance: none;
 }

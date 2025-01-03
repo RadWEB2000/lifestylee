@@ -12,7 +12,6 @@ export function middleware(req: NextRequest) {
   }
   const url = req.nextUrl.clone();
   url.pathname = `/${subdomain}${url.pathname}`;
-  console.log(`host:${host} | subdomain:${subdomain} | url:${url}`);
   return NextResponse.rewrite(url);
 }
 
