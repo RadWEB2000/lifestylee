@@ -16,12 +16,12 @@
 
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--color);
+  background-color: var(--clr-background);
+  color: var(--clr-color);
   font-family: var(--inter);
   font-size: 1.6rem;
   font-weight: 400;

@@ -1,0 +1,35 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  align-items: center;
+  justify-items: center;
+  background-color: var(--clr-background);
+  height: 3.5rem;
+  /* padding: 0.5em 0.24em; */
+}
+
+.item {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  /* background: purple; */
+  color: var(--clr-color);
+  height: 100%;
+  width: 100%;
+  font-size: 0.85em;
+  font-weight: 800;
+  text-transform: uppercase;
+  transition: 20ms linear background-color, 20ms linear color;
+}
+
+.item:focus,
+.item:focus-within,
+.item:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--clr-secondary) 15%,
+    var(--clr-background)
+  );
+
+  color: var(--clr-special);
+}

@@ -7,7 +7,6 @@ export const subdomains: ReadonlyArray<string> = [
   "prawo",
   "transport",
   "beauty",
-  "nauka",
   "hobby",
   "podroze",
 ];
