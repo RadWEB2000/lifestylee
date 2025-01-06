@@ -12,7 +12,7 @@ export default async function RootLayout({
 }>) {
   const { currentSubdomain, subdomain, validStatus } = await getSubdomain();
 
-  console.log(currentSubdomain);
+  console.log(main.navigation.menus.filter((item) => item.subdomain === 'technologia')[0].menu);
 
   return (
     <html lang="pl_PL" dir="lrt">
@@ -23,6 +23,8 @@ export default async function RootLayout({
             main: main.navigation.brand.main,
             subdomain: currentSubdomain !== false ? currentSubdomain : false,
           }}
+          menu={main.navigation.menus.filter((item) => item.subdomain === 'technologia')[0].menu}
+          search={main.navigation.search}
         />
         {validStatus && <h1>{subdomain ?? ""}</h1>}
         {children}

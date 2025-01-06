@@ -1,9 +1,15 @@
 import { tNavigation } from "@/nav/Navigation.models";
 import { tSubdomains } from "@/subdomains/Subdomains.models";
 import logo_64 from "@/img/logo_64.png";
+import { subdomains } from "@/data/subdomains";
+import { tMenu } from "@/nav/Menu/Menu.models";
 
 type main = tSubdomains & {
-  navigation: tNavigation;
+  navigation: Omit<tNavigation, 'menu'> & {
+    menus: Array<{
+      subdomain:'home'|typeof subdomains[number];
+    } & tMenu >
+  };
 };
 
 export const main: main = {
@@ -122,5 +128,268 @@ export const main: main = {
         title: "Szukaj",
       },
     },
+    menus: [
+      {
+        subdomain:'home',
+        menu:[
+          {
+            id:'categories_home',
+            link:{
+              title:'Kategorie',
+              url:'/',
+              props: {
+                hrefLang:'pl_PL'
+              }
+            },
+            submenu: subdomains.map((item) => {
+              return {
+                title:item,
+                url:`/${item}`,
+                props: {
+                  hrefLang:'pl_PL'
+                }
+              }
+            })
+          },
+          {
+            id:'seo_home',
+            link:{
+              title:'Oferta SEO',
+              url:'https://rad-web.pl',
+              props: {
+                hrefLang:'pl_PL'
+              }
+            }
+          },
+          {
+            id:'www_home',
+            link:{
+              title:'Oferta WWW',
+              url:'https://rad-web.pl',
+              props: {
+                hrefLang:'pl_PL'
+              }
+            }
+          }
+        ]
+      },
+      {
+        subdomain:'technologia',
+        menu:[
+          {
+            id:'_technology',
+            link:{
+              title:'Internet',
+              url:'/technologia/internet',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            }
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'Software',
+              url:'/technologia/software',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            },
+            submenu: [
+              {
+                title:'Aplikacje mobilne',
+                url:'/technologia/software/aplikacje-mobilne',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              }
+            ]
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'Hardware',
+              url:'/technologia/hardware',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            },
+            submenu: [
+              {
+                title:'Laptopy',
+                url:'/technologia/hardware/laptopy',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Smartfony',
+                url:'/technologia/hardware/smartfony',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Telewizory',
+                url:'/technologia/hardware/telewizory',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+            ]
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'Komponenty PC',
+              url:'/technologia/komponenty-pc',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            },
+            submenu: [
+              {
+                title:'Procesory',
+                url:'/technologia/komponenty-pc/cpu',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Karty graficzne',
+                url:'/technologia/komponenty-pc/gpu',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'RAM',
+                url:'/technologia/komponenty-pc/ram',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Dyski twarde',
+                url:'/technologia/komponenty-pc/dyski-twarde',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Zasilacze',
+                url:'/technologia/komponenty-pc/zasilacze',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              }
+            ]
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'Perferia',
+              url:'/technologia/peryferia',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            },
+            submenu: [
+              {
+                title:'Monitory',
+                url:'/technologia/peryferia/monitory',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Klawiatury',
+                url:'/technologia/peryferia/klawiatury',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Myszki',
+                url:'/technologia/peryferia/myszki',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              },
+              {
+                title:'Słuchawki',
+                url:'/technologia/peryferia/sluchawki',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              }
+            ]
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'',
+              url:'/technologia/',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            },
+            submenu: [
+              {
+                title:'',
+                url:'/technologia/',
+                props:{
+                  hrefLang:'pl_PL'
+                }
+              }
+            ]
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'Gaming',
+              url:'/technologia/gaming',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            }
+          },
+          {
+            id:'_technology',
+            link:{
+              title:'Gadety',
+              url:'/technologia/gadzety',
+              props:{
+                hrefLang:'pl_PL'
+              }
+            }
+          },
+        ]
+      },
+      {
+        subdomain:'rolnictwo',
+        menu:[
+          {
+            id:'',
+            link:{
+              title:'',
+              url:'/'
+            }
+          }
+        ]
+      },
+      {
+        subdomain:'beauty',
+        menu:[
+          {
+            id:'',
+            link:{
+              title:'',
+              url:'/'
+            }
+          }
+        ]
+      },
+    ]
   },
 };

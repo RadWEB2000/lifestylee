@@ -9,4 +9,4 @@ export const subdomains: ReadonlyArray<string> = [
   "beauty",
   "hobby",
   "podroze",
-];
+] as const;
