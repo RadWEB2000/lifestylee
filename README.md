@@ -8,3 +8,4 @@
 |2025.01.04|0.1.3.1|_Opracowanie rozwiąwiazania dynamieczgo paska menu w zaleności od wybranej subdomeny_|
 |2025.01.05|0.1.3.2|_Opracowanie elementów menu_|
 |2025.01.05|0.1.3.3|_Konfiguracja Wordpress_|
+|2025.01.09|0.1.4|_Pobieranie danych z WordPress_|

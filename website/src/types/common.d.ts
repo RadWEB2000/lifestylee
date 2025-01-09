@@ -22,6 +22,12 @@ declare global {
 
   type tVideoFileType = "video/mp4" | "video/webm" | "video/ogg";
 
+  type tTaxonomyLink = {
+    name: string;
+    slug: string;
+    uri: string;
+  };
+
   type tImage = {
     altText: string;
     sourceSrc: string;
