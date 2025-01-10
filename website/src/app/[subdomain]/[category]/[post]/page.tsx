@@ -1,11 +1,11 @@
 import { getPostData } from "@/lib/functions/getData";
 import { Metadata } from "next";
 
-type PageProps {
+type PageProps = {
   params: {
     post: string;
   };
-}
+};
 
 export async function generateMetadata({
   params,
