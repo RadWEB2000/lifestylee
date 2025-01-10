@@ -1,6 +1,8 @@
 import { getPostData } from "@/lib/functions/getData";
 import { Metadata } from "next";
 
+// @ts-ignore
+
 type Params = {
   post: string;
 };
