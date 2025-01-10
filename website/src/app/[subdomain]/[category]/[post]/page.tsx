@@ -9,7 +9,7 @@ type PageProps = {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: Awaited<PageProps>): Promise<Metadata> {
   const { seo } = await getPostData({
     slug: params.post
       ? params.post
@@ -23,7 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({ params }: PageProps) {
+export default async function PostPage({ params }: Awaited<PageProps>) {
   // console.log(`Post slug: ${params.post}`);
 
   const {
