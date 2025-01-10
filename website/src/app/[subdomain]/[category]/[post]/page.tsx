@@ -1,11 +1,15 @@
 import { getPostData } from "@/lib/functions/getData";
 import { Metadata } from "next";
 
+interface PostPageProps {
+  params: {
+    post: string;
+  };
+}
+
 export async function generateMetadata({
   params,
-}: {
-  params: { post: string };
-}): Promise<Metadata> {
+}: PostPageProps): Promise<Metadata> {
   const { seo } = await getPostData({
     slug: params.post
       ? params.post
@@ -19,11 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { post: string };
-}) {
+export default async function PostPage({ params }: PostPageProps) {
   // console.log(`Post slug: ${params.post}`);
 
   const {
@@ -41,7 +41,10 @@ export default async function PostPage({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd }}
+          dangerouslySetInnerHTML={{
+            __html:
+              typeof jsonLd === "string" ? jsonLd : JSON.stringify(jsonLd),
+          }}
         />
       </head>
       <div>
