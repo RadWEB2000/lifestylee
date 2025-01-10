@@ -1,7 +1,7 @@
 import { getPostData } from "@/lib/functions/getData";
 import { Metadata } from "next";
 
-interface PostPageProps {
+type PageProps {
   params: {
     post: string;
   };
@@ -9,7 +9,7 @@ interface PostPageProps {
 
 export async function generateMetadata({
   params,
-}: PostPageProps): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { seo } = await getPostData({
     slug: params.post
       ? params.post
@@ -23,7 +23,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params }: PageProps) {
   // console.log(`Post slug: ${params.post}`);
 
   const {
