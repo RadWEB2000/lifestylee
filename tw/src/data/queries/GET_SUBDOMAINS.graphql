@@ -1,0 +1,12 @@
+query GET_SUBDOMAINS {
+  subdomains {
+    nodes {
+      name
+      slug
+      uri
+      categoryfields {
+        color
+      }
+    }
+  }
+}

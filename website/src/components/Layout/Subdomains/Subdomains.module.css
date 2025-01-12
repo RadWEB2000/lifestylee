@@ -1,0 +1,19 @@
+.wrapper {
+    background-color: #121234;
+    color:#ededed;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(10,1fr);
+    padding: 1.3rem 2rem;
+}
+
+.item {
+    font-size: 0.9em;
+    font-weight: 550;
+    transition: .15s linear color;
+}
+
+.item:hover {
+    color:var(--subdomainColor);
+}

@@ -1,0 +1,28 @@
+query GET_POSTS {
+  posts {
+    nodes {
+      title(format: RENDERED)
+      uri
+      excerpt(format: RENDERED)
+      featuredImage {
+        node {
+          altText
+          sourceUrl(size: THUMBNAIL)
+          srcSet(size: MEDIUM)
+          title(format: RENDERED)
+        }
+      }
+      date
+      categories(first: 1) {
+        nodes {
+          name
+        }
+      }
+      subdomains(first: 1) {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+}
