@@ -1,0 +1,42 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  background-color: $black;
+  color: $white;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  padding: 0.6rem 2rem;
+  scrollbar-width: 0;
+  &::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+  }
+}
+
+.item {
+  align-items: center;
+  border-radius: 0.2em;
+  display: flex;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  height: 100%;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  transition: 0.2s linear background-color;
+  width: 100%;
+  &:focus-within,
+  &:focus,
+  &:hover {
+    background-color: color-mix(in srgb, var(--color) 45%, transparent);
+  }
+}
+
+@media (min-width: 1000px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(var(--itemsLength), 1fr);
+    overflow-x: visible;
+  }
+}

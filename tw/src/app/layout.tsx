@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/css/global.css";
-import GET_POSTS from "@/data/graphql/GET_POSTS";
-import Image from "next/image";
+import { Open_Sans } from "next/font/google";
+import "@/css/global.scss";
+// import GET_POSTS from "@/data/graphql/GET_POSTS";
+import { Subdomains } from "@/nav/index";
+import GET_SUBDOMAINS from "@/queries/GET_SUBDOMAINS";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const OpenSans = Open_Sans({
+  variable: "--font-regular",
+  subsets: ["latin", "latin-ext"],
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -24,28 +21,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { posts } = await GET_POSTS();
+  const { subdomains } = await GET_SUBDOMAINS();
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {posts.map((item) => {
-          return (
-            <li key={item.title}>
-              <figure>
-                <Image
-                  alt={item.image.altText}
-                  height={250}
-                  src={item.image.sourceUrl}
-                  width={250}
-                />
-              </figure>
-              <h3>{item.title}</h3>
-            </li>
-          );
-        })}
+      <body className={`${OpenSans.variable}`}>
+        <Subdomains subdomains={subdomains} />
         {children}
       </body>
     </html>
