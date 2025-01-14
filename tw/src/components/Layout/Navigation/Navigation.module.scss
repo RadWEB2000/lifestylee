@@ -1,0 +1,10 @@
+@use "../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  background-color: color-mix(in srgb, $platinum 55%, $white);
+  display: flex;
+  justify-content: flex-start;
+  height: 6.2rem;
+  padding: 0.5rem 3.2rem;
+}

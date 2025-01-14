@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "@/css/global.scss";
 // import GET_POSTS from "@/data/graphql/GET_POSTS";
-import { Subdomains } from "@/nav/index";
+import { Subdomains } from "@/subdomains/index";
 import GET_SUBDOMAINS from "@/queries/GET_SUBDOMAINS";
+import { Navigation } from "@/nav/index";
 
 const OpenSans = Open_Sans({
   variable: "--font-regular",
@@ -27,6 +28,19 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${OpenSans.variable}`}>
         <Subdomains subdomains={subdomains} />
+        <Navigation
+          brand={{
+            brand: {
+              title: "LifeStylee",
+              url: "/",
+            },
+            subbrand: {
+              color: "#00f",
+              title: "Technologia",
+              url: "/",
+            },
+          }}
+        />
         {children}
       </body>
     </html>

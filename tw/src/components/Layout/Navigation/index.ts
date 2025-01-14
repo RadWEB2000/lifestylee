@@ -1,1 +1,2 @@
-export { default as Subdomains } from "@/nav/Subdomains/Subdomains";
+export { default as Brand } from "@/nav/Brand/Brand";
+export { default as Navigation } from "@/nav/Navigation";

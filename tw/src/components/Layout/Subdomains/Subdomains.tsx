@@ -1,6 +1,6 @@
-import css from "@/nav/Subdomains/Subdomains.module.scss";
+import css from "@/subdomains/Subdomains.module.scss";
 import Link from "next/link";
-import { tSubdomains } from "@/nav/Subdomains/Subdomains.models";
+import { tSubdomains } from "@/subdomains/Subdomains.models";
 import { CSSProperties } from "react";
 
 export default function Subdomains(props: tSubdomains) {
