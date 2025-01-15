@@ -1,17 +1,42 @@
 import { QueryClient } from "@/clients/QueryClient";
 import { gql } from "graphql-request";
+import {
+  generateLanguageAlternates,
+  getCategoryPath,
+  getReleaseDate,
+} from "@/func/index";
 
-type t_POST_QUERY = {
-  slug: string;
-};
-type t_GET_POST_REQUEST = {
+type GET_POST_REQUEST = {
   post: {
     title: string;
-    subdomains: {
-      nodes: Array<{
-        name: string;
-        uri: string;
+    uri: string;
+    slug: string;
+    blocks: Array<{
+      attributesJSON: string;
+      name: string;
+      order: number;
+      saveContent: string;
+    }>;
+    categories: {
+      nodes: Array<T_WORDPRESS_TAXONOMY>;
+    };
+    content: string;
+    date: string;
+    excerpt: string;
+    featuredImage: {
+      node: T_WORDPRESS_FEATUREDIMAGE;
+    };
+    postFields: {
+      mainCategory: {
+        nodes: Array<T_WORDPRESS_TAXONOMY>;
+      };
+      faq: Array<{
+        answer: string;
+        question: string;
       }>;
+    };
+    tags: {
+      nodes: Array<T_WORDPRESS_TAXONOMY>;
     };
     seo: {
       canonicalUrl: string;
@@ -19,123 +44,129 @@ type t_GET_POST_REQUEST = {
       jsonLd: {
         raw: string;
       };
+      robots: Array<string>;
+      title: string;
       openGraph: {
+        articleMeta: {
+          author: string | null;
+          modifiedTime: string;
+          publishedTime: string;
+          publisher: string | null;
+          section: string;
+          tags: Array<string>;
+        };
+        alternateLocales: string | Array<string> | null;
         description: string;
+        facebookMeta: {
+          admins: string | Array<string> | null;
+          appId: string;
+        };
+        image: {
+          height: number;
+          secureUrl: string;
+          type: string;
+          url: string;
+          width: number;
+        };
         locale: string;
-        sitename: string;
+        siteName: string;
+        slackEnhancedData: Array<{
+          data: string;
+          label: string;
+        }>;
         title: string;
+        twitterMeta: {
+          appCountry: string | null;
+          card: string;
+          creator: string | null;
+          description: string;
+          image: string;
+          site: string | null;
+          title: string;
+        };
         type: string;
         updatedTime: string;
         url: string;
       };
-      robots: Array<string>;
-      title: string;
     };
-    postfields: {
-      faq: Array<{
-        answer: string;
-        question: string;
-      }>;
-    };
-    featuredImage: {
-      node: {
-        altText: string;
-        caption: string;
-        description: string;
-        sourceUrl: string;
-        srcSet: string;
-        title: string;
-      };
-    };
-    excerpt: string;
-    date: string;
-    categories: {
-      nodes: Array<{
-        name: string;
-        uri: string;
-      }>;
-    };
-    tags: {
-      nodes: Array<{
-        name: string;
-        uri: string;
-      }>;
-    };
-    blocks: Array<{
-      attributesJSON: string;
-      dynamicContent: string;
-      originalContent: string;
-      name: string;
-      order: number;
-    }>;
   };
 };
-type t_GET_POST_RESPONSE = {
+
+type GET_POST_RESPONSE = {
   page: {
-    structuredData: string;
     title: string;
-    subdomain: {
+    structuredData: string;
+    readingTime: string;
+    uri: string;
+    slug: string;
+    blocks: Array<{
+      attributesJSON: string;
       name: string;
-      url: string;
-    };
+      order: number;
+      saveContent: string;
+    }>;
+    category: T_WORDPRESS_TAXONOMY;
+    content: string;
+    date: string;
+    excerpt: string;
+    featuredImage: T_WORDPRESS_FEATUREDIMAGE;
+    subdomain: T_WORDPRESS_TAXONOMY;
     faq: Array<{
       answer: string;
       question: string;
     }>;
-    featuredImage: {
-      altText: string;
-      caption: string;
-      description: string;
-      sourceUrl: string;
-      srcSet: string;
-      title: string;
-    };
-    excerpt: string;
-    release: string;
-    category: {
-      name: string;
-      url: string;
-    };
-    tags: Array<{
-      name: string;
-      url: string;
-    }>;
-    blocks: Array<{
-      attributes: string;
-      content: {
-        original: string;
-        dynamic: string;
-      };
-      name: string;
-      order: number;
-    }>;
+    tags: Array<T_WORDPRESS_TAXONOMY>;
   };
-  seo: {
-    meta: {
-      title: string;
-      description: string;
-      canonical: string;
-      structuredData: string;
-      robots: string;
-    };
-    openGraph: {
-      description: string;
-      locale: string;
-      siteName: string;
-      title: string;
-      type: string;
-      updatedTime: string;
-      url: string;
-    };
-  };
+  seo: T_ARTICLE_METADATA;
 };
+
 const GET_POST_QUERY = gql`
   query GET_POST($id: ID!) {
     post(id: $id, idType: SLUG) {
       title(format: RENDERED)
-      subdomains(first: 1) {
+      uri
+      slug
+      blocks {
+        attributesJSON
+        name
+        order
+        saveContent
+      }
+      categories(first: 1) {
         nodes {
           name
+          slug
+          uri
+        }
+      }
+      content(format: RENDERED)
+      date
+      excerpt(format: RENDERED)
+      featuredImage {
+        node {
+          altText
+          sourceUrl(size: THUMBNAIL)
+          srcSet(size: MEDIUM)
+          title(format: RENDERED)
+        }
+      }
+      postFields {
+        mainCategory {
+          nodes {
+            name
+            slug
+            uri
+          }
+        }
+        faq {
+          answer
+          question
+        }
+      }
+      tags(first: 20) {
+        nodes {
+          name
+          slug
           uri
         }
       }
@@ -145,127 +176,164 @@ const GET_POST_QUERY = gql`
         jsonLd {
           raw
         }
+        robots
+        title
         openGraph {
+          articleMeta {
+            author
+            modifiedTime
+            publishedTime
+            publisher
+            section
+            tags
+          }
+          alternateLocales
           description
+          facebookMeta {
+            admins
+            appId
+          }
+          image {
+            height
+            secureUrl
+            type
+            url
+            width
+          }
           locale
           siteName
+          slackEnhancedData {
+            data
+            label
+          }
           title
+          twitterMeta {
+            appCountry
+            card
+            creator
+            description
+            image
+            site
+            title
+          }
           type
           updatedTime
           url
         }
-        robots
-        title
-      }
-      postfields {
-        faq {
-          answer
-          question
-        }
-      }
-      featuredImage {
-        node {
-          altText
-          caption(format: RENDERED)
-          description(format: RENDERED)
-          sourceUrl(size: THUMBNAIL)
-          srcSet(size: MEDIUM)
-          title
-        }
-      }
-      excerpt(format: RENDERED)
-      date
-      categories(first: 1) {
-        nodes {
-          name
-          uri
-        }
-      }
-      tags {
-        nodes {
-          name
-          uri
-        }
-      }
-      blocks {
-        attributesJSON
-        saveContent
-        name
-        order
       }
     }
   }
 `;
-export default async function GET_POST(props: t_POST_QUERY) {
+
+export default async function GET_POST(slug: string) {
   try {
-    const data: t_GET_POST_REQUEST = await QueryClient.request(GET_POST_QUERY, {
-      id: props.slug,
-    });
-    const response: t_GET_POST_RESPONSE = {
+    const request: GET_POST_REQUEST = await QueryClient.request(
+      GET_POST_QUERY,
+      {
+        id: slug,
+      }
+    );
+
+    const response: GET_POST_RESPONSE = {
       page: {
-        blocks: data.post.blocks.map((item) => {
+        blocks: request.post.blocks.map((item) => {
           return {
-            attributes: item.attributesJSON,
-            content: {
-              dynamic: item.dynamicContent,
-              original: item.originalContent,
-            },
+            attributesJSON: item.attributesJSON,
             name: item.name,
             order: item.order,
+            saveContent: item.saveContent,
           };
         }),
-        category: data.post.categories.nodes.map((item) => {
+        structuredData: request.post.seo.jsonLd.raw,
+        category: request.post.categories.nodes.map((item) => {
           return {
             name: item.name,
-            url: item.uri,
+            slug: item.slug,
+            uri: getCategoryPath(item.uri),
           };
         })[0],
-        excerpt: data.post.excerpt,
-        faq: data.post.postfields.faq,
-        featuredImage: {
-          altText: data.post.featuredImage.node.altText,
-          caption: data.post.featuredImage.node.caption,
-          description: data.post.featuredImage.node.description,
-          sourceUrl: data.post.featuredImage.node.sourceUrl,
-          srcSet: data.post.featuredImage.node.srcSet,
-          title: data.post.featuredImage.node.title,
-        },
-        release: data.post.date,
-        structuredData: data.post.seo.jsonLd.raw,
-        subdomain: data.post.subdomains.nodes.map((item) => {
+        content: request.post.content,
+        date: getReleaseDate({
+          date: request.post.date,
+          format: "long",
+        }),
+        excerpt: request.post.excerpt,
+        faq: request.post.postFields.faq,
+        featuredImage: request.post.featuredImage.node,
+        readingTime: request.post.seo.openGraph.slackEnhancedData[1].data,
+        slug: request.post.slug,
+        subdomain: request.post.postFields.mainCategory.nodes.map((item) => {
           return {
             name: item.name,
-            url: item.uri,
+            slug: item.slug,
+            uri: getCategoryPath(item.uri),
           };
         })[0],
-        tags: data.post.tags.nodes.map((item) => {
+        tags: request.post.tags.nodes.map((item) => {
           return {
             name: item.name,
-            url: item.uri,
+            slug: item.slug,
+            uri: item.uri,
           };
         }),
-        title: data.post.title,
+        title: request.post.title,
+        uri: request.post.uri,
       },
       seo: {
-        meta: {
-          canonical: data.post.seo.canonicalUrl,
-          description: data.post.seo.description,
-          robots: data.post.seo.robots.join(" "),
-          structuredData: data.post.seo.jsonLd.raw,
-          title: data.post.seo.title,
+        alternates: {
+          canonical: request.post.seo.canonicalUrl,
+          languages: generateLanguageAlternates(
+            request.post.seo.openGraph.alternateLocales,
+            request.post.seo.canonicalUrl
+          ),
         },
+        title: request.post.seo.title,
+        description: request.post.seo.description,
         openGraph: {
-          description: data.post.seo.openGraph.description,
-          locale: data.post.seo.openGraph.locale,
-          siteName: data.post.seo.openGraph.sitename,
-          title: data.post.seo.openGraph.title,
-          type: data.post.seo.openGraph.type,
-          updatedTime: data.post.seo.openGraph.updatedTime,
-          url: data.post.seo.openGraph.url,
+          locale: request.post.seo.openGraph.locale,
+          images: [
+            {
+              ...request.post.seo.openGraph.image,
+              alt: request.post.title,
+            },
+          ],
+          modifiedTime: request.post.seo.openGraph.articleMeta.modifiedTime,
+          publishedTime: request.post.seo.openGraph.articleMeta.publishedTime,
+          siteName: request.post.seo.openGraph.siteName,
+          tags: request.post.seo.openGraph.articleMeta.tags,
+          type: request.post.seo.openGraph.type,
+          url: request.post.seo.openGraph.url,
+          authors: request.post.seo.openGraph.articleMeta.author
+            ? [request.post.seo.openGraph.articleMeta.author]
+            : undefined,
+        },
+        twiter: {
+          card: request.post.seo.openGraph.twitterMeta.card,
+          description: request.post.seo.openGraph.twitterMeta.description,
+          images: [request.post.seo.openGraph.twitterMeta.image],
+          title: request.post.seo.openGraph.twitterMeta.title,
+          creator: request.post.seo.openGraph.twitterMeta.creator,
+          site: request.post.seo.openGraph.twitterMeta.site,
+        },
+        robots: {
+          index: request.post.seo.robots.includes("index"),
+          follow: request.post.seo.robots.includes("follow"),
+          nocache: request.post.seo.robots.includes("nocache"),
+          googleBot: {
+            follow: request.post.seo.robots.includes("follow"),
+            index: request.post.seo.robots.includes("index"),
+          },
+        },
+        other: {
+          jsonLd: request.post.seo.jsonLd.raw,
         },
       },
     };
-    return response;
+
+    return {
+      page: response.page,
+      seo: response.seo,
+    };
   } catch (error) {
     console.log(`❌ Error fetch post: ${error}`);
     throw error;

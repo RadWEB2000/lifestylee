@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "cms.lifeestylee.pl",
       },
+      {
+        hostname: "cdn.pixabay.com",
+      },
     ],
   },
 };

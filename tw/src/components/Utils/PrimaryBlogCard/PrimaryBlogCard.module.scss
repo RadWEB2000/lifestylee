@@ -1,0 +1,64 @@
+@use "../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  background: red;
+  width: 45rem;
+  & > * {
+    width: 100%;
+  }
+}
+
+.media {
+  background: pink;
+  display: block;
+  position: relative;
+  border-radius: 1.75em;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16/10;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.details,
+.taxonomies {
+  display: grid;
+  & > * {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}
+
+.details {
+  background: white;
+  grid-template-columns: 70% 30%;
+  margin-top: 5rem;
+}
+
+.taxonomies {
+  background: yellow;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.release {
+  font-size: 0.7em;
+  background: lime;
+}
+
+.category,
+.subdomain {
+  margin: auto;
+}
+
+.subdomain {
+  background-color: black;
+  padding: 0.2rem 2rem;
+}

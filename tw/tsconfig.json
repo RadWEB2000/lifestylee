@@ -39,6 +39,7 @@
       "@/parts/*": ["./src/components/*"],
       "@/provider/*": ["./src/provider/*"],
       "@/queries/*": ["./src/data/graphql/*"],
+      "@/static/*": ["./src/data/static/*"],
       "@/subdomains/*": ["./src/components/Layout/Subdomains/*"],
       "@/ts/*": ["./src/types/*"],
       "@/ui/*": ["./src/components/UI/*"],

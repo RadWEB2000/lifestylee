@@ -44,6 +44,7 @@ type t_GET_POSTS_RESPONSE = {
     };
     slug: string;
     category: string;
+    release: string;
     subdomain: string;
   }>;
 };
@@ -98,12 +99,13 @@ export default async function GET_POSTS() {
             title: item.featuredImage.node.title,
           },
           slug: item.slug,
-          subdomain: item.categories.nodes[0].name,
+          subdomain: item.subdomains.nodes[0].name,
           title: item.title,
           uri: item.uri,
         };
       }),
     };
+
     return response;
   } catch (error) {
     console.log(`❌ Error fetch post: ${error}`);
