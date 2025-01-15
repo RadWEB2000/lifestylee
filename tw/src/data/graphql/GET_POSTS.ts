@@ -1,61 +1,61 @@
-import { QueryClient } from "@/clients/QueryClient";
 import { gql } from "graphql-request";
+import { QueryClient } from "@/clients/QueryClient";
+import { getCategoryPath, getExcerpt, getReleaseDate } from "@/lib/functions";
 
-type t_GET_POSTS_REQUEST = {
+type GET_POSTS_REQUEST = {
   posts: {
     nodes: Array<{
       title: string;
       uri: string;
-      excerpt: string;
-      featuredImage: {
-        node: {
-          altText: string;
-          sourceUrl: string;
-          srcSet: string;
-          title: string;
+      slug: string;
+      postFields: {
+        mainCategory: {
+          nodes: Array<T_WORDPRESS_TAXONOMY>;
         };
       };
-      slug: string;
+      featuredImage: {
+        node: T_WORDPRESS_FEATUREDIMAGE;
+      };
+      excerpt: string;
       date: string;
       categories: {
-        nodes: Array<{
-          name: string;
-        }>;
+        nodes: Array<T_WORDPRESS_TAXONOMY>;
       };
-      subdomains: {
-        nodes: Array<{
-          name: string;
-        }>;
-      };
+      status: T_WORDPRESS_POST_STATUS;
     }>;
   };
 };
 
-type t_GET_POSTS_RESPONSE = {
+type GET_POST_RESPONSE = {
   posts: Array<{
     title: string;
     uri: string;
-    excerpt: string;
-    image: {
-      altText: string;
-      sourceUrl: string;
-      srcSet: string;
-      title: string;
-    };
     slug: string;
-    category: string;
-    release: string;
-    subdomain: string;
+    subdomain: T_WORDPRESS_TAXONOMY;
+    image: T_WORDPRESS_FEATUREDIMAGE;
+    excerpt: string;
+    date: string;
+    category: T_WORDPRESS_TAXONOMY;
+    status: T_WORDPRESS_POST_STATUS;
   }>;
 };
 
 const GET_POSTS_QUERY = gql`
   query GET_POSTS {
-    posts {
+    posts(first: 25) {
       nodes {
         title(format: RENDERED)
         uri
-        excerpt(format: RENDERED)
+        slug
+        postFields {
+          mainCategory {
+            nodes {
+              name
+              slug
+              uri
+            }
+          }
+        }
         featuredImage {
           node {
             altText
@@ -64,18 +64,16 @@ const GET_POSTS_QUERY = gql`
             title(format: RENDERED)
           }
         }
-        slug
+        excerpt(format: RENDERED)
         date
         categories(first: 1) {
           nodes {
             name
+            slug
+            uri
           }
         }
-        subdomains(first: 1) {
-          nodes {
-            name
-          }
-        }
+        status
       }
     }
   }
@@ -83,30 +81,42 @@ const GET_POSTS_QUERY = gql`
 
 export default async function GET_POSTS() {
   try {
-    const data: t_GET_POSTS_REQUEST = await QueryClient.request(
+    const request: GET_POSTS_REQUEST = await QueryClient.request(
       GET_POSTS_QUERY
     );
-    const response: t_GET_POSTS_RESPONSE = {
-      posts: data.posts.nodes.map((item) => {
+
+    const response: GET_POST_RESPONSE = {
+      posts: request.posts.nodes.map((item) => {
         return {
-          category: item.categories.nodes[0].name,
-          release: item.date,
-          excerpt: item.excerpt,
-          image: {
-            altText: item.featuredImage.node.altText,
-            sourceUrl: item.featuredImage.node.sourceUrl,
-            srcSet: item.featuredImage.node.srcSet,
-            title: item.featuredImage.node.title,
-          },
+          category: item.categories.nodes.map((item) => {
+            return {
+              name: item.name,
+              slug: item.slug,
+              uri: getCategoryPath(item.name),
+            };
+          })[0],
+          date: getReleaseDate({
+            date: item.date,
+            format: "short",
+          }),
+          excerpt: getExcerpt(item.excerpt, 75),
+          image: item.featuredImage.node,
           slug: item.slug,
-          subdomain: item.subdomains.nodes[0].name,
+          status: item.status,
+          subdomain: item.postFields.mainCategory.nodes.map((item) => {
+            return {
+              name: item.name,
+              slug: item.slug,
+              uri: getCategoryPath(item.name),
+            };
+          })[0],
           title: item.title,
           uri: item.uri,
         };
       }),
     };
 
-    return response;
+    return response.posts;
   } catch (error) {
     console.log(`❌ Error fetch post: ${error}`);
     throw error;

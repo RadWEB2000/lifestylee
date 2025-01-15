@@ -1,5 +1,15 @@
 export {};
 declare global {
+  type T_WORDPRESS_POST_STATUS =
+    | "publish"
+    | "future"
+    | "draft"
+    | "pending"
+    | "private"
+    | "trash"
+    | "auto-draft"
+    | "inherit";
+
   type T_WORDPRESS_METAIMAGE = {
     url: string;
     width: number;
