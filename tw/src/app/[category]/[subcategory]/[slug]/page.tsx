@@ -1,38 +1,38 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import { GET_POST } from "@/data/graphql";
 import Image from "next/image";
 import Link from "next/link";
 
 type tPostPage = {
-  params: Promise<{
+  params: {
     slug: string;
-  }>;
+  };
 };
 
-export async function generateMetadata({
-  params,
-}: tPostPage): Promise<Metadata> {
-  const slug = (await params).slug;
+// export async function generateMetadata({
+//   params,
+// }: tPostPage): Promise<Metadata> {
+//   const slug = (await params).slug;
 
-  const seo = (
-    await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
-  ).seo;
+//   const seo = (
+//     await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
+//   ).seo;
 
-  return {
-    ...seo,
-    other: {
-      jsonLd: "TEST",
-    },
-  };
-}
+//   return {
+//     ...seo,
+//     other: {
+//       jsonLd: "TEST",
+//     },
+//   };
+// }
 
-export function generateStaticParams() {
-  return [];
-}
+// export function generateStaticParams() {
+//   return [];
+// }
 
-export default async function PostPage({ params }: tPostPage) {
+export default async function PostPage(props: tPostPage) {
   // const slug: string = await props.params.slug;
-  const slug = (await params).slug;
+  const slug = props.params.slug;
 
   const page = await (
     await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
