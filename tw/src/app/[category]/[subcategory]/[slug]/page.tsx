@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
-import { GET_POST, GET_POSTS } from "@/data/graphql";
+import { GET_POST } from "@/data/graphql";
 import Image from "next/image";
 import Link from "next/link";
 
 type tPostPage = {
-  slug: string;
+  params: {
+    slug: string;
+  };
 };
 
-export async function generateStaticParams() {
-  const posts = await GET_POSTS();
-
-  return posts.map((post) => {
-    return {
-      slug: post.slug,
-    };
-  });
-}
-
-export async function generateMetadata(params: tPostPage): Promise<Metadata> {
-  const { slug } = await params;
-
+export async function generateMetadata({
+  params,
+}: tPostPage): Promise<Metadata> {
   const seo = (
-    await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
+    await GET_POST(
+      params.slug ? params.slug : "kiedy-wybory-prezydenckie-2025-w-polsce"
+    )
   ).seo;
 
   return {
@@ -32,19 +26,17 @@ export async function generateMetadata(params: tPostPage): Promise<Metadata> {
   };
 }
 
-export default async function PostPage(params: tPostPage) {
-  // const path = params.then((item) => {
-  //   return item.params;
-  // });
+export function generateStaticParams() {
+  return [];
+}
 
-  // console.log("path", path);
-  const { slug } = await params;
-
+export default async function PostPage({ params }: tPostPage) {
   const page = await (
-    await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
+    await GET_POST(
+      params.slug ? params.slug : "kiedy-wybory-prezydenckie-2025-w-polsce"
+    )
   ).page;
 
-  // console.log("post", path);
   return (
     <div>
       <Link href="/">Start</Link>
@@ -60,10 +52,10 @@ export default async function PostPage(params: tPostPage) {
         quality={50}
       />
       <main>
-        {/* <section dangerouslySetInnerHTML={{ __html: page.content }} /> */}
+        <section dangerouslySetInnerHTML={{ __html: page.content }} />
       </main>
     </div>
   );
 }
 
-export const dynamicParams = true;
+// export const dynamicParams = true;

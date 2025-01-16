@@ -1,3 +1,7 @@
+export function generateStaticParams() {
+  return [];
+}
+
 export default function SubcategoryPage() {
   return (
     <div>
