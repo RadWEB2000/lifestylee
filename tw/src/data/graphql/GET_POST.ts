@@ -145,8 +145,8 @@ const GET_POST_QUERY = gql`
       featuredImage {
         node {
           altText
-          sourceUrl(size: THUMBNAIL)
-          srcSet(size: MEDIUM)
+          sourceUrl(size: _1536X1536)
+          srcSet(size: THUMBNAIL)
           title(format: RENDERED)
         }
       }
