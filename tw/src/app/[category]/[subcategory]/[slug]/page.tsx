@@ -12,17 +12,12 @@ export async function generateMetadata(props: tPostPage): Promise<Metadata> {
   const seo = (
     await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
   ).seo;
-
   return {
     ...seo,
     other: {
       jsonLd: "TEST",
     },
   };
-}
-
-export async function generateStaticParams() {
-  return [{ params: { slug: "kiedy-wybory-prezydenckie-2025-w-polsce" } }];
 }
 
 export default async function PostPage(props: tPostPage) {
@@ -58,4 +53,4 @@ export default async function PostPage(props: tPostPage) {
   );
 }
 
-// export const dynamicParams = true;
+export const dynamicParams = false;

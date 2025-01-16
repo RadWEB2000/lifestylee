@@ -5,7 +5,6 @@ import {
   getCategoryPath,
   getReleaseDate,
 } from "@/func/index";
-
 type GET_POST_REQUEST = {
   post: {
     title: string;
@@ -91,7 +90,6 @@ type GET_POST_REQUEST = {
     };
   };
 };
-
 type GET_POST_RESPONSE = {
   page: {
     title: string;
@@ -119,7 +117,6 @@ type GET_POST_RESPONSE = {
   };
   seo: T_ARTICLE_METADATA;
 };
-
 const GET_POST_QUERY = gql`
   query GET_POST($id: ID!) {
     post(id: $id, idType: SLUG) {
@@ -224,11 +221,7 @@ const GET_POST_QUERY = gql`
     }
   }
 `;
-
 export default async function GET_POST(slug: string) {
-  if (!slug) {
-    throw new Error("Slug is required for fetch post data");
-  }
   try {
     const request: GET_POST_REQUEST = await QueryClient.request(
       GET_POST_QUERY,
@@ -236,7 +229,6 @@ export default async function GET_POST(slug: string) {
         id: slug,
       }
     );
-
     const response: GET_POST_RESPONSE = {
       page: {
         blocks: request.post.blocks.map((item) => {
@@ -332,17 +324,12 @@ export default async function GET_POST(slug: string) {
         },
       },
     };
-
-    if (!response?.page) {
-      throw new Error(`No post found for slug: ${slug}`);
-    }
-
     return {
       page: response.page,
       seo: response.seo,
     };
   } catch (error) {
-    console.log(`❌ Error fetch post: ${error}`);
+    console.log(`❌ Error fetch post:${slug} - ${error}`);
     throw error;
   }
 }
