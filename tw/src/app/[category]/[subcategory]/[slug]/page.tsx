@@ -22,7 +22,7 @@ export async function generateMetadata(props: tPostPage): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  return [];
+  return [{ params: { slug: "kiedy-wybory-prezydenckie-2025-w-polsce" } }];
 }
 
 export default async function PostPage(props: tPostPage) {
