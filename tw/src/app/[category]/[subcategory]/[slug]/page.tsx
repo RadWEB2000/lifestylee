@@ -9,7 +9,7 @@ type tPostPage = {
   };
 };
 
-export async function generateMetadata(params: tPostPage): Promise<Metadata> {
+export async function generateMetadata(params: tPostPage) {
   const seo = (
     await GET_POST(
       params.params.slug
@@ -27,7 +27,11 @@ export async function generateMetadata(params: tPostPage): Promise<Metadata> {
 }
 
 export default async function PostPage(params: tPostPage) {
-  const path = params.params.slug;
+  // const path = params.then((item) => {
+  //   return item.params;
+  // });
+
+  // console.log("path", path);
 
   const page = await (
     await GET_POST(
@@ -37,7 +41,7 @@ export default async function PostPage(params: tPostPage) {
     )
   ).page;
 
-  console.log("post", path);
+  // console.log("post", path);
   return (
     <div>
       <Link href="/">Start</Link>
@@ -53,8 +57,10 @@ export default async function PostPage(params: tPostPage) {
         quality={50}
       />
       <main>
-        <section dangerouslySetInnerHTML={{ __html: page.content }} />
+        {/* <section dangerouslySetInnerHTML={{ __html: page.content }} /> */}
       </main>
     </div>
   );
 }
+
+export const dynamicParams = true;
