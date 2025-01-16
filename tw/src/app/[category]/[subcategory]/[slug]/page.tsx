@@ -4,13 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 type tPostPage = {
-  params: {
-    slug: Array<string>;
-  };
+  params: Promise<{
+    slug: string;
+  }>;
 };
 
-export async function generateMetadata(props: tPostPage): Promise<Metadata> {
-  const slug: string = await props.params.slug[0];
+export async function generateMetadata({
+  params,
+}: tPostPage): Promise<Metadata> {
+  const slug = (await params).slug;
 
   const seo = (
     await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
@@ -28,8 +30,9 @@ export function generateStaticParams() {
   return [];
 }
 
-export default async function PostPage(props: tPostPage) {
-  const slug: string = await props.params.slug[0];
+export default async function PostPage({ params }: tPostPage) {
+  // const slug: string = await props.params.slug;
+  const slug = (await params).slug;
 
   const page = await (
     await GET_POST(slug ? slug : "kiedy-wybory-prezydenckie-2025-w-polsce")
