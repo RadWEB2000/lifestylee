@@ -9,7 +9,7 @@ type tPostPage = {
   };
 };
 
-export async function generateMetadata(params: tPostPage) {
+export async function generateMetadata(params: tPostPage): Promise<Metadata> {
   const seo = (
     await GET_POST(
       params.params.slug
