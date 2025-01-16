@@ -226,6 +226,9 @@ const GET_POST_QUERY = gql`
 `;
 
 export default async function GET_POST(slug: string) {
+  if (!slug) {
+    throw new Error("Slug is required for fetch post data");
+  }
   try {
     const request: GET_POST_REQUEST = await QueryClient.request(
       GET_POST_QUERY,
@@ -329,6 +332,10 @@ export default async function GET_POST(slug: string) {
         },
       },
     };
+
+    if (!response?.page) {
+      throw new Error(`No post found for slug: ${slug}`);
+    }
 
     return {
       page: response.page,
