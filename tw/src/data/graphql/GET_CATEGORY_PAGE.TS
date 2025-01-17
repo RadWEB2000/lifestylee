@@ -1,5 +1,5 @@
-import { gql } from "graphql-request";
 import { QueryClient } from "@/clients/QueryClient";
+import { gql } from "graphql-request";
 import getReleaseDate from "../../lib/functions/getReleaseDate";
 import getExcerpt from "../../lib/functions/getExcerpt";
 import generateLanguageAlternates from "../../lib/functions/generateLanguageAlternates";
@@ -99,6 +99,13 @@ const GET_CATEGORY_PAGE_QUERY = gql`
         }
       }
     }
+    categories {
+      nodes {
+        name
+        uri
+        slug
+      }
+    }
   }
 `;
 
@@ -182,6 +189,9 @@ type GET_CATEGORY_PAGE_REQUEST = {
         status: T_WORDPRESS_POST_STATUS;
       }>;
     };
+    categories: {
+      nodes: Array<T_WORDPRESS_TAXONOMY>;
+    };
   };
 };
 
@@ -197,7 +207,7 @@ type GET_CATEGORY_PAGE_RESPONSE = {
       background: string;
     };
   };
-  subcategories?: string;
+  subcategories?: Array<T_WORDPRESS_TAXONOMY>;
   posts: Array<{
     title: string;
     uri: string;
@@ -291,6 +301,7 @@ export default async function GET_CATEGORY_PAGE() {
           jsonLd: request.category.seo.jsonLd.raw,
         },
       },
+      subcategories: request.category.categories.nodes,
     };
 
     return { ...response };
