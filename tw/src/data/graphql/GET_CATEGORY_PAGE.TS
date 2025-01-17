@@ -1,12 +1,12 @@
-import { QueryClient } from "@/clients/QueryClient";
+import { QueryClient } from "../../lib/clients/QueryClient";
 import { gql } from "graphql-request";
 import getReleaseDate from "../../lib/functions/getReleaseDate";
 import getExcerpt from "../../lib/functions/getExcerpt";
 import generateLanguageAlternates from "../../lib/functions/generateLanguageAlternates";
 
 const GET_CATEGORY_PAGE_QUERY = gql`
-  query GET_CATEGORY_PAGE {
-    category(id: "/polityka/polska", idType: URI) {
+  query GET_CATEGORY_PAGE ($uri:ID!){
+    category(id: $uri, idType: URI) {
       seo {
         canonicalUrl
         description
@@ -16,14 +16,6 @@ const GET_CATEGORY_PAGE_QUERY = gql`
         robots
         title
         openGraph {
-          articleMeta {
-            author
-            modifiedTime
-            publishedTime
-            publisher
-            section
-            tags
-          }
           alternateLocales
           description
           facebookMeta {
@@ -40,7 +32,6 @@ const GET_CATEGORY_PAGE_QUERY = gql`
           locale
           siteName
           title
-          updatedTime
           type
           url
           twitterMeta {
@@ -120,14 +111,6 @@ type GET_CATEGORY_PAGE_REQUEST = {
       robots: Array<string>;
       title: string;
       openGraph: {
-        articleMeta: {
-          author: string | null;
-          modifiedTime: string;
-          publishedTime: string;
-          publisher: string | null;
-          section: string;
-          tags: Array<string>;
-        };
         alternateLocales: string | Array<string> | null;
         description: string;
         facebookMeta: {
@@ -144,7 +127,6 @@ type GET_CATEGORY_PAGE_REQUEST = {
         locale: string;
         siteName: string;
         title: string;
-        updatedTime: string;
         type: string;
         url: string;
         twitterMeta: {
@@ -164,8 +146,8 @@ type GET_CATEGORY_PAGE_REQUEST = {
     description: string;
     categoryFields: {
       colors: {
-        foreground: string;
-        background: string;
+        foreground: string | null;
+        background: string | null;
       };
     };
     posts: {
@@ -196,15 +178,49 @@ type GET_CATEGORY_PAGE_REQUEST = {
 };
 
 type GET_CATEGORY_PAGE_RESPONSE = {
-  seo: T_ARTICLE_METADATA;
+  seo: {
+    title:string;
+    description:string;
+    alternates:{
+      canonical:string;
+      languages?:Record<string,string>;
+    };
+    openGraph: {
+      url:string;
+      siteName:string;
+      images:Array<T_WORDPRESS_METAIMAGE> | T_WORDPRESS_METAIMAGE;
+      type:string;
+      locale:string;
+    },
+    twiter: {
+      card: string;
+      title: string;
+      description: string;
+      images: Array<string>;
+      site?: string | null;
+      creator?: string | null;
+    };
+    robots: {
+      index: boolean;
+      follow: boolean;
+      nocache: boolean;
+      googleBot: {
+        index: boolean;
+        follow: boolean;
+      };
+    };
+    other: {
+      jsonLd: string;
+    };
+  };
   page: {
     title: string;
     slug: string;
     uri: string;
     content: string;
     colors: {
-      foreground: string;
-      background: string;
+      foreground: string | null;
+      background: string | null;
     };
   };
   subcategories?: Array<T_WORDPRESS_TAXONOMY>;
@@ -221,10 +237,12 @@ type GET_CATEGORY_PAGE_RESPONSE = {
   }>;
 };
 
-export default async function GET_CATEGORY_PAGE() {
+export default async function GET_CATEGORY_PAGE(uri:string) {
   try {
     const request: GET_CATEGORY_PAGE_REQUEST = await QueryClient.request(
-      GET_CATEGORY_PAGE_QUERY
+      GET_CATEGORY_PAGE_QUERY, {
+        uri:uri
+      }
     );
 
     const response: GET_CATEGORY_PAGE_RESPONSE = {
@@ -269,16 +287,9 @@ export default async function GET_CATEGORY_PAGE() {
               alt: request.category.name,
             },
           ],
-          modifiedTime: request.category.seo.openGraph.articleMeta.modifiedTime,
-          publishedTime:
-            request.category.seo.openGraph.articleMeta.publishedTime,
           siteName: request.category.seo.openGraph.siteName,
-          tags: request.category.seo.openGraph.articleMeta.tags,
           type: request.category.seo.openGraph.type,
           url: request.category.seo.openGraph.url,
-          authors: request.category.seo.openGraph.articleMeta.author
-            ? [request.category.seo.openGraph.articleMeta.author]
-            : undefined,
         },
         twiter: {
           card: request.category.seo.openGraph.twitterMeta.card,
@@ -301,7 +312,7 @@ export default async function GET_CATEGORY_PAGE() {
           jsonLd: request.category.seo.jsonLd.raw,
         },
       },
-      subcategories: request.category.categories.nodes,
+      // subcategories: null,
     };
 
     return { ...response };
