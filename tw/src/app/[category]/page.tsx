@@ -1,5 +1,5 @@
 import { GET_CATEGORY_PAGE } from "@/queries/index";
-import { GetServerSideProps } from "next";
+import { headers } from "next/headers";
 import Link from "next/link";
 // import type { Metadata } from "next";
 
@@ -18,20 +18,16 @@ interface tPostPage {
 //   };
 // }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const uri = context.resolvedUrl; // Pobiera pełne URI, np. "/polityka/polska"
-console.log('uri',uri);
-  return {
-    props: {
-      uri, // Przekazuje URI do komponentu strony
-    },
-  };
-};
+
 
 
 export default async function CategoryPage(props:tPostPage) {
+
+const api = (await headers()).get("");
+console.log('api',api)
+
   const data = await GET_CATEGORY_PAGE(`/${(await props.params).category}`);
-console.log(data)
+// console.log(data)
   return (
     <div>
       <Link href="/">Start</Link>

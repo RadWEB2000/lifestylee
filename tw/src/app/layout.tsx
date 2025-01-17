@@ -14,6 +14,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+      <meta name="google-site-verification" content="1R0cNdnVvIwcVStMUJAi1N2vG73gP-13D0eY4ONp2bw" />
+      </head>
       <body className={`${OpenSans.variable}`}>{children}</body>
     </html>
   );
