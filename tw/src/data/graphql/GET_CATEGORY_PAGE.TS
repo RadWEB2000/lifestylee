@@ -197,6 +197,7 @@ type GET_CATEGORY_PAGE_RESPONSE = {
       background: string;
     };
   };
+  subcategories?: string;
   posts: Array<{
     title: string;
     uri: string;
