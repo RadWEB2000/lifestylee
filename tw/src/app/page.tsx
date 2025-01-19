@@ -25,7 +25,11 @@ export default async function HomePage() {
       </div>
       <ul
         style={{
-          background: "#ddd",
+          display:'grid',
+          alignItems:'center',
+          justifyContent:'center',
+          textAlign:'center',
+          gridTemplateColumns:`repeat(${categories.length},1fr)`
         }}
       >
         {categories.map((item) => {
@@ -46,6 +50,10 @@ export default async function HomePage() {
       <ul
         style={{
           background: "#aaa",
+          display:'grid',
+          gridTemplateColumns:'repeat(3,1fr)',
+          width:'85%',
+          margin:'2rem auto'
         }}
       >
         {posts
@@ -54,11 +62,10 @@ export default async function HomePage() {
             return (
               <Link href={item.uri} key={item.uri}>
                 <Image
-                  alt=""
+                  alt={item.image.altText}
                   height={350}
-                  src={
-                    "https://cdn.pixabay.com/photo/2024/12/13/20/29/alps-9266131_960_720.jpg"
-                  }
+                  src={item.image.sourceUrl}
+                  sizes={item.image.srcSet}
                   width={350}
                 />
                 <h3>{item.title}</h3>

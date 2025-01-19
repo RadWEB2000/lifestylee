@@ -1,4 +1,4 @@
-// import { GET_CATEGORY_PAGE } from "@/queries/index";
+import { GET_CATEGORY_PAGE } from "@/queries/index";
 import { headers } from "next/headers";
 import Link from "next/link";
 // import type { Metadata } from "next";
@@ -26,15 +26,14 @@ export default async function CategoryPage(props:tPostPage) {
 const api = (await headers()).get("");
 console.log('api',api)
 
-  // const data = await GET_CATEGORY_PAGE(`/${(await props.params).category}`);
+  const data = await GET_CATEGORY_PAGE(`/${(await props.params).category}`);
 // console.log(data)
   return (
     <div>
       <Link href="/">Start</Link>
-      {/* <h1>{data.page.title}</h1>
+      <h1>{data.page.title}</h1>
       <p>{(await props.params).category}</p>
-      <p dangerouslySetInnerHTML={{ __html: data.page.content }} /> */}
-      <h1>{(await props.params).category}</h1>
+      <p dangerouslySetInnerHTML={{ __html: data.page.content }} />
     </div>
   );
 }
