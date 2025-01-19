@@ -25,8 +25,6 @@ type GET_CATEGORY_REQUEST = {
       };
     };
     name: string;
-    slug: string;
-    uri: string;
     description: string;
     posts: {
       nodes: Array<{
@@ -55,6 +53,54 @@ type GET_CATEGORY_REQUEST = {
   };
 };
 
+type GET_CATEGORY_RESPONSE = {
+  seo?: {
+    canonicalUrl: string;
+    description: string;
+    jsonLd: {
+      raw: string;
+    };
+    robots: Array<string>;
+    title: string;
+    openGraph: {
+      description: string;
+      locale: string;
+      siteName: string;
+      title: string;
+      type: string;
+      twitterMeta: {
+        card: string;
+        description: string;
+        title: string;
+      };
+    };
+  };
+  page: {
+    name: string;
+    description: string;
+  };
+  posts: Array<{
+    title: string;
+    uri: string;
+    slug: string;
+    postFields: {
+      mainCategory: {
+        nodes: Array<T_WORDPRESS_TAXONOMY>;
+      };
+    };
+    featuredImage: {
+      node: T_WORDPRESS_FEATUREDIMAGE;
+    };
+    excerpt: string;
+    date: string;
+    categories: {
+      nodes: Array<T_WORDPRESS_TAXONOMY>;
+    };
+    status: T_WORDPRESS_POST_STATUS;
+  }>;
+  menu: Array<T_WORDPRESS_TAXONOMY>;
+};
+
 const GET_CATEGORY_QUERY = gql`
   query GET_CATEGORY($id: ID!) {
     category(id: $id, idType: URI) {
@@ -80,10 +126,7 @@ const GET_CATEGORY_QUERY = gql`
         }
       }
       name
-      slug
-      uri
       description
-
       posts(first: 55) {
         nodes {
           title(format: RENDERED)
