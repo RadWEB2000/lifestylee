@@ -22,8 +22,6 @@ export default async function CategoryPage(props: tPostPage) {
   const api = (await headers()).get("");
   console.log("api", api);
 
-  // const data = await GET_CATEGORY_PAGE(`/${(await props.params).category}`);
-  // console.log(data)
   return (
     <div>
       <Link href="/">Start</Link>
