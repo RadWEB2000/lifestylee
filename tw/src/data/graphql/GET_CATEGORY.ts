@@ -2,7 +2,7 @@ import { gql } from "graphql-request";
 // import { QueryClient } from "@/clients/QueryClient";
 
 const GET_CATEGORY_QUERY = gql`
-  query GET_CATEGORY_PAGE {
+  query GET_CATEGORY {
     category(id: "/polityka/polska", idType: URI) {
       seo {
         canonicalUrl
@@ -14,19 +14,10 @@ const GET_CATEGORY_QUERY = gql`
         title
         openGraph {
           articleMeta {
-            author
             modifiedTime
             publishedTime
-            publisher
-            section
-            tags
           }
-          alternateLocales
           description
-          facebookMeta {
-            appId
-            admins
-          }
           image {
             width
             url
@@ -107,5 +98,10 @@ const GET_CATEGORY_QUERY = gql`
 `;
 
 export default async function GET_CATEGORY() {
-  console.log("test", GET_CATEGORY_QUERY);
+  try {
+    console.log("test", GET_CATEGORY_QUERY);
+  } catch (error) {
+    console.log(`❌ Error fetch post:${error}`);
+    throw error;
+  }
 }
