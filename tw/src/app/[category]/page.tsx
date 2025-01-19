@@ -12,7 +12,8 @@ export default async function CategoryPage(props: tPostPage) {
   return (
     <div>
       <Link href="/">Start</Link>
-      {/* <h1>{data.page.title}</h1> */}
+      <h1>{api.category.name}</h1>
+      <strong>{api.category.description}</strong>
       <p>{(await props.params).category}</p>
       {/* <p dangerouslySetInnerHTML={{ __html: data.page.content }} /> */}
     </div>
