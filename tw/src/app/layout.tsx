@@ -15,7 +15,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="google-site-verification" content="1R0cNdnVvIwcVStMUJAi1N2vG73gP-13D0eY4ONp2bw" />
+        <meta
+          name="google-site-verification"
+          content="1R0cNdnVvIwcVStMUJAi1N2vG73gP-13D0eY4ONp2bw"
+        />
+        <meta name="google-adsense-account" content="ca-pub-2145985197806639" />
       </head>
       <body className={`${OpenSans.variable}`}>{children}</body>
     </html>
