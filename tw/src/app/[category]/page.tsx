@@ -6,7 +6,8 @@ interface tPostPage {
 }
 
 export default async function CategoryPage(props: tPostPage) {
-  const api = await GET_CATEGORY();
+  const slug = (await props.params).category;
+  const api = await GET_CATEGORY(slug ? slug : "/polityka");
   console.log("api", api);
 
   return (

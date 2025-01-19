@@ -56,8 +56,8 @@ type GET_CATEGORY_REQUEST = {
 };
 
 const GET_CATEGORY_QUERY = gql`
-  query GET_CATEGORY {
-    category(id: "/polityka/polska", idType: URI) {
+  query GET_CATEGORY($id: ID!) {
+    category(id: $id, idType: URI) {
       seo {
         canonicalUrl
         description
@@ -129,11 +129,14 @@ const GET_CATEGORY_QUERY = gql`
   }
 `;
 
-export default async function GET_CATEGORY() {
+export default async function GET_CATEGORY(slug: string) {
   try {
     console.log("test", GET_CATEGORY_QUERY);
     const request: GET_CATEGORY_REQUEST = await QueryClient.request(
-      GET_CATEGORY_QUERY
+      GET_CATEGORY_QUERY,
+      {
+        id: slug,
+      }
     );
     return request;
   } catch (error) {
