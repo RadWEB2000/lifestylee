@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
 import { QueryClient } from "@/clients/QueryClient";
+import { getExcerpt } from "@/lib/functions";
 
 type GET_CATEGORY_REQUEST = {
   category: {
@@ -13,7 +14,6 @@ type GET_CATEGORY_REQUEST = {
       title: string;
       openGraph: {
         description: string;
-        locale: string;
         siteName: string;
         title: string;
         type: string;
@@ -54,13 +54,21 @@ type GET_CATEGORY_REQUEST = {
 };
 
 type GET_CATEGORY_RESPONSE = {
-  seo?: {
+  seo: {
     canonicalUrl: string;
     description: string;
-    jsonLd: {
-      raw: string;
+    other: {
+      jsonLd: string;
     };
-    robots: Array<string>;
+    robots: {
+      index: boolean;
+      follow: boolean;
+      nocache: boolean;
+      googleBot: {
+        index: boolean;
+        follow: boolean;
+      };
+    };
     title: string;
     openGraph: {
       description: string;
@@ -76,26 +84,18 @@ type GET_CATEGORY_RESPONSE = {
     };
   };
   page: {
-    name: string;
-    description: string;
+    title: string;
+    content: string;
   };
   posts: Array<{
     title: string;
     uri: string;
     slug: string;
-    postFields: {
-      mainCategory: {
-        nodes: Array<T_WORDPRESS_TAXONOMY>;
-      };
-    };
-    featuredImage: {
-      node: T_WORDPRESS_FEATUREDIMAGE;
-    };
+    subdomain: T_WORDPRESS_TAXONOMY;
+    image: T_WORDPRESS_FEATUREDIMAGE;
     excerpt: string;
     date: string;
-    categories: {
-      nodes: Array<T_WORDPRESS_TAXONOMY>;
-    };
+    category: T_WORDPRESS_TAXONOMY;
     status: T_WORDPRESS_POST_STATUS;
   }>;
   menu: Array<T_WORDPRESS_TAXONOMY>;
@@ -181,7 +181,54 @@ export default async function GET_CATEGORY(slug: string) {
         id: slug,
       }
     );
-    return request;
+
+    const response: GET_CATEGORY_RESPONSE = {
+      menu: request.category.categories.nodes,
+      page: {
+        content: request.category.description,
+        title: request.category.name,
+      },
+      posts: request.category.posts.nodes.map((item) => {
+        return {
+          category: item.categories.nodes[0],
+          date: item.date,
+          excerpt: getExcerpt(item.excerpt, 75),
+          image: item.featuredImage.node,
+          slug: item.slug,
+          status: item.status,
+          subdomain: item.postFields.mainCategory.nodes[0],
+          title: item.title,
+          uri: item.uri,
+        };
+      }),
+      seo: {
+        title: request.category.seo.title,
+        description: request.category.seo.description,
+        openGraph: {
+          description: request.category.seo.openGraph.description,
+          locale: "pl_PL",
+          siteName: request.category.seo.openGraph.siteName,
+          title: request.category.seo.openGraph.title,
+          type: request.category.seo.openGraph.type,
+          twitterMeta: request.category.seo.openGraph.twitterMeta,
+        },
+        canonicalUrl: request.category.seo.canonicalUrl,
+        robots: {
+          index: request.category.seo.robots.includes("index"),
+          follow: request.category.seo.robots.includes("follow"),
+          nocache: request.category.seo.robots.includes("nocache"),
+          googleBot: {
+            follow: request.category.seo.robots.includes("follow"),
+            index: request.category.seo.robots.includes("index"),
+          },
+        },
+        other: {
+          jsonLd: request.category.seo.jsonLd.raw,
+        },
+      },
+    };
+
+    return response;
   } catch (error) {
     console.log(`❌ Error fetch post:${error}`);
     throw error;

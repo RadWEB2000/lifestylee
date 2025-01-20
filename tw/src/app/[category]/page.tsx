@@ -7,16 +7,26 @@ interface tPostPage {
 
 export default async function CategoryPage(props: tPostPage) {
   const slug = (await props.params).category;
-  const api = await GET_CATEGORY(slug ? slug : "/polityka");
-  console.log("api", api);
+  const { page, posts } = await GET_CATEGORY(slug ? slug : "/polityka");
 
   return (
     <div>
       <Link href="/">Start</Link>
-      <h1>{api.category.name}</h1>
-      <strong>{api.category.description}</strong>
-      <p>{(await props.params).category}</p>
-      {/* <p dangerouslySetInnerHTML={{ __html: data.page.content }} /> */}
+      <h1>{page.title}</h1>
+      <p dangerouslySetInnerHTML={{ __html: page.content }} />
+      {posts && (
+        <ul>
+          {posts
+            .filter((item) => item.status === "publish")
+            .map((item) => {
+              return (
+                <Link href={item.uri} key={item.title}>
+                  <h3>{item.title}</h3>
+                </Link>
+              );
+            })}
+        </ul>
+      )}
     </div>
   );
 }
