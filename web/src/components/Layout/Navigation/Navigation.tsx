@@ -2,9 +2,11 @@ import css from "@/nav/Navigation.module.scss";
 import { tNavigation } from "@/nav/Navigation.models";
 import {
   Brand,
+  Menu,
   MenuButton,
   Search,
   Subdomains,
+  Ticker,
   ToggleTheme,
 } from "@/nav/index";
 
@@ -20,6 +22,8 @@ export default function Navigation(props: tNavigation) {
           <MenuButton {...props.menuButton} />
         </div>
       </nav>
+      <Ticker />
+      <Menu />
     </>
   );
 }

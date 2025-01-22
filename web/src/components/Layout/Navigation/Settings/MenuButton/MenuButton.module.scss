@@ -19,8 +19,9 @@
   align-items: center;
   display: flex;
   flex-flow: column;
-  justify-content: space-evenly;
-  //   background: orange;
+  overflow: hidden;
+  justify-content: space-around;
+  position: relative;
   height: 3.5rem;
   width: 3.5rem;
 }
@@ -28,5 +29,24 @@
 .line {
   background-color: $black;
   height: 3px;
+  transition: 0.2s linear transform;
   width: 100%;
+}
+
+.button[data-open="true"] {
+  .line {
+    position: absolute;
+    top: 50%;
+    transform-origin: center;
+    left: 50%;
+    &:nth-of-type(1) {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:nth-of-type(2) {
+      transform: scaleX(0);
+    }
+    &:nth-of-type(3) {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
 }

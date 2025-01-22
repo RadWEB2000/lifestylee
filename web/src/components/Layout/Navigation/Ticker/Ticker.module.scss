@@ -1,0 +1,19 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  background-color: $black;
+  color: $white;
+  display: grid;
+  padding: 0.65rem 2rem;
+  grid-template-columns: calc(100% - 12rem) 12rem;
+}
+
+.article {
+  font-size: 0.8em;
+}
+
+.date {
+  font-size: 0.85em;
+  font-weight: 800;
+}
