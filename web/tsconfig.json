@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/anims/*": ["./src/lib/animations/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/clients/*": ["./src/lib/clients/*"],
+      "@/context/*": ["./src/context/*"],
+      "@/configs/*": ["./src/lib/configs/*"],
+      "@/css/*": ["./src/styles/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/footer/*": ["./src/components/Layout/Footer/*"],
+      "@/func/*": ["./src/lib/functions/*"],
+      "@/hooks/*": ["./src/lib/hooks/*"],
+      "@/ico/*": ["./src/assets/icons/*"],
+      "@/img/*": ["./src/assets/images/*"],
+      "@/layout/*": ["./src/components/Layout/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/nav/*": ["./src/components/Layout/Navigation/*"],
+      "@/parts/*": ["./src/components/*"],
+      "@/provider/*": ["./src/provider/*"],
+      "@/queries/*": ["./src/data/graphql/*"],
+      "@/static/*": ["./src/data/static/*"],
+      "@/subdomains/*": ["./src/components/Layout/Subdomains/*"],
+      "@/ts/*": ["./src/types/*"],
+      "@/ui/*": ["./src/components/UI/*"],
+      "@/utils/*": ["./src/components/Utils/*"],
+      "@/videos/*": ["./src/assets/videos/*"],
+      "@/views/*": ["./src/components/Views/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

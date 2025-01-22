@@ -1,0 +1,32 @@
+@use "../../../../styles/variables.scss" as *;
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  margin: auto auto auto 0;
+  &:hover {
+    color: $purple;
+  }
+}
+
+.media {
+  // background: red;
+  display: block;
+  height: 4rem;
+  position: relative;
+  width: 4rem;
+}
+
+.image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.brand {
+  margin-left: 0.27rem;
+  font-size: 1.42em;
+  font-weight: 800;
+  transition: 0.12s linear color;
+}

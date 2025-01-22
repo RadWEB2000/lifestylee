@@ -1,0 +1,19 @@
+@use "../../../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  gap: 1rem;
+  padding: 0rem 1rem;
+}
+
+.icon {
+  height: 2.3rem;
+  width: 2.3rem;
+  & > * {
+    height: 100%;
+    width: 100%;
+  }
+}

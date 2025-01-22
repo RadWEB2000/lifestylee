@@ -1,0 +1,32 @@
+@use "../../../../../styles/variables" as *;
+
+.wrapper {
+  display: flex;
+  place-items: center;
+  //   background-color: red;
+}
+
+.label {
+  //   background-color: aqua;
+  font-size: 1.15em;
+  line-height: 1;
+  font-weight: 650;
+  margin-right: 0.5em;
+  text-transform: uppercase;
+}
+
+.button {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  //   background: orange;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.line {
+  background-color: $black;
+  height: 3px;
+  width: 100%;
+}

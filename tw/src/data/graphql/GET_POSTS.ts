@@ -42,7 +42,7 @@ type GET_POST_RESPONSE = {
 
 const GET_POSTS_QUERY = gql`
   query GET_POSTS {
-    posts(first: 25) {
+    posts(first: 25, where: { status: PUBLISH }) {
       nodes {
         title(format: RENDERED)
         uri

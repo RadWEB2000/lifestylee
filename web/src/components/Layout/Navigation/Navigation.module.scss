@@ -1,0 +1,27 @@
+@use "../../../styles/variables.scss" as *;
+
+.navigation,
+.settings {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.navigation {
+  justify-content: flex-start;
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom right, $white, $gray-light);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top: 1px solid $gray-dark;
+  border-bottom: 1px solid $gray-dark;
+  min-height: 8rem;
+  position: sticky;
+  padding: 0rem 2rem;
+  top: 0;
+}
+
+.settings {
+  justify-content: flex-end;
+  gap: 1em;
+}

@@ -1,0 +1,57 @@
+@use "../../../../styles/variables" as *;
+.wrapper {
+  display: flex;
+  height: 4rem;
+  place-items: center;
+  position: relative;
+}
+
+.field {
+  background-color: color-mix(in srgb, $gray-light 75%, $gray);
+  border: none;
+  border-radius: 0.25em;
+  color: $black;
+  font-size: 0.875em;
+  height: 100%;
+  outline: none;
+  padding: 0.375em 1.75em;
+  transition: 0.25s linear background-color, 0.25s linear width;
+  width: 13em;
+  &::placeholder {
+    color: color-mix(in srgb, $gray-dark 15%, $black);
+  }
+  &:focus,
+  &:not(:placeholder-shown),
+  &:focus-visible {
+    background-color: $gray-light;
+    box-shadow: 0 0 0 0.05rem $black;
+  }
+  &:focus,
+  &:not(:placeholder-shown) {
+    width: 35em;
+  }
+}
+
+.button {
+  background-color: $black;
+  border-radius: 0.25em;
+  height: 4rem;
+  margin-left: 0.4rem;
+  transition: 0.12s linear background-color;
+  width: 4rem;
+  & > svg > path {
+    fill: $white;
+  }
+
+  &:focus,
+  &:focus-within,
+  &:hover {
+    background-color: color-mix(in srgb, $black 75%, $gray-dark);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field {
+    transition: none;
+  }
+}

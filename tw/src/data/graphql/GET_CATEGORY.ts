@@ -1,6 +1,5 @@
 import { gql } from "graphql-request";
 import { QueryClient } from "@/clients/QueryClient";
-import { getExcerpt } from "@/lib/functions";
 
 type GET_CATEGORY_REQUEST = {
   category: {
@@ -181,26 +180,41 @@ export default async function GET_CATEGORY(slug: string) {
         id: slug,
       }
     );
+    console.log("GraphQL response:", request);
 
     const response: GET_CATEGORY_RESPONSE = {
-      menu: request.category.categories.nodes,
+      menu: request.category.categories?.nodes,
       page: {
         content: request.category.description,
         title: request.category.name,
       },
-      posts: request.category.posts.nodes.map((item) => {
-        return {
-          category: item.categories.nodes[0],
-          date: item.date,
-          excerpt: getExcerpt(item.excerpt, 75),
-          image: item.featuredImage.node,
-          slug: item.slug,
-          status: item.status,
-          subdomain: item.postFields.mainCategory.nodes[0],
-          title: item.title,
-          uri: item.uri,
-        };
-      }),
+      posts:
+        request.category.posts.nodes.map((item) => {
+          return {
+            category:
+              item.categories.nodes.map((item) => {
+                return {
+                  name: item.name,
+                  slug: item.slug,
+                  uri: item.uri,
+                };
+              })[0] || [],
+            date: item.date,
+            excerpt: item.excerpt,
+            image: item.featuredImage.node,
+            slug: item.slug,
+            status: item.status,
+            subdomain: item.postFields.mainCategory.nodes.map((item) => {
+              return {
+                name: item.name,
+                slug: item.slug,
+                uri: item.uri,
+              };
+            })[0],
+            title: item.title,
+            uri: item.uri,
+          };
+        }) || [],
       seo: {
         title: request.category.seo.title,
         description: request.category.seo.description,

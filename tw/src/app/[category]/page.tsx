@@ -13,18 +13,16 @@ export default async function CategoryPage(props: tPostPage) {
     <div>
       <Link href="/">Start</Link>
       <h1>{page.title}</h1>
-      <p dangerouslySetInnerHTML={{ __html: page.content }} />
+      <p>{page.content}</p>
       {posts && (
         <ul>
-          {posts
-            .filter((item) => item.status === "publish")
-            .map((item) => {
-              return (
-                <Link href={item.uri} key={item.title}>
-                  <h3>{item.title}</h3>
-                </Link>
-              );
-            })}
+          {posts.map((item) => {
+            return (
+              <Link href={item.uri} key={item.title}>
+                <h3>{item.title}</h3>
+              </Link>
+            );
+          })}
         </ul>
       )}
     </div>
