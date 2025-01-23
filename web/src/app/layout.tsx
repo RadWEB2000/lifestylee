@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "@/css/global.scss";
 import { Navigation } from "@/layout/index";
 import main from "@/static/main";
+import { MenuProvider } from "@/provider/index";
 
 const montserrat = Montserrat({
   variable: "--font-regular",
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable}`}>
-        <Navigation {...main.nav} />
-        {children}
+        <MenuProvider>
+          <Navigation {...main.nav} />
+          {children}
+        </MenuProvider>
       </body>
     </html>
   );

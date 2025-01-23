@@ -103,6 +103,1092 @@ const main: main = {
     menuButton: {
       label: "Menu",
     },
+    explorer: {
+      button: "Zamknij",
+      title: "Menu",
+      menus: [
+        {
+          title: "Biznes",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Budownictwo",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Gaming",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Gastronomia",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Historia",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Kultura",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Motoryzacja",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Podróże",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Polityka",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Prawo",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Rolnictwo",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Sport",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Technologia",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Wizaż",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Zdrowie",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Religia",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Miasta",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+        {
+          title: "Mitologia",
+          menu: [
+            {
+              name: "Fundusze",
+              slug: "/fundusze",
+              uri: "/biznes/fundusze",
+            },
+            {
+              name: "Giełda",
+              slug: "/gielda",
+              uri: "/biznes/gielda",
+            },
+            {
+              name: "Gospodarka",
+              slug: "/gospodarka",
+              uri: "/biznes/gospodarka",
+            },
+            {
+              name: "Podatki i ZUS",
+              slug: "/podatki-i-zus",
+              uri: "/biznes/podatki-i-zus",
+            },
+            {
+              name: "Prowadzenie firmy",
+              slug: "/prowadzenie-firmy",
+              uri: "/biznes/prowadzenie-firmy",
+            },
+            {
+              name: "Surowce",
+              slug: "/surowce",
+              uri: "/biznes/surowce",
+            },
+            {
+              name: "Waluty",
+              slug: "/waluty",
+              uri: "/biznes/waluty",
+            },
+            {
+              name: "Windykacja",
+              slug: "/windykacja",
+              uri: "/biznes/windykacja",
+            },
+            {
+              name: "Maszyny budowlane",
+              slug: "/maszyny",
+              uri: "/budownictwo/maszyny",
+            },
+            {
+              name: "Materiały budowlane",
+              slug: "/materialy-budowlane",
+              uri: "/budownictwo/materialy-budowlane",
+            },
+            {
+              name: "Narzędzia",
+              slug: "/narzedzia",
+              uri: "/budownictwo/narzedzia",
+            },
+          ],
+        },
+      ],
+    },
   },
 };
 

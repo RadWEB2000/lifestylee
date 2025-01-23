@@ -38,11 +38,13 @@ textarea {
 }
 
 body {
+  // overflow-y: hidden;
   background-attachment: fixed;
   background-image: linear-gradient(to bottom right, $white, $gray-light);
   background-size: cover;
   background-repeat: no-repeat;
   font-family: $font-regular;
+  // overflow-x: hidden;
   font-size: 1.6rem;
 }
 

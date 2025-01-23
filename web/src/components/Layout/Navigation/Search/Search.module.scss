@@ -2,6 +2,7 @@
 .wrapper {
   display: flex;
   height: 4rem;
+  height: 3rem;
   place-items: center;
   position: relative;
 }
@@ -12,9 +13,11 @@
   border-radius: 0.25em;
   color: $black;
   font-size: 0.875em;
+  font-size: 0.75em;
   height: 100%;
   outline: none;
   padding: 0.375em 1.75em;
+  padding: 0.375em 0.75em;
   transition: 0.25s linear background-color, 0.25s linear width;
   width: 13em;
   &::placeholder {
@@ -28,7 +31,7 @@
   }
   &:focus,
   &:not(:placeholder-shown) {
-    width: 35em;
+    // width: 35em;
   }
 }
 
@@ -36,9 +39,12 @@
   background-color: $black;
   border-radius: 0.25em;
   height: 4rem;
-  margin-left: 0.4rem;
-  transition: 0.12s linear background-color;
   width: 4rem;
+  height: 3rem;
+  width: 3rem;
+  margin-left: 0.4rem;
+  margin-left: 0.21rem;
+  transition: 0.12s linear background-color;
   & > svg > path {
     fill: $white;
   }

@@ -1,6 +1,7 @@
 @use "../../../../../styles/variables" as *;
 
 .wrapper {
+  cursor: pointer;
   display: flex;
   place-items: center;
   //   background-color: red;
@@ -9,6 +10,7 @@
 .label {
   //   background-color: aqua;
   font-size: 1.15em;
+  font-size: 0.85em;
   line-height: 1;
   font-weight: 650;
   margin-right: 0.5em;
@@ -24,6 +26,8 @@
   position: relative;
   height: 3.5rem;
   width: 3.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .line {

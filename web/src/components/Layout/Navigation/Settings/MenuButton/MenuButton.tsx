@@ -1,10 +1,11 @@
 "use client";
 import css from "@/nav/Settings/MenuButton/MenuButton.module.scss";
 import { tMenuButton } from "@/nav/Settings/MenuButton/MenuButton.models";
-import { useState } from "react";
+import { useContext } from "react";
+import { MenuContext } from "@/context/index";
 
 export default function MenuButton(props: tMenuButton) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { isOpen, toggle } = useContext(MenuContext);
 
   return (
     <div className={css.wrapper}>
@@ -16,7 +17,7 @@ export default function MenuButton(props: tMenuButton) {
         data-open={isOpen}
         id="menu-button"
         name="menu-button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={toggle}
         type="button"
       >
         <span className={css.line} />
