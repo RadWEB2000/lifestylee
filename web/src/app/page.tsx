@@ -7,7 +7,8 @@ export default function HomePage() {
         style={{
           backgroundColor: "#eee964",
           display: "flex",
-          padding: "7em",
+          padding: "2em 7em",
+          fontWeight: 800,
           gap: "2em",
         }}
       >
