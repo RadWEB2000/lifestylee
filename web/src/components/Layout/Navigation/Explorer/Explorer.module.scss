@@ -15,8 +15,6 @@
 
 .wrapper {
   background-color: $white;
-  //   display: grid;
-  //   grid-template-rows: repeat(2, 3rem) calc(100% - 165rem);
   padding: 2em 2em 6em 2em;
   padding: 1em 1em 5em 1em;
   position: fixed;
@@ -35,7 +33,6 @@
 
 .settings {
   align-items: center;
-  background: red;
   display: flex;
   justify-content: space-between;
 }
@@ -47,9 +44,8 @@
 }
 
 .menus {
-  //   background: salmon;
   gap: 2.45em;
-  gap: 0.85em;
+  gap: 1.85em;
   padding: 1rem 0 15rem 0;
   height: 100%;
   overflow-y: scroll;
@@ -64,16 +60,47 @@
 
 .menu {
   &__title {
-    // background: pink;
     font-size: 0.96em;
   }
 }
 
 .card {
-  //   background: red;
-
   &__link {
-    // background: aqua;
     font-size: 0.75em;
+  }
+}
+
+@media (min-width: 765px) {
+  .wrapper {
+    padding: 2em 2em 6em 2em;
+    width: clamp(15rem, 60rem, 85%);
+  }
+  .menus {
+    padding: 1rem 0 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .settings {
+    height: 4.5rem;
+  }
+}
+
+@media (min-width: 1220px) {
+  .wrapper {
+    width: clamp(15rem, 110rem, 85%);
+  }
+  .settings {
+    padding: 1rem 0 5rem 0;
+    margin: 2rem 0;
+  }
+  .cards,
+  .menus {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menus {
+    padding: 1rem 0 8.5rem 0;
   }
 }

@@ -5,19 +5,30 @@
   background-color: $black;
   color: $white;
   display: grid;
-  padding: 0.65rem 2rem;
-  grid-template-columns: calc(100% - 12rem) 12rem;
+  grid-template-columns: calc(100% - 7rem) 7rem;
+  padding: 0.65rem 1rem;
 }
 
 .article {
+  font-size: 0.5em;
   text-align: start;
-  font-size: 0.8em;
-  font-size: 0.55em;
 }
 
 .date {
-  font-size: 0.85em;
-  font-size: 0.65em;
-  text-align: end;
+  font-size: 0.55em;
   font-weight: 800;
+  text-align: end;
+}
+
+@media (min-width: 765px) {
+  .wrapper {
+    grid-template-columns: calc(100% - 12rem) 12rem;
+    padding: 0.72rem 2rem;
+  }
+  .article {
+    font-size: 0.77em;
+  }
+  .date {
+    font-size: 0.8em;
+  }
 }

@@ -34,3 +34,23 @@
   font-weight: 800;
   transition: 0.12s linear color;
 }
+
+@media (min-width: 765px) {
+  .brand {
+    margin-left: 0.27rem;
+    font-size: 1.3em;
+  }
+  .media {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+@media (min-width: 1120px) {
+  .brand {
+    font-size: 1.71em;
+  }
+  .media {
+    height: 4.2rem;
+    width: 4.2rem;
+  }
+}

@@ -21,7 +21,7 @@ export default function MenuProvider(props: tMenuProvider) {
     <MenuContext.Provider
       value={{
         close: () => setIsOpen(false),
-        isOpen,
+        isOpen: isOpen,
         toggle: () => setIsOpen(!isOpen),
       }}
     >

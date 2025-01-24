@@ -19,3 +19,9 @@
     width: 100%;
   }
 }
+
+@media (min-width: 765px) {
+  .wrapper {
+    margin: unset;
+  }
+}
