@@ -1,11 +1,19 @@
-import getPathname from "@/func/getPathname";
+import { generateUri } from "@/func/index";
 
-export default async function CategoryPage({
-  subcategory,
-}: {
-  subcategory?: string;
-}) {
-  const pathname  = await getPathname();
+type tSubcategoryPage = {
+  params: Promise<{
+    category: string;
+    subcategory: string;
+    url: {
+      pathname: string;
+      search: string;
+    };
+  }>;
+};
+
+export default async function SubcategoryPage(props: tSubcategoryPage) {
+  const { category, subcategory } = await props.params;
+  const pathname = generateUri(category, subcategory);
   return (
     <div>
       <div>
