@@ -1,6 +1,6 @@
 export {};
 declare global {
-  type T_WORDPRESS_POST_STATUS =
+  type T_POST_STATUS =
     | "publish"
     | "future"
     | "draft"
@@ -10,62 +10,83 @@ declare global {
     | "auto-draft"
     | "inherit";
 
-  type T_WORDPRESS_METAIMAGE = {
-    url: string;
-    width: number;
-    height: number;
-    alt: string;
-  };
-  type T_WORDPRESS_FEATUREDIMAGE = {
+  type T_GUTENBERG_BLOCK_NAMES =
+    | "core/audio"
+    | "core/gallery"
+    | "core/heading"
+    | "core/image"
+    | "core/list"
+    | "core/paragraph"
+    | "core/quote"
+    | "core/video"
+    | "core/file"
+    | "core/code"
+    | "core/html"
+    | "core/preformatted"
+    | "core/table"
+    | "core/button"
+    | "core/buttons"
+    | "core/columns"
+    | "core/column"
+    | "core/cover"
+    | "core/verse"
+    | "core/spacer"
+    | "core/separator"
+    | "core/embed"
+    | "core/embed-youtube"
+    | "core/embed-twitter"
+    | "core/embed-instagram"
+    | "core/group"
+    | "core/media-text"
+    | "core/block"
+    | "core/site-title"
+    | "core/site-logo"
+    | "core/site-tagline"
+    | "core/navigation"
+    | "core/query"
+    | "core/post-title"
+    | "core/post-content"
+    | "core/post-date"
+    | "core/post-excerpt"
+    | "core/post-featured-image"
+    | "core/post-terms"
+    | "core/freeform"
+    | "core/shortcode"
+    | "core/embed-facebook"
+    | "core/embed-soundcloud"
+    | "core/embed-spotify"
+    | "core/embed-flickr"
+    | "core/embed-tumblr"
+    | "core/embed-wordpress"
+    | "core/embed-dailymotion"
+    | "core/embed-kickstarter"
+    | "core/navigation-link"
+    | "core/read-more"
+    | "core/latest-posts"
+    | "core/latest-comments"
+    | "core/search"
+    | "core/tag-cloud"
+    | "core/archives"
+    | "core/categories"
+    | "core/rss"
+    | "core/calendar"
+    | "core/page-list"
+    | "rank-math/howto-block"
+    | "rank-math/faq-block"
+    | "rank-math/toc-block"
+    | "acf/highlighted-posts";
+
+  type T_POST_PREMIUM_STATUS =
+    | "null"
+    | "basic"
+    | "standard"
+    | "advanced"
+    | "pro";
+
+  type T_WP_FEATURED_IMAGE = {
     altText: string;
     sourceUrl: string;
-    srcSet: string;
+    srcSet?: string;
     title: string;
-  };
-
-  type T_WORDPRESS_TAXONOMY = {
-    name: string;
-    slug: string;
-    uri: string;
-  };
-
-  type T_ARTICLE_METADATA = {
-    title: string;
-    description: string;
-    alternates: {
-      canonical: string;
-      languages?: Record<string, string>;
-    };
-    openGraph: {
-      url: string;
-      siteName: string;
-      images: Array<T_WORDPRESS_METAIMAGE> | T_WORDPRESS_METAIMAGE;
-      type: string;
-      locale: string;
-      publishedTime: string;
-      modifiedTime: string;
-      authors?: Array<string>;
-      tags: Array<string>;
-    };
-    twiter: {
-      card: string;
-      title: string;
-      description: string;
-      images: Array<string>;
-      site?: string | null;
-      creator?: string | null;
-    };
-    robots: {
-      index: boolean;
-      follow: boolean;
-      nocache: boolean;
-      googleBot: {
-        index: boolean;
-        follow: boolean;
-      };
-    };
-    other: {
-      jsonLd: string;
-    };
   };
 }

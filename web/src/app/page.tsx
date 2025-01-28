@@ -1,6 +1,10 @@
+import GET_POSTS from "@/queries/GET_POSTS";
+import Image from "next/image";
 import Link from "next/link";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await GET_POSTS();
+  console.log("wpisy blogowe", posts);
   return (
     <div>
       <div
@@ -17,35 +21,31 @@ export default function HomePage() {
         <Link href="/kategoria/podkategoria/jak-sie-zyje">WPIS</Link>
         {/* <Link href="">TAG</Link> */}
       </div>
+      <div>
+        {posts &&
+          posts.map((item) => {
+            return (
+              <Link href={item.uri} key={item.title} title={item.title}>
+                <Image
+                  alt={item.image.altText}
+                  height={531.25}
+                  src={item.image.sourceUrl}
+                  width={850}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  title={item.image.title}
+                  quality={55}
+                />
+                <h3>{item.title}</h3>
+                <p dangerouslySetInnerHTML={{ __html: item.excerpt }} />
+              </Link>
+            );
+          })}
+      </div>
       <ul>
         <li>l1</li>
         <li>l2</li>
-        <li>l3</li>
-        <li>l4</li>
-        <li>l5</li>
-        <li>l6</li>
-        <li>l7</li>
-        <li>l8</li>
-        <li>l9</li>
-        <li>l10</li>
-        <li>l11</li>
-        <li>l12</li>
-        <li>l13</li>
-        <li>l14</li>
-        <li>l15</li>
-        <li>l16</li>
-        <li>l17</li>
-        <li>l18</li>
-        <li>l19</li>
-        <li>l20</li>
-        <li>l21</li>
-        <li>l22</li>
-        <li>l23</li>
-        <li>l24</li>
-        <li>l25</li>
-        <li>l26</li>
-        <li>l27</li>
-        <li>l28</li>
         <li>l29</li>
         <li>l30</li>
         <li>l31</li>
