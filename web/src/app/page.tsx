@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default async function HomePage() {
   const posts = await GET_POSTS();
-  console.log("wpisy blogowe", posts);
   return (
     <div>
       <div

@@ -89,4 +89,15 @@ declare global {
     srcSet?: string;
     title: string;
   };
+  type T_WP_TAXONOMY = {
+    name: string;
+    uri: string;
+  };
+  type T_GUTENBERG_BLOCK = {
+    attributesJSON: string;
+    dynamicContent: string | null;
+    name: string;
+    order: number;
+    saveContent: string;
+  };
 }
