@@ -1,4 +1,4 @@
-import { generateUri } from "@/func/index";
+// import { generateUri } from "@/func/index";
 import Image from "next/image";
 
 type tPostPage = {
@@ -14,8 +14,10 @@ type tPostPage = {
 };
 
 export default async function PostPage(props: tPostPage) {
-  const { category, post, subcategory } = await props.params;
-  const pathname = generateUri(category, subcategory, post);
+  const params = (await props).params;
+  console.log(params);
+  // const { category, post, subcategory } = await props.params;
+  // const pathname = generateUri(category, subcategory, post);
 
   return (
     <div>
@@ -60,9 +62,9 @@ export default async function PostPage(props: tPostPage) {
         że jestem za granicą, to przybędę do Polski, bo ja się nie obawiam
         funkcjonariuszy. Nie będę stawiał też oporu, ale postawię sprawę jasno,
         pokazując wyrok Trybunału Konstytucyjnego – powiedział polityk w
-        rozmowie z Polsat News. Zbigniew Ziobro zaznaczył, iż uważa, że "nie
+        rozmowie z Polsat News. Zbigniew Ziobro zaznaczył, iż uważa, że nie
         powinien stawiać się i nie stawi się dobrowolnie przed tzw. komisję ds.
-        Pegasusa, która została zdelegalizowana". — 10 września zeszłego roku
+        Pegasusa, która została zdelegalizowana. — 10 września zeszłego roku
         legalność działania komisji badał Trybunał Konstytucyjny, który jest
         organem, zgodnie z polską konstytucją, uprawnionym do badania wszystkich
         tego typu aktów prawnych. Jego wyrok, jak mówi konstytucja, jest
@@ -70,20 +72,19 @@ export default async function PostPage(props: tPostPage) {
         śledczej ds. Pegasusa została przyjęta z naruszeniem zapisów polskiej
         konstytucji i de facto tę komisje zdelegalizował — przekazał polityk.
         Zbigniew Ziobro trafi przed komisję śledczą ds. Pegasusa? Jest decyzja
-        sądu Ziobro podsumował, że "nie może godzić się na jawne bezprawie,
-        czyli podporządkowanie prawa interesom politycznym partii rządzącej
-        Donalda Tuska". Zbigniew Ziobro nie stawiał się na przesłuchaniach Do
-        tej pory Ziobro kilkukrotnie nie stawił się na posiedzenie komisji
-        śledczej ds. Pegasusa. W związku z tym komisja wystąpiła z wnioskiem do
-        sądu o zgodę na jego zatrzymanie i przymusowe doprowadzenie na
-        przesłuchanie. Sejm uchylił mu w tym celu immunitet. Przed wydaniem
-        postanowienia sądu Ziobro oświadczył w poniedziałek na platformie X, że
-        nie będzie stawiał czynnego oporu, jeżeli sąd nakaże doprowadzenie go na
-        — jak napisał — "zdelegalizowaną komisję śledczą". Podkreślił, że
-        policjantom, których zaleceniom się podporządkuje, nie grozi z jego
-        strony żadne niebezpieczeństwo. "Pokażę im wyroki Trybunału
-        Konstytucyjnego wskazujące na przestępczy charakter orzeczenia sądu,
-        gdyby takie zapadło" — dodał.
+        sądu Ziobro podsumował, że nie może godzić się na jawne bezprawie, czyli
+        podporządkowanie prawa interesom politycznym partii rządzącej Donalda
+        Tuska. Zbigniew Ziobro nie stawiał się na przesłuchaniach Do tej pory
+        Ziobro kilkukrotnie nie stawił się na posiedzenie komisji śledczej ds.
+        Pegasusa. W związku z tym komisja wystąpiła z wnioskiem do sądu o zgodę
+        na jego zatrzymanie i przymusowe doprowadzenie na przesłuchanie. Sejm
+        uchylił mu w tym celu immunitet. Przed wydaniem postanowienia sądu
+        Ziobro oświadczył w poniedziałek na platformie X, że nie będzie stawiał
+        czynnego oporu, jeżeli sąd nakaże doprowadzenie go na — jak napisał —
+        zdelegalizowaną komisję śledczą. Podkreślił, że policjantom, których
+        zaleceniom się podporządkuje, nie grozi z jego strony żadne
+        niebezpieczeństwo. Pokażę im wyroki Trybunału Konstytucyjnego wskazujące
+        na przestępczy charakter orzeczenia sądu, gdyby takie zapadło — dodał.
       </main>
     </div>
   );
