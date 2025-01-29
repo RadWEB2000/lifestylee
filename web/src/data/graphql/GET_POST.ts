@@ -43,6 +43,7 @@ const GET_POST_QUERY = gql`
         title
       }
       title(format: RENDERED)
+      content(format: RENDERED)
       uri
       slug
       tags(first: 25) {
@@ -89,6 +90,7 @@ const GET_POST_QUERY = gql`
           order
         }
       }
+      uri
       categories(first: 1) {
         nodes {
           name
@@ -139,6 +141,8 @@ type GET_POST_REQUEST = {
       robots: Array<string>;
       title: string;
     };
+    title: string;
+    content: string;
     tags: {
       nodes: Array<T_WP_TAXONOMY>;
     };
@@ -163,6 +167,7 @@ type GET_POST_REQUEST = {
         innerBlocks?: Array<T_GUTENBERG_BLOCK>;
       }
     >;
+    uri: string;
     categories: {
       nodes: Array<T_WP_TAXONOMY>;
     };
@@ -203,6 +208,8 @@ type GET_POST_RESPONSE = {
     robots: Array<string>;
     title: string;
   };
+  title: string;
+  content: string;
   tags: Array<T_WP_TAXONOMY>;
   status: T_POST_STATUS;
   premiumStatus: T_POST_PREMIUM_STATUS;
@@ -214,6 +221,7 @@ type GET_POST_RESPONSE = {
   image: T_WP_FEATURED_IMAGE;
   excerpt: string;
   date: string;
+  uri: string;
   blocks: Array<
     T_GUTENBERG_BLOCK & {
       innerBlocks?: Array<T_GUTENBERG_BLOCK>;
@@ -238,6 +246,9 @@ export default async function GET_POST(slug: string) {
     const response: GET_POST_RESPONSE = {
       blocks: request.post.blocks,
       category: request.post.postFields.mainCategory.nodes[0],
+      content: request.post.content,
+      title: request.post.title,
+      uri: request.post.uri,
       date: request.post.date,
       excerpt: request.post.excerpt,
       faq: request.post.postFields.faq,
@@ -259,7 +270,7 @@ export default async function GET_POST(slug: string) {
                 label: item.label,
               };
             }
-          )[0],
+          )[1],
         },
         robots: request.post.seo.robots,
         title: request.post.seo.title,

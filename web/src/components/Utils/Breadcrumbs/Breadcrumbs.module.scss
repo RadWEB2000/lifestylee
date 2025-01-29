@@ -1,0 +1,51 @@
+@use "../../../styles/variables" as *;
+
+.icon,
+.item,
+.wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.item,
+.wrapper {
+  justify-content: flex-start;
+}
+
+.wrapper {
+  //   background-color: lime;
+
+  flex-flow: row wrap;
+  gap: 0.22em;
+  padding: 1.2rem 2rem;
+}
+
+.item {
+  //   background: orange;
+}
+
+.item > .label,
+.item > .icon {
+  transition: 0.15s linear color;
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:hover {
+    color: $purple;
+  }
+}
+
+.label {
+  //   background: salmon;
+  font-size: 1.42rem;
+  font-weight: 550;
+  text-transform: uppercase;
+}
+
+.icon {
+  align-items: center;
+  font-size: 1.42rem;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}

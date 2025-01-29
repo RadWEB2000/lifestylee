@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "@/css/global.scss";
 import { Navigation } from "@/layout/index";
 import main from "@/static/main";
 import { MenuProvider } from "@/provider/index";
 
-const montserrat = Montserrat({
-  variable: "--font-regular",
+const openSans = Open_Sans({
+  variable: "--font-openSans",
   subsets: ["latin", "latin-ext"],
   preload: true,
+  weight: ["300", "400", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable}`}>
+      <body className={`${openSans.variable}`}>
         <MenuProvider>
           <Navigation {...main.nav} />
           {children}

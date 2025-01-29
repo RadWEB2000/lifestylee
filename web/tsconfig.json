@@ -46,7 +46,11 @@
       "@/ui/*": ["./src/components/UI/*"],
       "@/utils/*": ["./src/components/Utils/*"],
       "@/videos/*": ["./src/assets/videos/*"],
-      "@/views/*": ["./src/components/Views/*"]
+      "@/views/*": ["./src/components/Views/*"],
+      "@/v-article/*": ["./src/components/Views/ArticleView/*"],
+      "@/v-category/*": ["./src/components/Views/CategoryView/*"],
+      "@/v-contact/*": ["./src/components/Views/ContactView/*"],
+      "@/v-home/*": ["./src/components/Views/HomeView/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

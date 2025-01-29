@@ -1,6 +1,7 @@
 // import { generateUri } from "@/func/index";
+import { Breadcrumbs } from "@/components/Utils";
+import { Hero } from "@/v-article/index";
 import GET_POST from "@/queries/GET_POST";
-import Image from "next/image";
 
 type tPostPage = {
   params: Promise<{
@@ -15,29 +16,46 @@ type tPostPage = {
 };
 
 export default async function PostPage(props: tPostPage) {
-  const slug = (await (await props).params).post;
-  const data = await GET_POST(slug);
-  console.log(`slug: ${slug}`);
+  const path = await (await props).params;
+  const data = await GET_POST(path.post);
+  console.log(`slug:`, await props);
 
   return (
-    <div>
-      <ul>Start ➡️ Kategoria ➡️ Podkategoria ➡️ Wpis blogowy</ul>
-      <h1>{data.excerpt}</h1>
-      <figure>
-        <Image
-          alt={data.image.altText}
-          height={850}
-          loading="eager"
-          priority
-          src={data.image.sourceUrl}
-          title={data.image.title}
-          style={{
-            objectFit: "cover",
-          }}
-          width={1550}
-          quality={85}
-        />
-      </figure>
-    </div>
+    <>
+      <Breadcrumbs
+        breadcrumbs={[
+          {
+            name: "Start",
+            uri: "/",
+          },
+          {
+            ...data.category,
+          },
+          {
+            ...data.subcategory,
+          },
+          {
+            name: data.title,
+            uri: data.uri,
+          },
+        ]}
+      />
+      <Hero
+        excerpt={data.excerpt}
+        image={data.image}
+        title={data.title}
+        publishedTime={{
+          title: "Data publikacji",
+          value: data.seo.openGraph.articleMeta.publishedTime,
+        }}
+        readingTime={{
+          title: data.seo.openGraph.slackEnhancedData.label,
+          value: data.seo.openGraph.slackEnhancedData.data,
+        }}
+      />
+      <main>
+        <p dangerouslySetInnerHTML={{ __html: data.content }} />
+      </main>
+    </>
   );
 }
