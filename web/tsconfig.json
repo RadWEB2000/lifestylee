@@ -40,6 +40,7 @@
       "@/parts/*": ["./src/components/*"],
       "@/provider/*": ["./src/provider/*"],
       "@/queries/*": ["./src/data/graphql/*"],
+      "@/seo/*": ["./src/components/Layout/Seo/*"],
       "@/static/*": ["./src/data/static/*"],
       "@/subdomains/*": ["./src/components/Layout/Subdomains/*"],
       "@/ts/*": ["./src/types/*"],

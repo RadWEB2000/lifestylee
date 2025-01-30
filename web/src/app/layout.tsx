@@ -4,6 +4,7 @@ import "@/css/global.scss";
 import { Navigation } from "@/layout/index";
 import main from "@/static/main";
 import { MenuProvider } from "@/provider/index";
+import { GoogleTagManager as GTM } from "@/seo/index";
 
 const alegreya = Alegreya({
   preload: true,
@@ -29,8 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pl_PL">
+      <head>
+        <GTM />
+      </head>
       <body className={` ${alegreya.variable} ${openSans.variable}`}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KT9PJR2P"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <MenuProvider>
           <Navigation {...main.nav} />
           {children}
