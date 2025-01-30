@@ -1,0 +1,51 @@
+@use "../../../styles/variables" as *;
+
+.wrapper,
+.list {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
+.wrapper {
+  //   background: pink;
+  background-color: color-mix(in srgb, $gray 10%, transparent);
+  border-radius: 2em;
+  padding: 2em;
+  gap: 1rem;
+  width: min(max-content, 100%);
+}
+
+.title {
+  font-size: 4.82rem;
+  font-weight: 800;
+}
+
+.list {
+  //   background: blue;
+  gap: 0.75rem;
+  width: 100%;
+}
+.item {
+  //   width: 100%;
+  color: color-mix(in srgb, $gray-dark 55%, $black);
+  font-size: 1.65rem;
+  font-weight: 525;
+  text-wrap: balance;
+  transition: 0.2s linear color, 0.12s linear filter;
+  //   background: red;
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:hover {
+    color: $black;
+  }
+  &[data-level="2"] {
+    // background: yellow;
+    margin-left: 2rem;
+  }
+  &[data-level="3"] {
+    margin-left: 4rem;
+  }
+}

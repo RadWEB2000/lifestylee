@@ -3,8 +3,15 @@ import Image from "next/image";
 import { FaFacebookF } from "react-icons/fa";
 import { tHero } from "@/v-article/Hero/Hero.models";
 import { FaCalendarAlt as Calendar, FaClock as Clock } from "react-icons/fa";
+import { getReleaseDate } from "@/lib/functions";
+import { TableOfContents } from "@/utils/index";
 
 export default function Hero(props: tHero) {
+  const release = getReleaseDate({
+    date: props.publishedTime.value,
+    format: "long",
+  });
+
   return (
     <div className={css.wrapper}>
       <header className={css.container}>
@@ -24,12 +31,10 @@ export default function Hero(props: tHero) {
               <i className={css.detail__icon}>
                 <Calendar />
               </i>
-              <b className={css.detail__title}>{props.publishedTime.title}</b>
-              <span className={css.detail__content}>
-                {`${new Date(props.publishedTime.value).getDate()}/${
-                  new Date(props.publishedTime.value).getMonth() + 1
-                }/${new Date(props.publishedTime.value).getFullYear()}`}
-              </span>
+              <b
+                className={css.detail__title}
+              >{`${props.publishedTime.title}:  `}</b>
+              <span className={css.detail__content}>{release}</span>
             </p>
           )}
           {props.readingTime && (
@@ -67,23 +72,7 @@ export default function Hero(props: tHero) {
         </figure>
       </header>
       <div className={css.toc}>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          <li>9</li>
-          <li>10</li>
-          <li>11</li>
-          <li>12</li>
-          <li>13</li>
-          <li>14</li>
-          <li>15</li>
-        </ul>
+        {props.toc && <TableOfContents {...props.toc} />}
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+import { tTableOfContents } from "@/utils/TableOfContents/TableOfContents.models";
+
 export type tHero = {
   title: string;
   excerpt: string;
@@ -10,4 +12,5 @@ export type tHero = {
     title: string;
     value: string;
   };
+  toc: tTableOfContents;
 };

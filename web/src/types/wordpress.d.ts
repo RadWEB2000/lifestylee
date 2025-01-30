@@ -96,7 +96,7 @@ declare global {
   type T_GUTENBERG_BLOCK = {
     attributesJSON: string;
     dynamicContent: string | null;
-    name: string;
+    name: T_GUTENBERG_BLOCK_NAMES;
     order: number;
     saveContent: string;
   };

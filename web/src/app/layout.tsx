@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Alegreya, Open_Sans } from "next/font/google";
 import "@/css/global.scss";
 import { Navigation } from "@/layout/index";
 import main from "@/static/main";
 import { MenuProvider } from "@/provider/index";
+
+const alegreya = Alegreya({
+  preload: true,
+  variable: "--font-alegreya",
+  subsets: ["latin", "latin-ext"],
+});
 
 const openSans = Open_Sans({
   variable: "--font-openSans",
@@ -24,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable}`}>
+      <body className={` ${alegreya.variable} ${openSans.variable}`}>
         <MenuProvider>
           <Navigation {...main.nav} />
           {children}

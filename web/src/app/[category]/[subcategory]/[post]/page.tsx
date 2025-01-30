@@ -1,7 +1,11 @@
 // import { generateUri } from "@/func/index";
-import { Breadcrumbs } from "@/components/Utils";
+import { Breadcrumbs } from "@/utils/index";
 import { Hero } from "@/v-article/index";
 import GET_POST from "@/queries/GET_POST";
+import {
+  tTableOfContentsAttrs,
+  tTableOfContentsElements,
+} from "@/utils/TableOfContents/TableOfContents.models";
 
 type tPostPage = {
   params: Promise<{
@@ -19,6 +23,24 @@ export default async function PostPage(props: tPostPage) {
   const path = await (await props).params;
   const data = await GET_POST(path.post);
   console.log(`slug:`, await props);
+
+  const toc: tTableOfContentsElements = data.blocks
+    .filter(
+      (item) =>
+        item.name === "core/group" || item.name === "rank-math/toc-block"
+    )
+    .map((item) => {
+      const attrs: tTableOfContentsAttrs = JSON.parse(item.attributesJSON);
+      return {
+        title: attrs.title,
+        elements: attrs.headings.map((item) => {
+          return {
+            ...item,
+            level: item.level - 1,
+          };
+        }),
+      };
+    })[0];
 
   return (
     <>
@@ -52,6 +74,7 @@ export default async function PostPage(props: tPostPage) {
           title: data.seo.openGraph.slackEnhancedData.label,
           value: data.seo.openGraph.slackEnhancedData.data,
         }}
+        toc={toc}
       />
       <main>
         <p dangerouslySetInnerHTML={{ __html: data.content }} />
