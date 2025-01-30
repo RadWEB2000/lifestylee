@@ -1,6 +1,10 @@
 export type tTableOfContents = {
-  attributesJSON: string;
-  saveContent: string;
+  title: string;
+  elements: Array<{
+    content: string;
+    level: number;
+    link: string;
+  }>;
 };
 
 export type tTableOfContentsAttrs = {
