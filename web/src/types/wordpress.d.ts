@@ -100,4 +100,41 @@ declare global {
     order: number;
     saveContent: string;
   };
+
+  type T_CORE_HEADING_BLOCK = {
+    content:string;
+    anchor:string;
+    level:1|2|3|4|5|6;
+  }
+
+  type T_CORE_PARAGRAPH_BLOCK = {
+    content:string;
+    anchor:string;
+  }
+
+  type T_CORE_IMAGE_BLOCK = {
+    url:string;
+    alt:string;
+    caption:string;
+    title:string;
+    anchor:string;
+  }
+
+  type T_CORE_LIST_BLOCK = {
+    ordered:boolean;
+    values:string;
+    anchor:string;
+  }
+
+  type T_CORE_LIST_ITEM_BLOCK = {
+    order:number;
+    content:string;
+    anchor:string;
+  }
+
+
+  // type T_CORE_COLUMNS_BLOCK =  {
+    
+  // }
+
 }

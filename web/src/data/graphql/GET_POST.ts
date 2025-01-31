@@ -88,6 +88,7 @@ const GET_POST_QUERY = gql`
           dynamicContent
           name
           order
+          
         }
       }
       uri

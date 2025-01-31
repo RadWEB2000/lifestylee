@@ -1,0 +1,30 @@
+@use "../../../styles/variables" as *;
+
+.heading {
+    font-family: $font-alegreya;
+}
+
+.paragraph {
+    font-size: 1.75rem;
+    line-height: 1.5;
+    text-wrap: pretty;
+    max-width: 75ch;
+}
+
+.picture {
+    
+}
+
+.image {
+    display: block;
+    position: relative;
+    width: 120rem;
+    object-fit: cover;
+    height: unset;
+    border-radius: 1.3em;
+    aspect-ratio: 16/10;
+}
+
+.caption {
+    font-style: italic;
+}

@@ -24,6 +24,7 @@
       "@/anims/*": ["./src/lib/animations/*"],
       "@/app/*": ["./src/app/*"],
       "@/assets/*": ["./src/assets/*"],
+      "@/blocks/*":["./src/components/Utils/Blocks/*"],
       "@/clients/*": ["./src/lib/clients/*"],
       "@/context/*": ["./src/context/*"],
       "@/configs/*": ["./src/lib/configs/*"],
