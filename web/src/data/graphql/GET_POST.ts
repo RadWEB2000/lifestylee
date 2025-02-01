@@ -88,7 +88,13 @@ const GET_POST_QUERY = gql`
           dynamicContent
           name
           order
-          
+          innerBlocks {
+          saveContent
+          attributesJSON
+          dynamicContent
+          name
+          order
+        }
         }
       }
       uri
