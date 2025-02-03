@@ -8,7 +8,9 @@ import {
   tTableOfContentsElements,
 } from "@/utils/TableOfContents/TableOfContents.models";
 import {
+  Buttons,
   Heading,
+  HighlightedPosts,
   List,
   MediaWithText,
   Paragraph,
@@ -34,10 +36,7 @@ export default async function PostPage(props: tPostPage) {
   console.log(`slug:`, await props);
 
   const toc: tTableOfContentsElements = data.blocks
-    .filter(
-      (item) =>
-        item.name === "core/group" || item.name === "rank-math/toc-block"
-    )
+    .filter((item) => item.name === "rank-math/toc-block")
     .map((item) => {
       const attrs: tTableOfContentsAttrs = JSON.parse(item.attributesJSON);
       return {
@@ -138,6 +137,38 @@ export default async function PostPage(props: tPostPage) {
                   : [],
               };
               return <MediaWithText {...mediaWithText} />;
+            case "core/buttons":
+              const buttonsList = item;
+              const buttons: T_CORE_BUTTONS_BLOCK = {
+                buttons: buttonsList.innerBlocks
+                  ? buttonsList.innerBlocks.map((item) => {
+                      const buttonProperties: T_CORE_BUTTON_BLOCK = JSON.parse(
+                        item.attributesJSON
+                      );
+
+                      return {
+                        ...buttonProperties,
+                      };
+                    })
+                  : [],
+              };
+
+              return <Buttons {...buttons} />;
+            case "acf/highlighted-posts":
+              const highlightedPosts: T_ACF_HIGHLIGHTED_POSTS_BLOCK = {
+                title: JSON.parse(item.attributesJSON).data.title,
+                content: JSON.parse(item.attributesJSON).data.content,
+                posts: Object.keys(JSON.parse(item.attributesJSON).data)
+                  .filter(
+                    (key) =>
+                      key.startsWith("recommendations_") &&
+                      key.endsWith("_recommendation")
+                  )
+                  .map((key) => JSON.parse(item.attributesJSON).data[key]),
+              };
+
+              console.log("highlightedPosts", highlightedPosts);
+              return <HighlightedPosts {...highlightedPosts} />;
           }
         })}
         {/* <p dangerouslySetInnerHTML={{ __html: data.content }} /> */}
