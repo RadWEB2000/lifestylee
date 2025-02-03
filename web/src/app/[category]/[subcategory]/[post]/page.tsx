@@ -1,5 +1,5 @@
 // import { generateUri } from "@/func/index";
-import "@/css/views/post_view.scss"
+import "@/css/views/post_view.scss";
 import { Breadcrumbs } from "@/utils/index";
 import { Hero } from "@/v-article/index";
 import GET_POST from "@/queries/GET_POST";
@@ -7,7 +7,13 @@ import {
   tTableOfContentsAttrs,
   tTableOfContentsElements,
 } from "@/utils/TableOfContents/TableOfContents.models";
-import { Heading, List, MediaWithText, Paragraph, Picture } from "@/blocks/index";
+import {
+  Heading,
+  List,
+  MediaWithText,
+  Paragraph,
+  Picture,
+} from "@/blocks/index";
 import { tList } from "@/blocks/List";
 
 type tPostPage = {
@@ -80,66 +86,60 @@ export default async function PostPage(props: tPostPage) {
         toc={toc}
       />
       <main>
-        {
-          data.blocks.map((item) => {
-            switch(item.name){
-              case "core/heading":
-                const heading:T_CORE_HEADING_BLOCK = JSON.parse(item.attributesJSON);
-                return <Heading {...heading} />
-                case "core/paragraph":
-                  const paragraph:T_CORE_PARAGRAPH_BLOCK = JSON.parse(item.attributesJSON);
-                  return <Paragraph {...paragraph} />
-                case "core/image":
-                  const image:T_CORE_IMAGE_BLOCK = JSON.parse(item.attributesJSON);
-                  return <Picture {...image} />
-                case "core/list":
-                  const list:tList = {
-                    wrapper:JSON.parse(item.attributesJSON),
-                    items:item.innerBlocks ? item.innerBlocks.map((item) => {
+        {data.blocks.map((item) => {
+          switch (item.name) {
+            case "core/heading":
+              const heading: T_CORE_HEADING_BLOCK = JSON.parse(
+                item.attributesJSON
+              );
+              return <Heading {...heading} />;
+            case "core/paragraph":
+              const paragraph: T_CORE_PARAGRAPH_BLOCK = JSON.parse(
+                item.attributesJSON
+              );
+              return <Paragraph {...paragraph} />;
+            case "core/image":
+              const image: T_CORE_IMAGE_BLOCK = JSON.parse(item.attributesJSON);
+              return <Picture {...image} />;
+            case "core/list":
+              const list: tList = {
+                wrapper: JSON.parse(item.attributesJSON),
+                items: item.innerBlocks
+                  ? item.innerBlocks.map((item) => {
                       return {
-                        order:item.order,
-                        anchor:JSON.parse(item.attributesJSON).anchor,
-                        content:JSON.parse(item.attributesJSON).content
-                      }
-                    }) : []
-                  }
-                  return <List {...list} />;
-                  case "core/media-text":
+                        order: item.order,
+                        anchor: JSON.parse(item.attributesJSON).anchor,
+                        content: JSON.parse(item.attributesJSON).content,
+                      };
+                    })
+                  : [],
+              };
+              return <List {...list} />;
+            case "core/media-text":
+              const imageData = JSON.parse(item.attributesJSON);
 
-                    const imageData = JSON.parse(item.attributesJSON);
-
-                    const mediaWithText:T_CORE_MEDIA_WITH_TEXT_BLOCK = {
-                      image: {
-                        alt:imageData.mediaAlt,
-                        anchor:imageData.anchor,
-                        url:imageData.mediaUrl
-                      },
-                      content:item.innerBlocks ? item.innerBlocks.map((item) => {
-
-                        const contentData = JSON.parse(item.attributesJSON);
-
-                        if(item.name === "core/heading"){
-                          return {
-                            anchor:contentData.anchor,
-                            content:contentData.content,
-                            level:contentData.level
-                          }
-                        }else {
-                          return {
-                            anchor:contentData.anchor,
-                            content:contentData.content,
-                          }
-                        }
-                      }) : []
-                    }
-
-
-                    console.log('block', item);
-                    console.log(`media`, mediaWithText);
-                    return <MediaWithText {...mediaWithText} />
-            }
-          })
-        }
+              const mediaWithText: T_CORE_MEDIA_WITH_TEXT_BLOCK = {
+                image: {
+                  alt: imageData.mediaAlt,
+                  anchor: imageData.anchor,
+                  url: imageData.mediaUrl,
+                },
+                content: item.innerBlocks
+                  ? item.innerBlocks.map((item) => {
+                      const contentData = JSON.parse(item.attributesJSON);
+                      return {
+                        ...contentData,
+                        name: item.name,
+                        ...(item.name === "core/heading"
+                          ? { level: contentData.level }
+                          : {}),
+                      };
+                    })
+                  : [],
+              };
+              return <MediaWithText {...mediaWithText} />;
+          }
+        })}
         {/* <p dangerouslySetInnerHTML={{ __html: data.content }} /> */}
       </main>
     </>
