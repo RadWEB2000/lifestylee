@@ -7,7 +7,7 @@ import {
   tTableOfContentsAttrs,
   tTableOfContentsElements,
 } from "@/utils/TableOfContents/TableOfContents.models";
-import { Heading, List, Paragraph, Picture } from "@/blocks/index";
+import { Heading, List, MediaWithText, Paragraph, Picture } from "@/blocks/index";
 import { tList } from "@/blocks/List";
 
 type tPostPage = {
@@ -104,9 +104,39 @@ export default async function PostPage(props: tPostPage) {
                     }) : []
                   }
                   return <List {...list} />;
-                  case "core/columns":
+                  case "core/media-text":
+
+                    const imageData = JSON.parse(item.attributesJSON);
+
+                    const mediaWithText:T_CORE_MEDIA_WITH_TEXT_BLOCK = {
+                      image: {
+                        alt:imageData.mediaAlt,
+                        anchor:imageData.anchor,
+                        url:imageData.mediaUrl
+                      },
+                      content:item.innerBlocks ? item.innerBlocks.map((item) => {
+
+                        const contentData = JSON.parse(item.attributesJSON);
+
+                        if(item.name === "core/heading"){
+                          return {
+                            anchor:contentData.anchor,
+                            content:contentData.content,
+                            level:contentData.level
+                          }
+                        }else {
+                          return {
+                            anchor:contentData.anchor,
+                            content:contentData.content,
+                          }
+                        }
+                      }) : []
+                    }
+
+
                     console.log('block', item);
-                    return <b>BLOK</b>
+                    console.log(`media`, mediaWithText);
+                    return <MediaWithText {...mediaWithText} />
             }
           })
         }

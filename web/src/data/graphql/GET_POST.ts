@@ -171,7 +171,9 @@ type GET_POST_REQUEST = {
     date: string;
     blocks: Array<
       T_GUTENBERG_BLOCK & {
-        innerBlocks?: Array<T_GUTENBERG_BLOCK>;
+        innerBlocks?: Array<T_GUTENBERG_BLOCK> & {
+          innerBlocks?: Array<T_GUTENBERG_BLOCK>
+        };
       }
     >;
     uri: string;

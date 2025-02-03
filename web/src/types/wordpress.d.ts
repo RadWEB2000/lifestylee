@@ -132,9 +132,16 @@ declare global {
     anchor:string;
   }
 
-
-  // type T_CORE_COLUMNS_BLOCK =  {
-    
-  // }
+  type T_CORE_MEDIA_WITH_TEXT_BLOCK = {
+    image: {
+      alt:string;
+      url:string;
+      anchor:string;
+    };
+    content: Array<
+      | ({name:'core/heading'} & T_CORE_HEADING_BLOCK)
+      | ({name:'core/paragraph'} & T_CORE_PARAGRAPH_BLOCK)
+    >
+  }
 
 }
