@@ -17,23 +17,6 @@ export default function renderBlocks(props: renderBlocks) {
   const attributes = JSON.parse(props.attributesJSON);
   const innerBlocks = props.innerBlocks || [];
 
-  const repair = () => {
-    if (props.name === "acf/highlighted-posts") {
-      const list = Object.keys(attributes.data)
-        .filter(
-          (item) =>
-            item.startsWith("recommendations_") &&
-            item.endsWith("_recommendation")
-        )
-        .map((item) => attributes.data[item]);
-      console.log(`repair`, props);
-      console.log(`repair attrs`, attributes);
-      console.log("list", list);
-    }
-  };
-
-  repair();
-
   const blocks: Record<string, ReactElement | null> = {
     "core/heading": <Heading {...attributes} />,
     "core/paragraph": <Paragraph {...attributes} />,
@@ -83,7 +66,6 @@ export default function renderBlocks(props: renderBlocks) {
         }
       />
     ),
-    // TODO DO POPRAWY
     "acf/highlighted-posts": (
       <HighlightedPosts
         {...attributes.data}

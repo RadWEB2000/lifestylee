@@ -8,19 +8,20 @@ export default function MediaWithText(props: T_CORE_MEDIA_WITH_TEXT_BLOCK) {
       <figure>
         <Image
           alt={props.image.alt}
-          height={540}
+          fill
           loading="lazy"
           src={props.image.url}
           title={props.image.alt}
           style={{
             objectFit: "cover",
           }}
-          width={380}
         />
       </figure>
       <section>
         {props.content.map((item) => {
           if (item.name === "core/heading") {
+            console.log("poziom naglowka", item.level);
+
             return <Heading key={item.content} {...item} />;
           } else {
             return <Paragraph key={item.content} {...item} />;

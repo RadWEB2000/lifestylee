@@ -75,7 +75,9 @@ export default async function PostPage(props: tPostPage) {
         }}
         toc={toc}
       />
-      <main>{data.blocks.map((item) => renderBlocks(item))}</main>
+      <main className="post-main">
+        {data.blocks.map((item) => renderBlocks(item))}
+      </main>
     </>
   );
 }

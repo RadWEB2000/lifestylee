@@ -1,17 +1,12 @@
 import css from "@/blocks/Blocks.module.scss";
 import Link from "next/link";
+import { Heading, Paragraph } from "@/blocks/index";
 
 export default function HighlightedPosts(props: T_ACF_HIGHLIGHTED_POSTS_BLOCK) {
   return (
     <article className={css.highlightedPosts}>
-      <h3
-        className={css.highlightedPosts__title}
-        dangerouslySetInnerHTML={{ __html: props.title }}
-      />
-      <p
-        className={css.highlightedPosts__content}
-        dangerouslySetInnerHTML={{ __html: props.content }}
-      />
+      <Heading anchor="" content={props.title} level={3} />
+      <Paragraph anchor="" content={props.content} />
       {props.posts && (
         <ul className={css.highlightedPosts__list}>
           {props.posts.map((item) => {
