@@ -72,3 +72,37 @@
     }
   }
 }
+@media (min-width: 1225px) {
+  .wrapper {
+    padding: 2.3em;
+  }
+  .title {
+    font-size: clamp(2.7rem, 3.15dvw, 4.62rem);
+  }
+  .item {
+    font-size: clamp(1.4rem, 1.5vw, 1.65rem);
+    &[data-level="2"] {
+      margin-left: 1.7rem;
+    }
+    &[data-level="3"] {
+      margin-left: 3.4rem;
+    }
+  }
+}
+@media (min-width: 1440px) {
+  .wrapper {
+    padding: 3em;
+  }
+  .title {
+    font-size: clamp(2.7rem, 4.15dvw, 5.82rem);
+  }
+  .item {
+    font-size: clamp(1.45rem, 1.65vw, 1.75rem);
+    &[data-level="2"] {
+      margin-left: 2rem;
+    }
+    &[data-level="3"] {
+      margin-left: 4rem;
+    }
+  }
+}
