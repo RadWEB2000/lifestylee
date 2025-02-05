@@ -1,19 +1,35 @@
 import { QueryClient } from "@/clients/index";
+import { getReleaseDate } from "@/lib/functions";
 import { gql } from "graphql-request";
 
 const GET_POSTS_QUERY = gql`
   query GET_POSTS {
-    posts(first: 15) {
+    posts(first: 55) {
       nodes {
         uri
         title(format: RENDERED)
         excerpt(format: RENDERED)
         featuredImage {
           node {
-            altText
             sourceUrl(size: MEDIUM_LARGE)
             srcSet(size: THUMBNAIL)
             title(format: RENDERED)
+            altText
+          }
+        }
+        date
+        categories(first: 1) {
+          nodes {
+            name
+            uri
+          }
+        }
+        postFields {
+          mainCategory(first: 1) {
+            nodes {
+              name
+              uri
+            }
           }
         }
       }
@@ -30,6 +46,15 @@ type GET_POSTS_REQUEST = {
       featuredImage: {
         node: T_WP_FEATURED_IMAGE;
       };
+      date: string;
+      categories: {
+        nodes: Array<T_WP_TAXONOMY>;
+      };
+      postFields: {
+        mainCategory: {
+          nodes: Array<T_WP_TAXONOMY>;
+        };
+      };
     }>;
   };
 };
@@ -39,6 +64,9 @@ type GET_POSTS_RESPONSE = Array<{
   title: string;
   excerpt: string;
   image: T_WP_FEATURED_IMAGE;
+  category: T_WP_TAXONOMY;
+  subcategory: T_WP_TAXONOMY;
+  release: string;
 }>;
 
 export default async function GET_POSTS() {
@@ -52,6 +80,12 @@ export default async function GET_POSTS() {
         title: item.title,
         excerpt: item.excerpt,
         image: item.featuredImage.node,
+        category: item.categories.nodes[0],
+        subcategory: item.postFields.mainCategory.nodes[0],
+        release: getReleaseDate({
+          date: item.date,
+          format: "short",
+        }),
       };
     });
     return response;

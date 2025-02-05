@@ -90,13 +90,12 @@
   margin: 2rem 0;
   background-color: rgba($gray-light, 0.48);
   // background: red;
-  grid-template-columns: repeat(8, 1fr);
+  // grid-template-columns: repeat(8, 1fr);
   width: clamp(5rem, 100rem, 100%);
   figure {
-    background: orange;
     display: block;
     position: relative;
-    grid-column: 1/4;
+    // grid-column: 1/4;
     width: 100%;
     min-height: 40rem;
 
@@ -109,7 +108,7 @@
   section {
     // background: orangered;
     padding: 3rem;
-    grid-column: 4/-1;
+    // grid-column: 4/-1;
   }
 }
 
@@ -141,6 +140,20 @@
           background-color: color-mix(in srgb, $purple 45%, $lavender);
         }
       }
+    }
+  }
+}
+
+@media (min-width: 725px) {
+  .mediaWithText {
+    grid-template-columns: repeat(8, 1fr);
+    figure {
+      grid-column: 1/4;
+    }
+
+    section {
+      padding: 2.3rem;
+      grid-column: 4/-1;
     }
   }
 }
