@@ -89,12 +89,12 @@ const GET_POST_QUERY = gql`
           name
           order
           innerBlocks {
-          saveContent
-          attributesJSON
-          dynamicContent
-          name
-          order
-        }
+            saveContent
+            attributesJSON
+            dynamicContent
+            name
+            order
+          }
         }
       }
       uri
@@ -172,7 +172,7 @@ type GET_POST_REQUEST = {
     blocks: Array<
       T_GUTENBERG_BLOCK & {
         innerBlocks?: Array<T_GUTENBERG_BLOCK> & {
-          innerBlocks?: Array<T_GUTENBERG_BLOCK>
+          innerBlocks?: Array<T_GUTENBERG_BLOCK>;
         };
       }
     >;

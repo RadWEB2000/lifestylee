@@ -7,9 +7,8 @@ import {
   tTableOfContentsAttrs,
   tTableOfContentsElements,
 } from "@/utils/TableOfContents/TableOfContents.models";
-import { renderBlocks } from "@/lib/functions";
+import { extractJsonLd, renderBlocks } from "@/func/index";
 import { Metadata } from "next";
-import Script from "next/script";
 
 type tPostPage = {
   params: Promise<{
@@ -33,6 +32,11 @@ export async function generateMetadata(props: tPostPage): Promise<Metadata> {
     openGraph: {
       siteName: seo.openGraph.siteName,
       description: seo.openGraph.description,
+      firstName: "Radosław",
+      gender: "male",
+      releaseDate: seo.openGraph.articleMeta.publishedTime,
+      lastName: "Adamczyk",
+
       title: seo.openGraph.title,
       modifiedTime: seo.openGraph.articleMeta.modifiedTime,
       publishedTime: seo.openGraph.articleMeta.publishedTime,
@@ -64,14 +68,16 @@ export default async function PostPage(props: tPostPage) {
       };
     })[0];
 
+  const ld = extractJsonLd(data.seo.jsonLd);
+  console.log("LD", ld);
   return (
     <>
-      <head>
-        <Script
-          id="json+ld"
-          dangerouslySetInnerHTML={{ __html: data.seo.jsonLd }}
-        />
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(extractJsonLd(data.seo.jsonLd)),
+        }}
+      />
       <Breadcrumbs
         breadcrumbs={[
           {
