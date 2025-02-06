@@ -8,6 +8,8 @@ import {
   tTableOfContentsElements,
 } from "@/utils/TableOfContents/TableOfContents.models";
 import { renderBlocks } from "@/lib/functions";
+import { Metadata } from "next";
+import Script from "next/script";
 
 type tPostPage = {
   params: Promise<{
@@ -21,9 +23,30 @@ type tPostPage = {
   }>;
 };
 
+export async function generateMetadata(props: tPostPage): Promise<Metadata> {
+  const { post } = await props.params;
+  const { seo, tags } = await GET_POST(post);
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    openGraph: {
+      siteName: seo.openGraph.siteName,
+      description: seo.openGraph.description,
+      title: seo.openGraph.title,
+      modifiedTime: seo.openGraph.articleMeta.modifiedTime,
+      publishedTime: seo.openGraph.articleMeta.publishedTime,
+      url: seo.openGraph.url,
+      tags: tags.map((item) => {
+        return `${item.name}`;
+      }),
+    },
+  };
+}
+
 export default async function PostPage(props: tPostPage) {
-  const path = await (await props).params;
-  const data = await GET_POST(path.post);
+  const { post } = await await props.params;
+  const data = await GET_POST(post);
   // console.log(`slug:`, await props);
 
   const toc: tTableOfContentsElements = data.blocks
@@ -43,6 +66,12 @@ export default async function PostPage(props: tPostPage) {
 
   return (
     <>
+      <head>
+        <Script
+          id="json+ld"
+          dangerouslySetInnerHTML={{ __html: data.seo.jsonLd }}
+        />
+      </head>
       <Breadcrumbs
         breadcrumbs={[
           {
