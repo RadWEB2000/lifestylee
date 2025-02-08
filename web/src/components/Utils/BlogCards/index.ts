@@ -1,0 +1,1 @@
+export {default as RegularBlogCard} from '@/utils/BlogCards/RegularBlogCard/RegularBlogCard'
