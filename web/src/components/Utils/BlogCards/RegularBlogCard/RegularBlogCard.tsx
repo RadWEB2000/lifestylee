@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {tRegularBlogCard} from "@/utils/BlogCards/RegularBlogCard/RegularBlogCard.models";
 import Image from "next/image";
-import { getReleaseDate } from "@/lib/functions";
 import css from '@/utils/BlogCards/RegularBlogCard/RegularBlogCard.module.scss';
 import { FaCalendarAlt as Calendar} from "react-icons/fa";
 
