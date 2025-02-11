@@ -80,13 +80,12 @@ export default async function GET_POSTS() {
         title: item.title,
         excerpt: item.excerpt,
         image: item.featuredImage.node,
-        category: item.categories.nodes[0],
-        subcategory: item.postFields.mainCategory.nodes[0],
+        category: item.postFields.mainCategory.nodes[0],
+        subcategory: item.categories.nodes[0],
         release: getReleaseDate({
           date: item.date,
           format: "short",
         }),
-      
       };
     });
     return response;
