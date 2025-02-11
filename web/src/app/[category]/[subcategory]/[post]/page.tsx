@@ -51,7 +51,6 @@ export async function generateMetadata(props: tPostPage): Promise<Metadata> {
 export default async function PostPage(props: tPostPage) {
   const { post } = await await props.params;
   const data = await GET_POST(post);
-  // console.log(`slug:`, await props);
 
   const toc: tTableOfContentsElements = data.blocks
     .filter((item) => item.name === "rank-math/toc-block")
@@ -68,8 +67,6 @@ export default async function PostPage(props: tPostPage) {
       };
     })[0];
 
-  const ld = extractJsonLd(data.seo.jsonLd);
-  console.log("LD", ld);
   return (
     <>
       <script
