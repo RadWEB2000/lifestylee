@@ -5,6 +5,7 @@ import { Navigation } from "@/layout/index";
 import main from "@/static/main";
 import { MenuProvider } from "@/provider/index";
 import { GoogleTagManager as GTM } from "@/seo/index";
+import GET_NAVIGATION from "@/data/graphql/GET_NAVIGATION";
 
 const alegreya = Alegreya({
   preload: true,
@@ -37,11 +38,13 @@ export const metadata: Metadata = {
   generator: "Next.js",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nav = await GET_NAVIGATION();
+  console.log(nav.explorer);
   return (
     <html lang="pl_PL">
       <head>
