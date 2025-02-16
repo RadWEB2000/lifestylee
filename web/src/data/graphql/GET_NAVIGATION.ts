@@ -7,7 +7,7 @@ const GET_NAVIGATION_QUERIES = {
       menu(id: "Explorer", idType: NAME) {
         menuItems(first: 80) {
           nodes {
-            childItems {
+            childItems(first: 80) {
               nodes {
                 uri
                 label
@@ -22,7 +22,7 @@ const GET_NAVIGATION_QUERIES = {
   mainCategories: gql`
     query GET_MAIN_CATEGORIES {
       menu(id: "MainCategories", idType: NAME) {
-        menuItems {
+        menuItems(first: 80) {
           nodes {
             label
             uri

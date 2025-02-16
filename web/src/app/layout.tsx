@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Alegreya, Open_Sans } from "next/font/google";
 import "@/css/global.scss";
 import { Navigation } from "@/layout/index";
-import main from "@/static/main";
 import { MenuProvider } from "@/provider/index";
 import { GoogleTagManager as GTM } from "@/seo/index";
 import GET_NAVIGATION from "@/data/graphql/GET_NAVIGATION";
@@ -43,8 +42,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nav = await GET_NAVIGATION();
-  console.log(nav.explorer);
+  const {constants,explorer,main_categories} = await GET_NAVIGATION();
   return (
     <html lang="pl_PL">
       <head>
@@ -60,7 +58,39 @@ export default async function RootLayout({
           ></iframe>
         </noscript>
         <MenuProvider>
-          <Navigation {...main.nav} />
+          <Navigation 
+            brand={{
+              name:'LifeStylee',
+              slug:'/',
+              uri:'/'
+            }}
+            explorer={{
+              button:constants.menu_button,
+              title:'',
+              menus:explorer.map((item) => {
+                return {
+                  title:item.label,
+                  menu:item.items.map((item) => {
+                    return {
+                      name:item.label,
+                      slug:item.uri,
+                      uri:item.uri
+                    }
+                  })
+                }
+              })
+            }}
+            menuButton={{
+              label:constants.menu_button
+            }}
+            subdomains={main_categories.map((item) => {
+              return {
+                name:item.label,
+                slug:item.uri,
+                uri:item.uri
+              }
+            })}
+          />
           {children}
         </MenuProvider>
       </body>
