@@ -2,6 +2,7 @@ import { generateUri } from "@/func/index";
 import GET_CATEGORY from "@/queries/GET_CATEGORY";
 import { RegularBlogCard } from "@/components/Utils/BlogCards";
 import { Metadata } from "next";
+import { Breadcrumbs } from "@/components/Utils";
 
 type tCategoryPage = {
   params: Promise<{
@@ -34,6 +35,19 @@ export default async function CategoryPage(props: tCategoryPage) {
   const pathname = generateUri(category);
   const { page } = await GET_CATEGORY(pathname);
   return (
+    <>
+    <Breadcrumbs
+      breadcrumbs={[
+        {
+          name:'Start',
+          uri:'/'
+        },
+        {
+          name:page.title,
+          uri:page.uri
+        }
+      ]}
+    />
     <div>
       <div>
         <h1>Podkategoria: {page.title}</h1>
@@ -60,5 +74,6 @@ export default async function CategoryPage(props: tCategoryPage) {
         </main>
       )}
     </div>
+    </>
   );
 }

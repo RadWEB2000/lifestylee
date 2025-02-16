@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "@/components/Utils";
 import { RegularBlogCard } from "@/components/Utils/BlogCards";
 import GET_SUBCATEGORY from "@/queries/GET_SUBCATEGORY";
 import { Metadata } from "next";
@@ -35,6 +36,23 @@ export default async function SubcategoryPage(props: tSubcategoryPage) {
   const { page } = await GET_SUBCATEGORY(`${category}/${subcategory}`);
 
   return (
+    <>
+    <Breadcrumbs
+    breadcrumbs={[
+      {
+        name:'Start',
+        uri:'/'
+      },
+      {
+        name:page.parent.name,
+        uri:page.parent.uri
+      },
+      {
+        name:page.title,
+        uri:page.uri
+      }
+    ]}
+  />
     <div>
       <h1>{page.title}</h1>
       <strong dangerouslySetInnerHTML={{ __html: page.entry }} />
@@ -73,5 +91,6 @@ export default async function SubcategoryPage(props: tSubcategoryPage) {
         }}
       />
     </div>
+    </>
   );
 }
