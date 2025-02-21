@@ -16,6 +16,7 @@ const GET_CATEGORY_QUERY = gql`
         }
       }
       name
+      uri
       description
       contentCategoryFields {
         entry
@@ -75,6 +76,7 @@ type GET_CATEGORY_REQUEST = {
         siteName: string;
       };
     };
+    uri:string;
     name: string;
     description: string;
     contentCategoryFields: {
@@ -124,6 +126,7 @@ type GET_CATEGORY_RESPONSE = {
   };
   page: {
     title: string;
+    uri:string;
     content: string;
     entry: string;
     subcategories: Array<{
@@ -162,6 +165,7 @@ export default async function GET_CATEGORY(pathname: string) {
         content: request.category.description,
         entry: request.category.contentCategoryFields.entry,
         title: request.category.name,
+        uri:request.category.uri,
         subcategories: request.category.children.nodes.map((item) => {
           return {
             excerpt: item.contentCategoryFields.excerpt,

@@ -21,6 +21,13 @@ const GET_SUBCATEGORY_QUERY = gql`
       contentCategoryFields {
         entry
       }
+      parent {
+        node {
+          name
+          uri
+        }
+      }
+      uri
       posts(first: 45) {
         nodes {
           uri
@@ -67,6 +74,10 @@ type GET_SUBCATEGORY_REQUEST = {
         siteName: string;
       };
     };
+    parent: {
+      node: T_WP_TAXONOMY;
+    }
+    uri:string;
     name: string;
     description: string;
     contentCategoryFields: {
@@ -106,6 +117,8 @@ type GET_SUBCATEGORY_RESPONSE = {
     };
   };
   page: {
+    parent: T_WP_TAXONOMY;
+    uri:string;
     title: string;
     content: string;
     entry: string;
@@ -133,13 +146,14 @@ export default async function GET_SUBCATEGORY(pathname: string) {
         id: pathname ? pathname : "/biznes/waluty",
       }
     );
-    console.log(`content`, request.category.description);
 
     const response: GET_SUBCATEGORY_RESPONSE = {
       page: {
         content: request.category.description,
         entry: request.category.contentCategoryFields.entry,
         title: request.category.name,
+        parent:request.category.parent.node,
+        uri:request.category.uri,
         posts: request.category.posts.nodes.map((item) => {
           return {
             uri: item.uri,
