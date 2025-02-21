@@ -1,0 +1,8 @@
+@use "../../../styles/variables" as *;
+
+.navigation {
+  background-color: $color-black;
+  color: $color-white;
+  font-family: $font-alfaSlab;
+  padding: 2rem 4rem;
+}

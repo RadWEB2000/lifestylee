@@ -1,0 +1,64 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  background-color: $color-border;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 5px;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  padding: 5px 10px;
+}
+
+.item {
+  align-items: center;
+  background-color: $color-white;
+  border-radius: 0.55em;
+  display: flex;
+  flex-shrink: 0;
+  font-size: clamp(1.125rem, 1.0227rem + 0.4091vw, 1.35rem);
+  font-weight: 500;
+  height: 2.23rem;
+  inset: 0;
+  justify-content: center;
+  min-width: max-content;
+  padding: 0rem 1.3rem;
+  text-transform: uppercase;
+  transition: 0.25s ease-in-out background-color;
+  &:focus,
+  &:focus-visible,
+  &:focus-visible,
+  &:hover {
+    background-color: $color-interaction;
+  }
+}
+
+@media (min-width: 665px) {
+  .wrapper {
+    display: grid;
+    flex-flow: unset;
+    gap: 1.45px;
+    grid-auto-rows: 2.23rem;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: unset;
+    overflow-y: scroll;
+    padding: 5px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .wrapper {
+    overflow-y: visible;
+  }
+  .item {
+    border-radius: 0.35em;
+    display: flex;
+    flex-shrink: unset;
+    height: 100%;
+    justify-content: center;
+    min-width: unset;
+    padding: 0 0.5rem;
+    width: 100%;
+  }
+}

@@ -1,0 +1,16 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  background-color: $color-text;
+  color: $color-background;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1em;
+  justify-content: flex-start;
+  min-height: 7.5rem;
+  padding: 1rem 2.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}

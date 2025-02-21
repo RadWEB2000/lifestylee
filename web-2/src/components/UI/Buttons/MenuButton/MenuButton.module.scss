@@ -1,0 +1,67 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.45em;
+  justify-content: flex-start;
+  text-transform: uppercase;
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:hover {
+    .label {
+      color: $color-interaction;
+    }
+    .line {
+      background-color: $color-interaction;
+    }
+  }
+}
+
+.label {
+  color: $color-background;
+  font-family: $font-robotoSlab;
+  font-size: 1.552em;
+  font-weight: 500;
+  transition: 0.12s linear color;
+}
+
+.button {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  height: 3.22rem;
+  justify-content: space-around;
+  overflow: hidden;
+  padding: 0.45rem;
+  position: relative;
+  width: 3.22rem;
+}
+
+.line {
+  background-color: $color-background;
+  border-radius: 0.2rem;
+  height: 3px;
+  transition: 0.12s linear background-color, 0.13s linear transform;
+  transform-origin: center;
+  width: 100%;
+}
+
+.wrapper[data-open="true"] {
+  .line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    &:nth-of-type(1) {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:nth-of-type(2) {
+      transform: scaleX(0);
+    }
+    &:nth-of-type(3) {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
