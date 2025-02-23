@@ -1,112 +1,114 @@
 @use "../../../../styles/variables" as *;
 
-.wrapper:not(.wrapper__big) {
-    display: none;
-}
-
-.wrapper {
-    width: fit-content;
-    // background: black;
-    margin:5rem auto;
-}
-
-.title {
-    font-family: $font-robotoSlab;
-    font-weight: 700;
-    // text-wrap: balance;
-}
-
-.excerpt {
-    font-weight: 400;
-    color:$color-text-secondary;
-}
-
-.details ,
-.taxonomy{
-    align-items: center;
-    display: flex;
-    flex-flow:row;
-    width: 100%;
-}
-
-.taxonomy {
-    width: max-content;
-}
+// .wrapper:not(.wrapper__big),
+// .wrapper:not(.wrapper__side) {
+//   display: none;
+// }
 
 .category,
 .subcategory {
-    border-radius: .45rem;
-    font-weight: 650;
-    font-size: 1.6rem;
-    padding: 0.75rem 1.42rem;
-    text-transform: uppercase;
+  border-radius: 0.45rem;
+  font-weight: 650;
+  font-size: 1.6rem;
+  padding: 0.75rem 1.42rem;
+  text-transform: uppercase;
+}
+
+.details,
+.taxonomy {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  height: auto;
+  width: 100%;
 }
 
 .category {
-    background-color: $color-border;
-    transition: .15s linear background-color;
-    &:focus,
-    &:focus-within,
-    &:focus-visible,
-    &:hover {
-        background-color: color-mix(in srgb, $color-text-secondary 35%, $color-border);
-    }
-}
-.subcategory {
-    border:2px solid $color-border;
-    transition: .15s linear border-color;
-    &:focus,
-    &:focus-within,
-    &:focus-visible,
-    &:hover {
-        border-color: color-mix(in srgb, $color-text-secondary 35%, $color-border);
-    }
+  background-color: $color-border;
+  transition: 0.15s linear background-color;
+  &:focus,
+  &:focus-within,
+  &:focus-visible,
+  &:hover {
+    background-color: color-mix(
+      in srgb,
+      $color-text-secondary 35%,
+      $color-border
+    );
+  }
 }
 
-
-// TODO: BIG CARD
-.wrapper__big {
-    align-items: flex-start;
-    display: flex;
-    justify-content: flex-start;
-    flex-flow:column;
-    // background: aqua;
-    gap:1em;
-    width: 82rem;
-    & > * {
-        width: 100%;
-    }
-    .media {
-        border-radius: 2.15em;
-        overflow: hidden;
-    }
-    .title {
-        // background: purple;
-        font-size: 5.65rem;
-    }
-    .excerpt {
-        font-size: 2.5rem;
-    }
-    .details {
-        // background: red;
-        justify-content: flex-end;
-        gap:3rem;
-    }
-    .taxonomy {
-        // background: lime;
-        gap:1rem;
-    }
-}
-
-
-
-.media {
-    position: relative;
-    display: block;
-    aspect-ratio: 16/10;
+.excerpt {
+  color: $color-text-secondary;
+  font-weight: 400;
 }
 
 .image {
-    object-fit: cover;
-    object-position: center;
+  object-fit: cover;
+  object-position: center;
+}
+
+.media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16/10;
+}
+
+.subcategory {
+  border: 2px solid $color-border;
+  transition: 0.15s linear border-color;
+  &:focus,
+  &:focus-within,
+  &:focus-visible,
+  &:hover {
+    border-color: color-mix(in srgb, $color-text-secondary 35%, $color-border);
+  }
+}
+
+.taxonomy {
+  background: pink;
+  width: max-content;
+}
+
+.title {
+  font-family: $font-robotoSlab;
+  font-weight: 700;
+}
+
+.wrapper {
+  margin: 5rem auto;
+  width: fit-content;
+}
+
+// DONE: BIG CARD
+.wrapper__big {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+  justify-content: flex-start;
+  width: 82rem;
+  & > * {
+    width: 100%;
+  }
+  .media {
+    border-radius: 2.15em;
+    overflow: hidden;
+  }
+  .title {
+    font-size: 5.65rem;
+  }
+  .excerpt {
+    font-size: 2.5rem;
+  }
+  .taxonomy {
+    height: 3.2rem;
+  }
+  .details {
+    justify-content: flex-end;
+    gap: 3rem;
+  }
+  .taxonomy {
+    gap: 1rem;
+  }
 }
