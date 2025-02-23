@@ -3,6 +3,7 @@ import { Alfa_Slab_One, Roboto, Roboto_Slab } from "next/font/google";
 import "@/css/global.scss";
 import { Navigation } from "@/nav/index";
 import GET_NAVIGATION from "@/data/graphql/GET_NAVIGATION";
+import { MenuProvider } from "@/provider";
 
 const alfaSlab = Alfa_Slab_One({
   weight: ["400"],
@@ -30,13 +31,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { main_categories: subdomains } = await GET_NAVIGATION();
+  const { main_categories: subdomains, explorer } = await GET_NAVIGATION();
 
   return (
     <html lang="pl_PL">
       <body
         className={`${alfaSlab.variable} ${roboto.variable} ${robotoSlab.variable}`}
       >
+        <MenuProvider>
         <Navigation
           menu={{
             brand: {
@@ -45,11 +47,17 @@ export default async function RootLayout({
             },
             menuButton: {
               label: "Menu",
+              theme:"dark"
             },
           }}
           subdomains={subdomains}
+          explorer={{
+            menus:explorer,
+            title:'Baza kategorii'
+          }}
         />
         {children}
+        </MenuProvider>
       </body>
     </html>
   );

@@ -89,11 +89,8 @@ type GET_NAVIGATION_REQUEST = {
 
 type GET_NAVIGATION_RESPONSE = {
   explorer: Array<{
-    label: string;
-    items: Array<{
-      label: string;
-      uri: string;
-    }>;
+    title: string;
+    menu: Array<T_WP_TAXONOMY>;
   }>;
   constants: {
     explorer_title: string;
@@ -136,10 +133,11 @@ export default async function GET_NAVIGATION() {
         .filter((item) => item.childItems.nodes.length > 0)
         .map((item) => {
           return {
-            label: item.label,
-            items: item.childItems.nodes.map((item) => {
+            title: item.label,
+            menu: item.childItems.nodes.map((item) => {
               return {
-                ...item,
+                name:item.label,
+                uri:item.uri
               };
             }),
           };

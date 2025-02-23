@@ -22,6 +22,7 @@
 
 .label {
   color: $color-background;
+  display: none;
   font-family: $font-robotoSlab;
   font-size: 1.552em;
   font-weight: 500;
@@ -64,4 +65,57 @@
       transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
+}
+
+@media (min-width:1000px) {
+  .label {
+    display: inline-block;
+  }
+}
+
+.wrapper[data-theme='light']{
+    
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:hover {
+      .label {
+        color: $color-interaction;
+      }
+      .line {
+        background-color: $color-interaction;
+      }
+    }
+  
+  .label {
+    color: $color-background;
+  }
+  
+  .line {
+    background-color: $color-background;
+  }
+  
+}
+.wrapper[data-theme='dark']{
+    
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:hover {
+      .label {
+        color: $color-primary;
+      }
+      .line {
+        background-color: $color-primary;
+      }
+    }
+  
+  .label {
+    color: $color-black;
+  }
+  
+  .line {
+    background-color: $color-black;
+  }
+  
 }

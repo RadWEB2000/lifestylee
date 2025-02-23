@@ -1,3 +1,7 @@
 export type tExplorer = {
-  test: "a";
+  title:string;
+  menus:Array<{
+    title:string;
+    menu:Array<T_WP_TAXONOMY>;
+  }>
 };

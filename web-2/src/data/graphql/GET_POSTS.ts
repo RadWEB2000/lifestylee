@@ -59,15 +59,7 @@ type GET_POSTS_REQUEST = {
   };
 };
 
-type GET_POSTS_RESPONSE = Array<{
-  uri: string;
-  title: string;
-  excerpt: string;
-  image: T_WP_FEATURED_IMAGE;
-  category: T_WP_TAXONOMY;
-  subcategory: T_WP_TAXONOMY;
-  release: string;
-}>;
+type GET_POSTS_RESPONSE = Array<tCommonBlogCard >;
 
 export default async function GET_POSTS() {
   try {

@@ -1,22 +1,24 @@
 "use client";
 import css from "@/ui/Buttons/MenuButton/MenuButton.module.scss";
 import { tMenuButton } from "@/ui/Buttons/MenuButton/MenuButton.models";
-import { useState } from "react";
+import { useContext } from "react";
+import { MenuContext } from "@/context";
 
 export default function MenuButton(props: tMenuButton) {
-  const [isOpenMenu, handleOpenMenu] = useState<boolean>(false);
+ const {isOpen, toggle} = useContext(MenuContext)
 
   return (
     <button
       aria-controls="explorer"
-      aria-expanded={isOpenMenu}
-      aria-label={isOpenMenu ? "Eksplorer otwarty" : "Eksplorer zamknięty"}
+      aria-expanded={isOpen}
+      aria-label={isOpen ? "Eksplorer otwarty" : "Eksplorer zamknięty"}
       className={css.wrapper}
       itemScope
       itemType={`${process.env.SCHEMA_LINK}SiteNavigationElement`}
-      onClick={() => handleOpenMenu(!isOpenMenu)}
-      data-open={isOpenMenu}
-      title={isOpenMenu ? "Zamykanie eksplorera" : "Otwieranie eksplorera"}
+      onClick={toggle}
+      data-theme={props.theme}
+      data-open={isOpen}
+      title={isOpen ? "Zamykanie eksplorera" : "Otwieranie eksplorera"}
     >
       <p className={css.label}>{props.label}</p>
       <i className={css.button} aria-hidden>

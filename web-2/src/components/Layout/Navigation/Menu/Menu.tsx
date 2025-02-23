@@ -13,7 +13,7 @@ export default function Menu(props: tMenu) {
     >
       <Brand {...props.brand} />
       <Search />
-      <MenuButton {...props.menuButton} />
+      <MenuButton {...props.menuButton}  />
     </nav>
   );
 }

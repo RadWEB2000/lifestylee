@@ -1,0 +1,1 @@
+export {default as BlogCard} from '@/ui/Cards/BlogCard/BlogCard'

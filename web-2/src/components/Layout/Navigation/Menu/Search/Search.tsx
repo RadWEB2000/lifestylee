@@ -4,15 +4,15 @@ import { FaSearch } from "react-icons/fa";
 export default function Search() {
   return (
     <form
-      action="/szukaj"
+      // action="/szukaj"
       autoComplete="false"
       aria-label="Wyszukiwarka wpisów blogowych"
       className={css.wrapper}
-      id="query"
+      // id="query"
       itemScope
       itemType={`${process.env.SCHEMA_LINK}SearchAction`}
-      method="GET"
-      name="query"
+      // method="GET"
+      // name="query"
       role="search"
     >
       <input
