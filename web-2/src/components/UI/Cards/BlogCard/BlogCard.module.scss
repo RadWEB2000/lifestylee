@@ -77,7 +77,6 @@
 
 .wrapper {
   margin: 5rem auto;
-  width: fit-content;
 }
 
 // DONE: BIG CARD
@@ -110,5 +109,15 @@
   }
   .taxonomy {
     gap: 1rem;
+  }
+}
+
+.wrapper__side {
+  background: red;
+  display: grid;
+  grid-template-columns: 25rem calc(100% - 25rem);
+  width: 70rem;
+  .container {
+    background: silver;
   }
 }

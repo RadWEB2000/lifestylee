@@ -6,28 +6,16 @@ export default async function HomePage() {
   return (
     <div>
       <ul>
-        {
-          posts?.map((item) => {
-            return (
-              <li key={item.title}>
-                {item.title}
-              </li>
-            )
-          })
-        }
+        {posts?.map((item) => {
+          return <li key={item.title}>{item.title}</li>;
+        })}
       </ul>
-      <BlogCard
-        variant="big"
-        {...posts[1]}
-      />
-      <BlogCard
+      <BlogCard variant="side" {...posts[3]} />
+      <BlogCard variant="big" {...posts[1]} />
+      {/* <BlogCard
         variant="regular"
         {...posts[2]}
-      />
-      <BlogCard
-        variant="side"
-        {...posts[3]}
-      />
+      /> */}
     </div>
   );
 }
