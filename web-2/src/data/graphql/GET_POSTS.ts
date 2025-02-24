@@ -59,7 +59,7 @@ type GET_POSTS_REQUEST = {
   };
 };
 
-type GET_POSTS_RESPONSE = Array<tCommonBlogCard >;
+type GET_POSTS_RESPONSE = Array<tCommonBlogCard>;
 
 export default async function GET_POSTS() {
   try {
@@ -74,10 +74,13 @@ export default async function GET_POSTS() {
         image: item.featuredImage.node,
         category: item.postFields.mainCategory.nodes[0],
         subcategory: item.categories.nodes[0],
-        release: getReleaseDate({
-          date: item.date,
-          format: "short",
-        }),
+        date: {
+          release: getReleaseDate({
+            date: item.date,
+            format: "short",
+          }),
+          time: item.date,
+        },
       };
     });
     return response;

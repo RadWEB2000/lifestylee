@@ -10,8 +10,8 @@ export default async function HomePage() {
           return <li key={item.title}>{item.title}</li>;
         })}
       </ul>
-      <BlogCard variant="side" {...posts[3]} />
       <BlogCard variant="big" {...posts[1]} />
+      <BlogCard variant="side" {...posts[3]} />
       {/* <BlogCard
         variant="regular"
         {...posts[2]}

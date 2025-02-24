@@ -13,7 +13,7 @@ export default function Subdomains(props: tSubdomains) {
       itemType="https://schema.org/SiteNavigationElement"
     >
       {props.subdomains?.map((item) => {
-        console.log(`Ilość subdomen:${props.subdomains.length}`);
+        // console.log(`Ilość subdomen:${props.subdomains.length}`);
         return (
           <Link
             className={css.item}
