@@ -56,7 +56,9 @@ export default async function BlogCard(props: tBlogCard) {
           <meta itemProp="width" content="1200" />
         </figure>
         <h3 className={css.title} itemProp="headline">
+            <Link href={props.uri} itemProp="url" >
           {props.title}
+            </Link>
         </h3>
         <meta content={props.uri} itemProp="mainEntityOfPage" />
       </header>
