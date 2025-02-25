@@ -34,35 +34,33 @@ export default async function BlogCard(props: tBlogCard) {
       itemType={`https://schema.org/BlogPosting`}
       title={`📖 Przeczytaj wpis pt. "${props.title}"`}
     >
-      <header className={css.header}>
-        <figure
-          className={css.media}
-          itemProp="image"
-          itemScope
-          itemType="https://schema.org/ImageObject"
-        >
-          <Image
-            alt={props.image.altText}
-            blurDataURL={blurredImage}
-            className={css.image}
-            fill
-            itemProp="url"
-            loading="lazy"
-            placeholder="blur"
-            src={props.image.sourceUrl}
-            quality={65}
-          />
-          <meta itemProp="height" content="630" />
-          <meta itemProp="width" content="1200" />
-        </figure>
+      <figure
+        className={css.media}
+        itemProp="image"
+        itemScope
+        itemType="https://schema.org/ImageObject"
+      >
+        <Image
+          alt={props.image.altText}
+          blurDataURL={blurredImage}
+          className={css.image}
+          fill
+          itemProp="url"
+          loading="lazy"
+          placeholder="blur"
+          src={props.image.sourceUrl}
+          quality={65}
+        />
+        <meta itemProp="height" content="630" />
+        <meta itemProp="width" content="1200" />
+      </figure>
+      <section className={css.body}>
         <h3 className={css.title} itemProp="headline">
-            <Link href={props.uri} itemProp="url" >
-          {props.title}
-            </Link>
+          <Link href={props.uri} itemProp="url">
+            {props.title}
+          </Link>
         </h3>
         <meta content={props.uri} itemProp="mainEntityOfPage" />
-      </header>
-      <section className={css.body}>
         <p
           className={css.excerpt}
           dangerouslySetInnerHTML={{

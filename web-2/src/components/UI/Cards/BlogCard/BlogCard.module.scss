@@ -13,122 +13,119 @@
 }
 
 .title {
-    font-family: $font-robotoSlab;
-    font-weight: 700;
+  color: $color-black;
+  font-family: $font-robotoSlab;
+  font-weight: 700;
+  transition: 0.2s linear color;
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:hover {
+    color: color-mix(in srgb, $color-gray 85%, $color-interaction);
+  }
 }
 
 .media {
-    overflow: hidden;
-    display: block;
-    position: relative;
+  display: block;
+  overflow: hidden;
+  position: relative;
 }
 
 .taxonomy {
-  // background: pink;
   display: block;
   a {
     align-items: center;
-    display: flex;
-    justify-content: center;
     border-radius: 0.65rem;
+    display: flex;
     font-weight: 500;
+    justify-content: center;
     text-transform: uppercase;
   }
   &__category > a {
     background-color: $color-text-secondary;
     color: $color-white;
-    transition:.18s linear background-color;
+    transition: 0.18s linear background-color;
     &:focus,
     &:focus-visible,
     &:focus-within,
     &:hover {
-        background-color: $color-text;
+      background-color: $color-text;
     }
   }
   &__subcategory > a {
     border: 3px solid $color-text-secondary;
-    transition:.18s linear border-color;
+    transition: 0.18s linear border-color;
     &:focus,
     &:focus-visible,
     &:focus-within,
     &:hover {
-        border-color: rgba($color-text-secondary,0);
+      border-color: rgba($color-text-secondary, 0);
     }
   }
 }
 
 .image {
-    object-fit: cover;
-    object-position: center;
-  }
+  object-fit: cover;
+  object-position: center;
+}
 
-  .button {
+.button {
+  align-items: center;
+  background-color: $color-black;
+  color: $color-white;
+  display: flex;
+  justify-content: center;
+  transition: 0.12s linear background-color;
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:hover {
+    background-color: color-mix(in srgb, $color-gray 85%, $color-interaction);
+  }
+  &__label {
+    text-transform: uppercase;
+  }
+  &__icon {
     align-items: center;
-      background-color: $color-black;
-      color: $color-white;
-      display: flex;
-      justify-content: center;
-    transition: 0.12s linear background-color;
-    &:focus,
-    &:focus-visible,
-    &:focus-within,
-    &:hover {
-      background-color: color-mix(
-        in srgb,
-        $color-gray 85%,
-        $color-interaction
-      );
-    }
-    &__label {
-        text-transform: uppercase;
-    }
-    &__icon {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-  }
-
-.wrapper__side {
-  img {
-    display: none;
+    display: flex;
+    justify-content: center;
   }
 }
 
-.wrapper__big {
+.wrapper {
   margin: 10rem auto;
-  width: min(110.5rem,90%);
-  .header {
-    margin-bottom: 1rem;
-    .media {
-      aspect-ratio: 16/9;
-      border-radius: 2rem;
-      width: 100%;
-      
-    }
-    .title {
-      font-size: clamp(2.4rem,4.7vw,6.65rem);
-    }
+}
+
+//  BIG CARD
+
+.wrapper__big {
+  width: min(110.5rem, 90%);
+  .media {
+    aspect-ratio: 16/9;
+    border-radius: 2rem;
+    width: 100%;
+  }
+  .title {
+    font-size: clamp(2.4rem, 4.7vw, 6.65rem);
   }
   .body {
-    margin-bottom: .7rem;
+    margin-bottom: 0.7rem;
     .excerpt {
-      font-size: clamp(1.29rem, 1.9vw,2.45rem);
+      font-size: clamp(1.29rem, 1.9vw, 2.45rem);
       font-weight: 350;
-      margin-bottom: .4rem;
+      margin-bottom: 0.4rem;
     }
 
     .button {
-      
       border-radius: 1rem;
       gap: 1rem;
       margin: auto 1rem auto auto;
       padding: 1.25rem 2.25rem;
-      padding: .55rem 1.25rem;
+      padding: 0.55rem 1.25rem;
       width: fit-content;
-    
+
       &__label {
-        font-size: clamp(1.2rem, 1.3vw,1.48rem);
+        font-size: clamp(1.2rem, 1.3vw, 1.48rem);
       }
       &__icon {
         font-size: 2.2rem;
@@ -155,63 +152,108 @@
     }
 
     .release {
-        font-size: clamp(1.2rem,1.3vw,1.55rem);
+      font-size: clamp(1.2rem, 1.3vw, 1.55rem);
     }
     .taxonomies {
       justify-content: flex-start;
     }
     .taxonomy {
-        & > a {
-            height: 3rem;
-            font-size: clamp(1.2rem,1.3vw,1.55rem);
-            padding: 0rem 1rem;
-            width:min(max-content, 20rem)
-        }
+      & > a {
+        height: 3rem;
+        font-size: clamp(1.2rem, 1.3vw, 1.55rem);
+        padding: 0rem 1rem;
+        width: min(max-content, 20rem);
+      }
     }
   }
 }
 
-@media (min-width:1000px) {
-    .wrapper__big {
-        .header {
-          margin-bottom: 2rem;
-          .media {
-            border-radius: 2rem;
-          }
-          .title {
-            font-size: clamp(4.4rem,5.7vw,6.65rem);
-          }
+@media (min-width: 1000px) {
+  .wrapper__big {
+    .header {
+      margin-bottom: 2rem;
+      .media {
+        border-radius: 2rem;
+      }
+      .title {
+        font-size: clamp(4.4rem, 5.7vw, 6.65rem);
+      }
+    }
+    .body {
+      margin-bottom: 1rem;
+      .excerpt {
+        font-size: clamp(1.49rem, 2.3vw, 2.65rem);
+        margin-bottom: 1rem;
+      }
+
+      .button {
+        padding: 1.25rem 2.25rem;
+        &__label {
+          font-size: clamp(1.2rem, 1.3vw, 1.48rem);
         }
-        .body {
-          margin-bottom: 1rem;
-          .excerpt {
-            font-size: clamp(1.49rem, 2.3vw,2.65rem);
-            margin-bottom: 1rem;
-          }
-      
-          .button {
-            padding: 1.25rem 2.25rem;
-            &__label {
-              font-size: clamp(1.2rem, 1.3vw,1.48rem);
-            }
-            &__icon {
-              font-size: 2.2rem;
-              height: 2.4rem;
-              width: 2.4rem;
-            }
-          }
-        }
-      
-        .footer {
-          gap: 2.15rem;
-      
-          .taxonomy {
-              & > a {
-                  height: 3.6rem;
-                  font-size: clamp(1.2rem,1.3vw,1.65rem);
-                  padding: 0rem 1.5rem;
-              }
-          }
+        &__icon {
+          font-size: 2.2rem;
+          height: 2.4rem;
+          width: 2.4rem;
         }
       }
+    }
+
+    .footer {
+      gap: 2.15rem;
+
+      .taxonomy {
+        & > a {
+          height: 3.6rem;
+          font-size: clamp(1.2rem, 1.3vw, 1.65rem);
+          padding: 0rem 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+// SIDE CARD
+
+.wrapper__side {
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: 20rem calc(100% - 20rem);
+  width: min(72.5rem, 85%);
+
+  & > *:not(.media) {
+    grid-column: 2;
+  }
+
+  .media {
+    grid-row: 1/3;
+  }
+
+  .body {
+    .title {
+      font-size: 2em;
+    }
+    .excerpt {
+      font-size: 1.07em;
+      font-weight: 450;
+    }
+    .button {
+      height: 3rem;
+      padding: 0.45rem 1rem;
+      width: fit-content;
+    }
+  }
+  .footer {
+    justify-content: space-between;
+    width: 100%;
+    .taxonomies {
+      gap: 0.45rem;
+      .taxonomy {
+        & > a {
+          height: 3.2rem;
+          padding: 0 0.85rem;
+        }
+      }
+    }
+  }
 }
