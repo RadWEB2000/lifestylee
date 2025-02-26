@@ -1,35 +1,14 @@
-import Link from "next/link";
-import css from "@/ui/Cards/BlogCard/BlogCard.module.scss";
-import { tBlogCard } from "@/components/UI/Cards/BlogCard/BlogCard.models";
 import Image from "next/image";
-import { LuMoveRight as Arrow } from "react-icons/lu";
 import { blurredImage as blurringImage } from "@/lib/functions";
+import css from "@/ui/Cards/BlogCard/RegularBlogCard/RegularBlogCard.module.scss";
+import Link from "next/link";
 
-export default async function BlogCard(props: tBlogCard) {
-  function wrapperClassName(
-    value: "big" | "recommended" | "regular" | "side" | string | null
-  ) {
-    switch (value) {
-      case "big":
-        return css.wrapper__big;
-      case "recommended":
-        return css.wrapper__recommended;
-      case "regular":
-        return css.wrapper__regular;
-      case "side":
-        return css.wrapper__side;
-      default:
-        return css.wrapper__regular;
-    }
-  }
-
+export default async function RegularBlogCard(props: tCommonBlogCard) {
   const blurredImage = await blurringImage(props.image.sourceUrl);
 
   return (
     <article
-      className={`${css.wrapper} ${
-        props.variant && wrapperClassName(props.variant)
-      }`}
+      className={css.wrapper}
       itemScope
       itemType={`https://schema.org/BlogPosting`}
       title={`📖 Przeczytaj wpis pt. "${props.title}"`}
@@ -51,10 +30,10 @@ export default async function BlogCard(props: tBlogCard) {
           src={props.image.sourceUrl}
           quality={65}
         />
-        <meta itemProp="height" content="630" />
-        <meta itemProp="width" content="1200" />
+        <meta itemProp="height" content="250" />
+        <meta itemProp="width" content="410" />
       </figure>
-      <section className={css.body}>
+      <section className={css.main}>
         <h3 className={css.title} itemProp="headline">
           <Link href={props.uri} itemProp="url">
             {props.title}
@@ -64,18 +43,12 @@ export default async function BlogCard(props: tBlogCard) {
         <p
           className={css.excerpt}
           dangerouslySetInnerHTML={{
-            __html: props.excerpt.substring(0, 125),
+            __html: props.excerpt.substring(0, 100).trim(),
           }}
           itemProp="description"
         />
-        <Link className={css.button} href={props.uri} itemProp="url">
-          <span className={css.button__label}>Czytaj</span>
-          <i className={css.button__icon}>
-            <Arrow />
-          </i>
-        </Link>
       </section>
-      <footer className={css.footer}>
+      <footer className={css.details}>
         <time
           className={css.release}
           dateTime={props.date.time}
