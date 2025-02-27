@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { blurredImage as blurringImage } from "@/lib/functions";
 import css from "@/ui/Cards/BlogCard/RegularBlogCard/RegularBlogCard.module.scss";
+import styles from "@/ui/Cards/BlogCard/BlogCard.module.scss";
 import Link from "next/link";
 
 export default async function RegularBlogCard(props: tCommonBlogCard) {
@@ -14,7 +15,7 @@ export default async function RegularBlogCard(props: tCommonBlogCard) {
       title={`📖 Przeczytaj wpis pt. "${props.title}"`}
     >
       <figure
-        className={css.media}
+        className={`${css.media} ${styles.media}`}
         itemProp="image"
         itemScope
         itemType="https://schema.org/ImageObject"
@@ -22,7 +23,7 @@ export default async function RegularBlogCard(props: tCommonBlogCard) {
         <Image
           alt={props.image.altText}
           blurDataURL={blurredImage}
-          className={css.image}
+          className={`${css.image} ${styles.image}`}
           fill
           itemProp="url"
           loading="lazy"
@@ -34,33 +35,33 @@ export default async function RegularBlogCard(props: tCommonBlogCard) {
         <meta itemProp="width" content="410" />
       </figure>
       <section className={css.main}>
-        <h3 className={css.title} itemProp="headline">
+        <h3 className={`${css.title} ${styles.title}`} itemProp="headline">
           <Link href={props.uri} itemProp="url">
             {props.title}
           </Link>
         </h3>
         <meta content={props.uri} itemProp="mainEntityOfPage" />
         <p
-          className={css.excerpt}
+          className={` ${styles.excerpt} ${css.excerpt}`}
           dangerouslySetInnerHTML={{
             __html: props.excerpt.substring(0, 100).trim(),
           }}
           itemProp="description"
         />
       </section>
-      <footer className={css.details}>
+      <footer className={`${styles.details} ${css.details}`}>
         <time
-          className={css.release}
+          className={`${styles.release} ${css.release}`}
           dateTime={props.date.time}
           itemProp="datePublished"
         >
           {props.date.release}
         </time>
         <meta itemProp="dateModified" content={props.date.time} />
-        <ul className={css.taxonomies}>
+        <ul className={`${styles.taxonomies} ${css.taxonomies}`}>
           {props.category && (
             <li
-              className={`${css.taxonomy} ${css.taxonomy__category}`}
+              className={`${styles.taxonomy} ${styles.taxonomy__category} ${css.taxonomy}`}
               itemProp="articleSection"
             >
               <Link href={props.category.uri} hrefLang="pl_PL">
@@ -70,7 +71,7 @@ export default async function RegularBlogCard(props: tCommonBlogCard) {
           )}
           {props.subcategory && (
             <li
-              className={`${css.taxonomy} ${css.taxonomy__subcategory}`}
+              className={`${styles.taxonomy} ${styles.taxonomy__subcategory} ${css.taxonomy} `}
               itemProp="articleSection"
             >
               <Link href={props.subcategory.uri} hrefLang="pl_PL">
