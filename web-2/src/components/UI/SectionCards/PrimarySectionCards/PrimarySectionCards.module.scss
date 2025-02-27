@@ -1,0 +1,58 @@
+@use "../../../../styles/variables" as *;
+
+.main {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 1rem auto 5rem auto;
+  width: 95%;
+}
+
+.title {
+  color: $color-heading;
+  font-family: $font-robotoSlab;
+  font-size: clamp(3rem, 4.92vw, 5.75rem);
+}
+
+.content {
+  color: $color-text;
+  font-size: clamp(1.45rem, 1.9vw, 2.12rem);
+  font-weight: 400;
+  text-wrap: pretty;
+  width: min(85rem, 100%);
+}
+
+.cards {
+  align-items: start;
+  display: grid;
+  gap: 3rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.big {
+  justify-items: center;
+}
+
+.side {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+  justify-content: center;
+  width: 100%;
+  & > * {
+    .media {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 970px) {
+  .cards {
+    gap: 0rem;
+    grid-template-columns: calc(100% - 75rem) 75rem;
+    padding: 2rem 0;
+  }
+}
