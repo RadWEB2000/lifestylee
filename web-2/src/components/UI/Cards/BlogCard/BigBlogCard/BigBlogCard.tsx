@@ -33,7 +33,7 @@ export default async function BigBlogCard(props: tCommonBlogCard) {
         <meta itemProp="height" content="630" />
         <meta itemProp="width" content="1200" />
       </figure>
-      <section>
+      <section className={css.main}>
         <h3 className={css.title} itemProp="headline">
           <Link href={props.uri} itemProp="url">
             {props.title}
@@ -48,7 +48,7 @@ export default async function BigBlogCard(props: tCommonBlogCard) {
           itemProp="description"
         />
       </section>
-      <footer>
+      <footer className={css.details}>
         <time
           className={css.release}
           dateTime={props.date.time}
