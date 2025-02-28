@@ -8,42 +8,39 @@
 .container {
   align-items: start;
   display: grid;
-  grid-template-columns:calc(100% - 25rem) 25rem;
+  row-gap: 2rem;
 }
 
 .title {
   color: $color-heading;
   font-family: $font-robotoSlab;
-  font-size: clamp(3rem, 4.92vw, 5.75rem);
+  font-size: clamp(4.3rem, 4.92vw, 5.75rem);
 }
 
 .content {
   color: $color-text;
-  font-size: clamp(1.45rem, 1.9vw, 2.12rem);
+  font-size: clamp(1.65rem, 1.9vw, 2.12rem);
   font-weight: 400;
+  line-height: 1.5;
+  max-width: 70ch;
   text-wrap: pretty;
   width: min(85rem, 100%);
 }
 
 .cards {
+  align-items: start;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-  flex-flow: row wrap;
-  margin-top: 10rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(43.5rem, 100%), 1fr));
+  justify-items: center;
+  margin-top: 5dvh;
+  & > * {
+    height: 100%;
+  }
 }
 
-
-.button {
-  border-radius: 1.5em;
-  min-height: 5rem;
-  background: salmon;
-  align-items: center;
-  width: fit-content;
-  padding: 0rem 3rem;
-  text-transform: uppercase;
-  font-size: 1.82rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
+@media (min-width: 1300px) {
+  .container {
+    grid-template-columns: calc(100% - 35rem) 35rem;
+  }
 }
