@@ -1,0 +1,12 @@
+@use "../../../styles/variables" as *;
+
+.wrapper {
+  background-color: color-mix(in srgb, $color-white 45%, $color-platinum);
+  width: 30rem;
+  box-shadow: -1rem 0 1.5rem 0.85rem rgba($color-black, 0.32);
+  padding: 2.5rem;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  left: 0;
+}

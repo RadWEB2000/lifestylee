@@ -1,0 +1,10 @@
+* {
+  scroll-behavior: smooth;
+  scroll-padding-block-start: 14rem;
+}
+
+.post-main {
+  //   background: red;
+  margin: 4rem auto;
+  width: clamp(5rem, 120rem, 95dvw);
+}
