@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/app/*": ["./src/app/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/context/*": ["./src/contexts/*"],
+      "@/providers/*": ["./src/providers/*"],
+      "@/css/*": ["./src/styles/*"],
+      "@/ts/*": ["./src/types/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/func/*": ["./src/lib/functions/*"],
+      "@/hooks/*": ["./src/lib/hooks/*"],
+      "@/configs/*": ["./src/lib/configs/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/queries/*": ["./src/data/queries/*"],
+      "@/static/*": ["./src/data/static/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/layout/*": ["./src/components/Layout/*"],
+      "@/utils/*": ["./src/components/Utils/*"],
+      "@/views/*": ["./src/components/Views/*"],
+      "@/nav/*": ["./src/components/Layout/Navigation/*"],
+      "@/footer/*": ["./src/components/Layout/Footer/*"],
+      "@/buttons/*": ["./src/components/Utils/Buttons/*"],
+      "@/cards/*": ["./src/components/Utils/Cards/*"],
+      "@/toc/*": ["./src/components/Utils/TableOfContents/*"],
+      "@/v-category/*": ["./src/components/Views/Category/*"],
+      "@/v-contact/*": ["./src/components/Views/Contact/*"],
+      "@/v-home/*": ["./src/components/Views/Home/*"],
+      "@/v-partner/*": ["./src/components/Views/Partnership/*"],
+      "@/v-policy/*": ["./src/components/Views/Policy/*"],
+      "@/v-post/*": ["./src/components/Views/Post/*"],
+      "@/v-subcategory/*": ["./src/components/Views/Subcategory/*"],
+      "@/v-tags/*": ["./src/components/Views/Tags/*"],
+      "@/v-tag/*": ["./src/components/Views/Tag/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
