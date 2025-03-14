@@ -1,0 +1,37 @@
+// Fonts
+
+$font-lexend: var(--font-lexend);
+
+// Colors
+
+$color-green-dark: rgb(31, 131, 73);
+$color-green-intensive: rgb(91, 233, 192);
+$color-red: rgb(201, 57, 83);
+$color-red-dark: rgb(176, 0, 32);
+$color-crystal: rgb(234, 236, 239);
+$color-white: rgb(252, 252, 252);
+$color-seasalt: rgb(248, 248, 248);
+$color-platinum: rgb(229, 227, 230);
+$color-gray-dark: rgb(78, 78, 78);
+$color-gray-french: rgb(192, 189, 192);
+$color-jet: rgb(52, 50, 52);
+$color-night: rgb(32, 30, 32);
+$color-black: rgb(11, 10, 11);
+$color-lavender: rgb(187, 134, 252);
+$color-purple: rgb(93, 17, 185);
+$color-blue: rgb(65, 153, 250);
+$color-blue-light: rgb(97, 171, 250);
+
+// Theme colors
+
+$color-background: light-dark($color-white, $color-black);
+$color-text: light-dark($color-black, $color-white);
+$color-text-secondary: light-dark($color-night, $color-seasalt);
+$color-border: light-dark($color-seasalt, $color-night);
+$color-space: light-dark($color-platinum, $color-jet);
+$color-accent: light-dark($color-purple, $color-lavender);
+$color-link: $color-blue;
+$color-link-hovered: $color-blue-light;
+$color-disabled: light-dark($color-crystal, $color-gray-dark);
+$color-error: light-dark($color-red-dark, $color-red);
+$color-succes: light-dark($color-green-dark, $color-green-intensive);

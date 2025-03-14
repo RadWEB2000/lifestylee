@@ -1,12 +1,12 @@
 // import { generateUri } from "@/func/index";
 import "@/css/views/post_view.scss";
 import { Breadcrumbs } from "@/utils/index";
-import { Hero } from "@/v-article/index";
+// import { Hero } from "@/v-article/index";
 import GET_POST from "@/queries/GET_POST";
-import {
-  tTableOfContentsAttrs,
-  tTableOfContentsElements,
-} from "@/utils/TableOfContents/TableOfContents.models";
+// import {
+//   tTableOfContentsAttrs,
+//   tTableOfContentsElements
+// } from "@/utils/TableOfContents/TableOfContents.models";
 import { extractJsonLd, renderBlocks } from "@/func/index";
 import { Metadata } from "next";
 
@@ -43,8 +43,8 @@ export async function generateMetadata(props: tPostPage): Promise<Metadata> {
       url: seo.openGraph.url,
       tags: tags.map((item) => {
         return `${item.name}`;
-      }),
-    },
+      })
+    }
   };
 }
 
@@ -52,48 +52,48 @@ export default async function PostPage(props: tPostPage) {
   const { post } = await await props.params;
   const data = await GET_POST(post);
 
-  const toc: tTableOfContentsElements = data.blocks
-    .filter((item) => item.name === "rank-math/toc-block")
-    .map((item) => {
-      const attrs: tTableOfContentsAttrs = JSON.parse(item.attributesJSON);
-      return {
-        title: attrs.title,
-        elements: attrs.headings.map((item) => {
-          return {
-            ...item,
-            level: item.level - 1,
-          };
-        }),
-      };
-    })[0];
+  // const toc: tTableOfContentsElements = data.blocks
+  //   .filter((item) => item.name === "rank-math/toc-block")
+  //   .map((item) => {
+  //     const attrs: tTableOfContentsAttrs = JSON.parse(item.attributesJSON);
+  //     return {
+  //       title: attrs.title,
+  //       elements: attrs.headings.map((item) => {
+  //         return {
+  //           ...item,
+  //           level: item.level - 1
+  //         };
+  //       })
+  //     };
+  //   })[0];
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(extractJsonLd(data.seo.jsonLd)),
+          __html: JSON.stringify(extractJsonLd(data.seo.jsonLd))
         }}
       />
       <Breadcrumbs
         breadcrumbs={[
           {
             name: "Start",
-            uri: "/",
+            uri: "/"
           },
           {
-            ...data.category,
+            ...data.category
           },
           {
-            ...data.subcategory,
+            ...data.subcategory
           },
           {
             name: data.title,
-            uri: data.uri,
-          },
+            uri: data.uri
+          }
         ]}
       />
-      <Hero
+      {/* <Hero
         excerpt={data.excerpt}
         image={data.image}
         title={data.title}
@@ -106,7 +106,7 @@ export default async function PostPage(props: tPostPage) {
           value: data.seo.openGraph.slackEnhancedData.data,
         }}
         toc={toc}
-      />
+      /> */}
       <main className="post-main">
         {data.blocks.map((item) => renderBlocks(item))}
       </main>

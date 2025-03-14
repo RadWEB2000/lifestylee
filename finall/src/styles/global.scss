@@ -7,7 +7,7 @@
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: $color-tap-highlight-color;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.7);
 }
 
 ::after,
@@ -38,17 +38,15 @@ textarea {
 }
 
 body {
-  // overflow-y: hidden;
   background-color: $color-background;
+  color: $color-text;
   color-scheme: dark light;
-  font-family: $font-openSans;
-  // overflow-x: hidden;
+  font-family: $font-lexend;
   font-size: 1.6rem;
-  transition: 0.2s linear background-color, 0.2s linear color;
+  transition: 0.12s linear background-color, 0.12s linear color;
 }
 
 html {
-  // filter: invert(1);
   transition: 0.12s linear filter;
   font-size: 62.5%;
 }

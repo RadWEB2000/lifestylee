@@ -9,3 +9,7 @@ $gray-light: rgb(233, 233, 233);
 $platinum: rgb(236, 236, 236);
 $purple: rgb(96, 108, 213);
 $lavender: rgb(205, 207, 234);
+
+$color-background: light-dark($white, $black);
+$color-text: light-dark($black, $white);
+$color-tap-highlight-color: light-dark(rgba($black, 0.7), rgba($white, 0.7));
