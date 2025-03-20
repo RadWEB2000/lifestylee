@@ -1,0 +1,58 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+    align-items: center;
+    display: flex;
+    flex-flow:column;
+    height: 4rem;
+    justify-content: space-evenly;
+    overflow: hidden;
+    padding: 0.5rem;
+    position: relative;
+    width: 4rem;
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:hover {
+        .line {
+            background-color: $color-text;
+        }
+    }
+    
+    &[data-open=true]{
+        .line {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            transform-origin: center;
+    transition:.22s ease-in-out transform;
+
+            &:nth-of-type(1){
+            transform: translate(-50%,-50%) rotate(45deg);
+
+            }
+            &:nth-of-type(2){
+                transform: translate(-50%,-50%) scaleX(0);
+            }
+            &:nth-of-type(3){
+            transform: translate(-50%,-50%) rotate(-45deg);
+            }
+        }
+    }
+    &[data-open=false]{
+        .line {
+    transition:.22s ease-in-out transform;
+        }
+    }
+}
+
+.line {
+    background-color: color-mix(in srgb, $color-text-secondary 50%, transparent);
+    border-radius: 1rem;
+    display: block;
+    height: 3px;
+    transition:.12s linear background-color, .12s linear transform;
+    width: 100%;
+}

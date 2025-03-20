@@ -1,0 +1,27 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  border-bottom: 1px solid $color-space;
+  padding-bottom: 0.25rem;
+  transition: 0.12s linear border-bottom-color;
+  &:focus-within,
+  &:focus-visible,
+  &:focus,
+  &:hover {
+    border-bottom-color: color-mix(in srgb, $color-accent 60%, transparent);
+    .title {
+      color: $color-accent;
+    }
+  }
+}
+
+.title {
+  font-size: clamp(1.3rem, 1.55vw, 1.6rem);
+  text-wrap: pretty;
+  transition: 0.12s linear color;
+}
+
+.release {
+  font-size: clamp(1.2rem, 1.35vw, 1.4rem);
+  margin-top: 1rem;
+}

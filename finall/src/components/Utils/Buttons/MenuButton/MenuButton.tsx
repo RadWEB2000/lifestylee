@@ -1,16 +1,17 @@
 "use client";
+import { MenuContext } from "@/contexts";
 import css from "@/ui/Buttons/MenuButton/MenuButton.module.scss";
-import { useState } from "react";
+import { useContext } from "react";
 
 export default function MenuButton() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const  {isOpen,toggle} = useContext(MenuContext);
   return (
     <button
       className={css.wrapper}
       data-open={isOpen}
-      onClick={() => setIsOpen(!isOpen)}
+      onClick={toggle}
     >
-      |||
       <span className={css.line} />
       <span className={css.line} />
       <span className={css.line} />

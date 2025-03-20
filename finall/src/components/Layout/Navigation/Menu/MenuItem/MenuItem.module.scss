@@ -1,0 +1,53 @@
+@use "../../../../../styles/variables" as *;
+
+.wrapper {
+    align-items: center;
+    background-color: color-mix(in srgb, $color-space 45%, transparent);
+    border-radius: .35rem;
+    display: flex;
+    font-size: clamp(1.8rem , 2.15vw, 2.25rem);
+    font-weight: 700;
+    justify-content: center;
+    min-height: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition:.12s ease-in-out background-color;
+    width:min(22rem, 95%);
+
+    &:focus,
+    &:focus-within,
+    &:focus-visible,
+    &:hover {
+        background-color: $color-space;
+    }
+
+    &[data-variant="dropdown"] {
+        font-size: clamp(1.25rem , 1.26vw, 1.82rem);
+        font-weight: 500;
+        min-height: 3rem;
+        width:min(22rem, 100%);
+
+    }
+}
+
+@media (min-width:1025px){
+    .wrapper {
+        background-color: unset;
+        font-size: clamp(1.36rem , 1.45vw, 1.55rem);
+        padding: 0rem 1rem;
+        width: fit-content;
+        &[data-variant="dropdown"] {
+            font-size: clamp(1.25rem , 1.26vw, 1.42rem);
+            font-weight: 500;
+            min-height: 3rem;
+            transition:.12s linear color;
+            width: 100%;
+            &:focus,
+            &:focus-within,
+            &:focus-visible,
+            &:hover {
+        color:color-mix(in srgb, $color-text-secondary 70%, transparent);
+            }
+            }
+    }
+}

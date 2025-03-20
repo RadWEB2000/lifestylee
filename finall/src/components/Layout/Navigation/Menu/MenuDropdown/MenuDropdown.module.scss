@@ -1,7 +1,66 @@
+@use "../../../../../styles/variables" as *;
+
+.wrapper {
+    width:min(22rem, 95%);
+}
+
+.box {
+  display: grid;
+  grid-template-columns: min(18rem, calc(100% - 4rem)) 4rem;
+}
+
+.button {
+  align-items: center;
+  display: flex;
+  font-size: 2rem;
+  justify-content: center;
+}
+
+
+
 .list {
   align-items: center;
   display: flex;
-  justify-content: flex-start;
   flex-flow: column;
+  gap:.45rem;
   justify-content: flex-start;
+  opacity: 0;
+  transform: scaleY(0);
+  transition:.12s linear opacity, .12s linear visibility;
+  visibility: hidden;
+  &[data-expand=true]{
+    opacity: 1;
+  transform: scaleY(1);
+    visibility: visible;
+  }
+  & >*:first-of-type {
+    margin-top: 1rem;
+  }
+
+  & >*:last-of-type {
+    margin-bottom: .4rem;
+  }
+}
+
+
+@media (min-width:1025px){
+  .wrapper {
+    position: relative;
+    width: fit-content;
+  }
+  .list {
+    background-color: $color-space;
+    border-radius: .5rem;
+    padding: 0rem 2rem 1rem;
+    position: absolute;
+    z-index: 999;
+  }
+  .box {
+  grid-template-columns: min(18rem, calc(100% - 2rem)) 2rem;
+  }
+  .button {
+    font-size: 1.66rem;
+    width: 2rem;
+  }
+  
 }

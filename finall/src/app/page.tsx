@@ -1,9 +1,13 @@
+import { Hero, PostsList } from "@/views/Home";
+
 export default function HomePage() {
   return (
     <>
-      <>
-        <h1>home page</h1>
-      </>
+      <Hero />
+      <PostsList />
+      <PostsList />
+      <PostsList />
+      <main>asd</main>
     </>
   );
 }

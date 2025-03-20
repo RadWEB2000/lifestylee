@@ -1,0 +1,135 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  display: grid;
+  width: clamp(5rem, 93.5rem, 98%);
+  &:focus,
+  &:focus-visible,
+  &:focus-within,
+  &:hover {
+    .title {
+      color: $color-accent;
+    }
+    .image {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.media {
+  aspect-ratio: 16/10;
+  border-radius: 1em;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  transition: 0.12s linear transform;
+}
+
+.container {
+  padding: 1rem;
+}
+
+.taxonomy {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.45rem;
+  justify-content: flex-start;
+}
+
+.category,
+.subcategory {
+  border-radius: 1em;
+  font-size: clamp(1.23rem, 1.35vw, 1.4rem);
+  padding: 0.5rem 1.2rem;
+  text-transform: uppercase;
+}
+
+.category {
+  border: 2px solid $color-space;
+  transition: 0.12s linear border-color;
+  &:focus,
+  &:focus-within,
+  &:focus-visible,
+  &:hover {
+    border-color: $color-text;
+  }
+}
+
+.subcategory {
+  background-color: $color-space;
+  transition: 0.12s linear background-color, 0.12s linear color;
+  &:focus,
+  &:focus-within,
+  &:focus-visible,
+  &:hover {
+    background-color: $color-text;
+    color: $color-background;
+  }
+}
+
+.title {
+  color: $color-text;
+  font-size: clamp(1.6rem, 3.2vw, 3.6rem);
+  margin-top: 0.45rem;
+  transition: 0.12s linear color;
+}
+
+.excerpt {
+  color: color-mix(in srgb, $color-text-secondary 70%, transparent);
+  font-size: clamp(1.23rem, 1.35vw, 1.45rem);
+  margin: 1rem 0;
+}
+
+.details {
+  align-items: center;
+  background-color: $color-border;
+  border-radius: 0.5rem;
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+  padding: 0rem 1.5rem;
+}
+
+.detail {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.25rem;
+  justify-content: flex-start;
+  &__icon {
+    align-items: center;
+    display: flex;
+    font-size: 1.5rem;
+    height: 2rem;
+    justify-content: center;
+    width: 2rem;
+  }
+  &__label {
+    font-size: clamp(1.23rem, 1.35vw, 1.45rem);
+  }
+}
+
+@media (min-width: 550px) {
+  .taxonomy {
+    justify-content: flex-end;
+  }
+  .title {
+    margin-top: 0.45rem;
+    text-wrap: balance;
+  }
+  .excerpt {
+    font-size: clamp(1.4rem, 1.55vw, 1.75rem);
+    text-wrap: balance;
+  }
+  .category,
+  .subcategory {
+    padding: 0.5rem 2rem;
+  }
+}

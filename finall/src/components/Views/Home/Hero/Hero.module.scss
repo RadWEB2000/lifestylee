@@ -1,0 +1,91 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 100%;
+  padding: 0rem 2rem;
+}
+
+.featured {
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+}
+
+.side {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  gap: 2.5rem;
+  justify-content: flex-start;
+}
+
+.news {
+  &__buttons {
+    background-color: $color-space;
+    border-radius: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    height: 4rem;
+    margin-bottom: 1.5rem;
+    padding: 0.45rem;
+  }
+  &__button {
+    align-items: center;
+    border-radius: 0.75rem;
+    display: flex;
+    font-size: 1.35rem;
+    height: 100%;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: 0.12s linear background-color, 0.12s linear color;
+    &[data-currentNews="true"] {
+      //   background-color: lime;
+    }
+    &:hover {
+      background-color: $color-accent;
+      color: $color-background;
+    }
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    grid-template-columns: 4fr 2fr;
+  }
+  .featured {
+    grid-column: 1/-1;
+  }
+  .news__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    grid-template-columns: minmax(50%, 75.5rem) minmax(30%, 46.5rem) minmax(
+        20%,
+        24rem
+      );
+    margin: 2rem auto 4rem;
+    width: 150rem;
+  }
+  .featured {
+    grid-column: 1;
+  }
+  .side {
+    grid-column: 2;
+  }
+  .news {
+    grid-column: 3;
+    &__list {
+      gap: 0.45rem;
+    }
+  }
+}

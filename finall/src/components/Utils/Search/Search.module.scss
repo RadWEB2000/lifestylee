@@ -1,0 +1,71 @@
+@use "../../../styles/variables" as *;
+
+.wrapper {
+    display: grid;
+    grid-template-columns: calc(100% - 4rem) 4rem;
+    margin:auto;
+    width: 90%;
+}
+
+.field {
+    background-color: $color-disabled;
+    border-radius: .6rem 0 0 .6rem;
+    padding: 0rem 2rem;
+    transform-origin: right;
+    transition: .12s linear background-color, .12s linear color, .42s linear width;
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:hover {
+        background-color: color-mix(in srgb, $color-disabled 70%, $color-background );
+        color:$color-text;
+    }
+}
+
+.button {
+    align-items: center;
+    background-color: $color-space;
+    border-radius:0 .6rem .6rem 0;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 1.8rem;
+    justify-content: center;
+    height: 4rem;
+    transition:.12s linear  background-color;
+    width: 4rem;
+    &:focus,
+    &:focus-visible,
+    &:focus-within,
+    &:hover {
+        background-color: $color-accent;
+    }
+}
+
+@media (min-width:1025px){
+    .wrapper {
+        align-items: center;
+        display: flex;
+        flex-flow:row nowrap;
+        height: 4rem;
+        justify-content: flex-end;
+        width: 30rem;
+    }
+.field {
+    height: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    width: 10em;
+}
+
+    .field:focus,
+.field:not(:placeholder-shown) {
+  width: 50em;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .field {
+      transition: none;
+    }
+  }

@@ -18,8 +18,8 @@ export default function MenuDropdown(props: tMenuDropdown) {
           <Arrow />
         </button>
       </div>
-      <ul className={css.list} data-expand={isOpenDropdown}>
-        {props.submenu.map((item) => {
+      <ul className={css.list} data-expand={isOpenDropdown} onMouseLeave={() => toggleOpenDropdown(false)}>
+        {isOpenDropdown && props.submenu.map((item) => {
           return (
             <Item
               {...item}
