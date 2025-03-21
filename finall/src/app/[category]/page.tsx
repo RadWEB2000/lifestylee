@@ -1,9 +1,99 @@
+import { Hero } from "@/views/Category";
+
 export default function CategoryPage() {
   return (
     <>
       <>
+        <Hero />
         <h1>category page</h1>
       </>
+      {/* <ul>
+        <li>lorem1</li>
+        <li>lorem2</li>
+        <li>lorem3</li>
+        <li>lorem4</li>
+        <li>lorem5</li>
+        <li>lorem6</li>
+        <li>lorem7</li>
+        <li>lorem8</li>
+        <li>lorem9</li>
+        <li>lorem10</li>
+        <li>lorem11</li>
+        <li>lorem12</li>
+        <li>lorem13</li>
+        <li>lorem14</li>
+        <li>lorem15</li>
+        <li>lorem16</li>
+        <li>lorem17</li>
+        <li>lorem18</li>
+        <li>lorem19</li>
+        <li>lorem20</li>
+        <li>lorem21</li>
+        <li>lorem22</li>
+        <li>lorem23</li>
+        <li>lorem24</li>
+        <li>lorem25</li>
+        <li>lorem26</li>
+        <li>lorem27</li>
+        <li>lorem28</li>
+        <li>lorem29</li>
+        <li>lorem30</li>
+        <li>lorem31</li>
+        <li>lorem32</li>
+        <li>lorem33</li>
+        <li>lorem34</li>
+        <li>lorem35</li>
+        <li>lorem36</li>
+        <li>lorem37</li>
+        <li>lorem38</li>
+        <li>lorem39</li>
+        <li>lorem40</li>
+        <li>lorem41</li>
+        <li>lorem42</li>
+        <li>lorem43</li>
+        <li>lorem44</li>
+        <li>lorem45</li>
+        <li>lorem46</li>
+        <li>lorem47</li>
+        <li>lorem48</li>
+        <li>lorem49</li>
+        <li>lorem50</li>
+        <li>lorem51</li>
+        <li>lorem52</li>
+        <li>lorem53</li>
+        <li>lorem54</li>
+        <li>lorem55</li>
+        <li>lorem56</li>
+        <li>lorem57</li>
+        <li>lorem58</li>
+        <li>lorem59</li>
+        <li>lorem60</li>
+        <li>lorem61</li>
+        <li>lorem62</li>
+        <li>lorem63</li>
+        <li>lorem64</li>
+        <li>lorem65</li>
+        <li>lorem66</li>
+        <li>lorem67</li>
+        <li>lorem68</li>
+        <li>lorem69</li>
+        <li>lorem70</li>
+        <li>lorem71</li>
+        <li>lorem72</li>
+        <li>lorem73</li>
+        <li>lorem74</li>
+        <li>lorem75</li>
+        <li>lorem76</li>
+        <li>lorem77</li>
+        <li>lorem78</li>
+        <li>lorem79</li>
+        <li>lorem80</li>
+        <li>lorem81</li>
+        <li>lorem82</li>
+        <li>lorem83</li>
+        <li>lorem84</li>
+        <li>lorem85</li>
+      </ul> */}
     </>
   );
 }
