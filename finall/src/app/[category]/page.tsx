@@ -1,10 +1,11 @@
-import { Hero } from "@/views/Category";
+import { Hero, Posts } from "@/views/Category";
 
 export default function CategoryPage() {
   return (
     <>
       <>
         <Hero />
+        <Posts/>
         <h1>category page</h1>
       </>
       {/* <ul>

@@ -1,0 +1,47 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+    margin: 2rem auto 5rem;
+    width: clamp(5rem, 150rem, 95%);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap:2rem;
+}
+
+.pagination {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow:row nowrap;
+    margin-top: 3rem;
+    gap:.45rem;
+    &__item {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        border:2px solid black;
+        border-radius: .45rem;
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+}
+
+@media (min-width:500px){
+    .cards {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (min-width:1000px){
+    .cards {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media (min-width:1440px){
+    .cards {
+        grid-template-columns: repeat(4,1fr);
+    }
+}
