@@ -1,0 +1,82 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+    margin: 2rem auto 5rem;
+    width: clamp(5rem, 130rem, 95%);
+   
+
+   
+}
+
+.container {
+}
+
+.title {
+    font-size:clamp(2.7rem, 5.2vw, 7.25rem);
+    text-wrap: balance;
+    line-height: 1.4;
+    grid-column: 1/-1;
+}
+
+.excerpt {
+    font-size:clamp(1.35rem, 1.8vw, 2.1rem);
+    max-width: 70ch;
+    text-wrap: balance;
+    color:$color-text-secondary;
+    line-height: 1.8;
+    margin:1.2rem 0;
+    grid-column: 1;
+}
+
+.informations { 
+    gap:.4rem 2rem;
+    align-items: center;
+    display: flex;
+    width:fit-content;
+    justify-content: flex-start;
+    flex-flow:row wrap;
+    // & > * {
+    //     width: 100%;
+    // }
+    // background: red;
+    // grid-column: 2;
+}
+
+.details {
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    flex-flow:row wrap;
+    gap:1rem;
+    display: flex;
+}
+
+.detail {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap:.34rem;
+    &__icon {
+        height: 2.5rem;
+        width: 2.5rem;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.media {
+    aspect-ratio: 16/10;
+    grid-column: 1/-1;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    object-fit: cover;
+    object-position: center;
+}

@@ -21,11 +21,17 @@
     &__item {
         align-items: center;
         display: flex;
+        cursor: pointer;
         justify-content: center;
-        border:2px solid black;
+        border:2px solid $color-border;
         border-radius: .45rem;
         height: 3.5rem;
         width: 3.5rem;
+        transition:.2s ease-in-out border-color,.2s ease-in-out transform;
+        &:hover {
+            border-color:$color-text;
+            transform: scale(.9);
+        }
     }
 }
 

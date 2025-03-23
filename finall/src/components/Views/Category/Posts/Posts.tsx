@@ -4,9 +4,6 @@ import { RegularPostCard } from "@/ui/Cards";
 export default function Posts(){
     return (
         <div className={css.wrapper} >
-            <div className={css.settings} >
-                <strong>sortowanie</strong>
-            </div>
             <ul className={css.cards}>
                 <RegularPostCard/>
                 <RegularPostCard/>

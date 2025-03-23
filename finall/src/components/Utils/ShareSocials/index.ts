@@ -1,0 +1,1 @@
+export {default as ShareSocials} from "@/ui/ShareSocials/ShareSocials"

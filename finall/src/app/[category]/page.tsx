@@ -6,7 +6,6 @@ export default function CategoryPage() {
       <>
         <Hero />
         <Posts/>
-        <h1>category page</h1>
       </>
       {/* <ul>
         <li>lorem1</li>

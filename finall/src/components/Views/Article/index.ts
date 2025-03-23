@@ -1,0 +1,1 @@
+export {default as Hero} from "@/views/Article/Hero/Hero"
