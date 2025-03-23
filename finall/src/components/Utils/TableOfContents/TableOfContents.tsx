@@ -1,3 +1,6 @@
+import Link from "next/link";
+import css from "@/ui/TableOfContents/TableOfContents.module.scss"
+
 type toc = Array<{ level: number; label: string; uri: string }>;
 
 const toc: toc = [
@@ -55,8 +58,18 @@ const toc: toc = [
 
 export default function TableOfContents(){
     return (
-        <ul>
-            asd
+        <ul className={css.wrapper} >
+            {
+                toc.map((item,index) => {
+                    return (
+                        <li className={css.item} data-level={item.level} key={index} >
+                            <Link className={css.item__link} href={item.uri} >
+                            {item.label}
+                            </Link>
+                        </li>
+                    )
+                })
+            }
         </ul>
     )
 }
