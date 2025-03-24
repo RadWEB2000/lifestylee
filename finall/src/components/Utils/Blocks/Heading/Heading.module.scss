@@ -1,0 +1,19 @@
+@use "../../../../styles/variables" as *;
+
+.h2,
+.h3,
+.h4 {
+  margin-bottom: 1rem;
+}
+
+.h2 {
+  font-size: clamp(2.75rem, 3.75vw, 4.55rem);
+}
+
+.h3 {
+  font-size: clamp(2.5rem, 3.15vw, 4rem);
+}
+
+.h4 {
+  font-size: clamp(2.25rem, 2.95vw, 3.7rem);
+}

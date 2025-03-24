@@ -1,0 +1,51 @@
+@use "../../../styles/variables" as *;
+
+.wrapper {
+  background-color: color-mix(in srgb, $color-text-secondary 2%, transparent);
+  margin: 0.82rem auto;
+  padding: 2rem;
+  width: clamp(5rem, 110rem, 95%);
+}
+
+.title {
+  font-size: clamp(2rem, 2.4vw, 3.7rem);
+}
+
+.list {
+  align-items: flex-start;
+  display: flex;
+  margin-top: 4vh;
+  flex-flow: column;
+  gap: 1.24rem;
+  justify-content: flex-start;
+}
+
+.item {
+  font-size: clamp(1.45rem, 1.7vw, 2rem);
+  transition: 0.2s linear color;
+  &[data-level="2"] {
+    margin-left: 1rem;
+  }
+  &[data-level="3"] {
+    margin-left: 2rem;
+  }
+
+  &:focus,
+  &:focus-within,
+  &:focus-visible,
+  &:hover {
+    color: color-mix(in srgb, $color-text-secondary 60%, transparent);
+  }
+}
+
+@media (min-width: 600px) {
+  .wrapper {
+    padding: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  .wrapper {
+    border-radius: 2rem;
+    padding: 4rem 6rem;
+  }
+}

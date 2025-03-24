@@ -1,0 +1,16 @@
+.ordered > li {
+  list-style: decimal inside;
+}
+.unordered > li {
+  list-style: circle inside;
+}
+
+.unordered,
+.ordered {
+  margin-bottom: 1rem;
+  li {
+    font-size: 1.65rem;
+    text-wrap: balance;
+    line-height: 1.95;
+  }
+}

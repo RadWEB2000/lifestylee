@@ -1,0 +1,20 @@
+@use "../variables" as *;
+
+.wrapper {
+  //   background: pink;
+  display: grid;
+  grid-template-columns: calc(100% - 40rem) 40rem;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: clamp(5rem, 130rem, 95%);
+}
+
+.side {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: column;
+  gap: 1rem;
+  //   background: fuchsia;
+  grid-column: 2;
+}

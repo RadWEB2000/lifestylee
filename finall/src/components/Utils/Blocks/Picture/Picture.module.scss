@@ -1,0 +1,21 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  width: clamp(5rem, 73rem, 95%);
+  margin: 1rem auto;
+}
+
+.image {
+  aspect-ratio: 16/9;
+  border-radius: 1rem;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.caption {
+  opacity: 0.7;
+  font-size: clamp(1.25rem, 1.35vw, 1.5rem);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
