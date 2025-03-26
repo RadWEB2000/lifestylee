@@ -4,7 +4,7 @@
   background-color: color-mix(in srgb, $color-text-secondary 2%, transparent);
   margin: 0.82rem auto;
   padding: 2rem;
-  width: clamp(5rem, 110rem, 95%);
+  width: clamp(5rem, 110rem, 85%);
 }
 
 .title {
@@ -23,12 +23,6 @@
 .item {
   font-size: clamp(1.45rem, 1.7vw, 2rem);
   transition: 0.2s linear color;
-  &[data-level="2"] {
-    margin-left: 1rem;
-  }
-  &[data-level="3"] {
-    margin-left: 2rem;
-  }
 
   &:focus,
   &:focus-within,

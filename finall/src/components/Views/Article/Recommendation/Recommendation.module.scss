@@ -1,0 +1,23 @@
+@use "../../../../styles/variables" as *;
+
+.wrapper {
+  margin: 1.1rem auto 0;
+}
+
+.list {
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 0.65rem;
+}
+
+@media (min-width: 765px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1150px) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

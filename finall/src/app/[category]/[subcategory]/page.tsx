@@ -1,9 +1,10 @@
-export default function Subcategory() {
+import { Hero, Posts } from "@/views/Category";
+
+export default function CategoryPage() {
   return (
     <>
-      <>
-        <h1>subcategory</h1>
-      </>
+      <Hero />
+      <Posts />
     </>
   );
 }

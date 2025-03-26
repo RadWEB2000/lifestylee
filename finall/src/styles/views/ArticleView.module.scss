@@ -1,20 +1,76 @@
 @use "../variables" as *;
 
 .wrapper {
-  //   background: pink;
-  display: grid;
-  grid-template-columns: calc(100% - 40rem) 40rem;
   gap: 1rem;
   margin: 2rem auto;
-  width: clamp(5rem, 130rem, 95%);
+  width: clamp(5rem, 130rem, 85%);
+}
+
+.container {
+  margin-bottom: 4rem;
+}
+.content {
+  font-size: 1.65rem;
+  line-height: 1.95;
+  ol li {
+    list-style: decimal inside;
+  }
+  ul li {
+    list-style: circle inside;
+  }
+
+  mark {
+    color: $color-black;
+    border-radius: 1rem;
+  }
+
+  pre {
+    text-wrap: balance;
+  }
+
+  a {
+    color: $color-link;
+    text-decoration: underline;
+    &:focus,
+    &:focus-within,
+    &:focus-visible,
+    &:hover {
+      color: $color-link-hovered;
+    }
+  }
 }
 
 .side {
-  align-items: center;
   display: flex;
-  justify-content: flex-start;
   flex-flow: column;
-  gap: 1rem;
-  //   background: fuchsia;
+  gap: 0.45rem;
   grid-column: 2;
+  margin-top: 2rem;
+  h3 {
+    text-align: start;
+    width: 100%;
+  }
+}
+
+@media (min-width: 765px) {
+  .side {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    h3 {
+      grid-column: 1/-1;
+    }
+  }
+}
+@media (min-width: 1150px) {
+  .container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: calc(100% - 40rem) 40rem;
+  }
+  .side {
+    display: flex;
+    h3 {
+      grid-column: 1/-1;
+    }
+  }
 }

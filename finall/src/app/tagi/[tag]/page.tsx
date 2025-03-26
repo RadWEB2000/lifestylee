@@ -1,9 +1,10 @@
-export default function TagPage() {
+import { Hero, Posts } from "@/views/Category";
+
+export default function CategoryPage() {
   return (
     <>
-      <>
-        <h1>tag page</h1>
-      </>
+      <Hero />
+      <Posts />
     </>
   );
 }

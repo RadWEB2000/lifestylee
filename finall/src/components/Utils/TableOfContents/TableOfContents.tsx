@@ -63,7 +63,7 @@ export default function TableOfContents() {
       <ul className={css.list}>
         {toc.map((item, index) => {
           return (
-            <li className={css.item} data-level={item.level} key={index}>
+            <li className={css.item} key={index}>
               <Link className={css.item__link} href={item.uri}>
                 {item.label}
               </Link>

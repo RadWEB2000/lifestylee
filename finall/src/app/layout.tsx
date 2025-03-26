@@ -3,6 +3,7 @@ import { Lexend } from "next/font/google";
 import "@/css/global.scss";
 import { Navigation } from "@/layout/Navigation";
 import { MenuProvider } from "@/providers";
+import { Footer } from "@/layout/Footer";
 
 const lexend = Lexend({
   variable: "--font-lexend",
@@ -26,6 +27,7 @@ export default function RootLayout({
         <MenuProvider>
           <Navigation />
           {children}
+          <Footer />
         </MenuProvider>
       </body>
     </html>

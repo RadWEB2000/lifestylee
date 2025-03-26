@@ -2,7 +2,8 @@
 
 .wrapper {
   margin: 2rem auto 5rem;
-  width: clamp(5rem, 130rem, 95%);
+  margin: 2rem auto 1.5rem;
+  width: clamp(5rem, 130rem, 85%);
 }
 
 .title {
@@ -10,6 +11,7 @@
   grid-column: 1/-1;
   line-height: 1.4;
   text-wrap: balance;
+  margin-top: 2rem;
 }
 
 .excerpt {
@@ -17,8 +19,8 @@
   font-size: clamp(1.35rem, 1.8vw, 2.1rem);
   grid-column: 1;
   line-height: 1.8;
-  margin: 3.2rem 0;
-  max-width: 70ch;
+  margin: 1.2rem 0 1.7rem;
+  max-width: 85ch;
   text-wrap: balance;
 }
 

@@ -1,0 +1,18 @@
+@use "../../../../styles/variables" as *;
+.wrapper {
+  align-items: center;
+  display: flex;
+  margin-top: 3.5rem;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  gap: 1.2rem;
+}
+
+.tag {
+  background-color: $color-space;
+  font-size: clamp(1.34rem, 1.4vw, 1.5rem);
+  padding: 0.2rem 1.1rem;
+  border-radius: 1rem;
+  color: unset !important;
+  text-decoration: none !important;
+}

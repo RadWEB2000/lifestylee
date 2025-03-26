@@ -4,10 +4,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <PostsList />
-      <PostsList />
-      <PostsList />
-      <main>asd</main>
+      <main>
+        <PostsList />
+        <PostsList />
+        <PostsList />
+      </main>
     </>
   );
 }
