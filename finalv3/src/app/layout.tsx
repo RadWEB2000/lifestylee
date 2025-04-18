@@ -20,12 +20,11 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const menu = await GET_MAIN_NAVIGATION();
-  console.log(menu);
 
   return (
     <html lang="pl_PL">
       <body className={`${inter.className} antialiased`}>
-        <Navigation />
+        <Navigation menu={menu} />
         {children}
       </body>
     </html>

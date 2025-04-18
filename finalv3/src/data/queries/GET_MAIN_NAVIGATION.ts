@@ -32,7 +32,7 @@ type request = {
         uri: string;
         id: string;
         parentId: string | null;
-        childrenItems: {
+        childItems: {
           nodes: Array<{
             label: string;
             uri: string;
@@ -51,7 +51,7 @@ type response = Array<{
   submenu: Array<{
     label: string;
     uri: string;
-  }>;
+  }> | null;
 }>;
 
 export default async function GET_MAIN_NAVIGATION() {
@@ -64,14 +64,14 @@ export default async function GET_MAIN_NAVIGATION() {
         return {
           label: item.label,
           uri: item.uri,
-          submenu:
-            item.childrenItems.nodes !== null &&
-            item.childrenItems.nodes.map((item) => {
-              return {
-                label: item.label,
-                uri: item.uri
-              };
-            })
+          submenu: item.childItems.nodes
+            ? item.childItems.nodes.map((item) => {
+                return {
+                  label: item.label,
+                  uri: item.uri
+                };
+              })
+            : null
         };
       });
 
