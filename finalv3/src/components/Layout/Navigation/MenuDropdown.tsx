@@ -17,15 +17,15 @@ export default function MenuDropdown(props: menuDropdown) {
 
   return (
     <li>
-      <span className="flex flex-row items-center space-x-1">
+      <span className="">
         <MenuItem label={props.label} uri={props.uri} variant="primary" />
-        <button className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+        <button className="" onClick={() => setIsOpen(!isOpen)}>
           <Arrow />
         </button>
       </span>
       {isOpen && (
         <ul
-          className="absolute flex flex-col bg-slate-100 space-y-1 px-3 py-4 rounded-md rounded-t-[0]  duration-150 ease-linear"
+          className=""
           // onMouseLeave={() => setIsOpen(false)}
         >
           {props.submenu.map((item) => {
@@ -34,6 +34,9 @@ export default function MenuDropdown(props: menuDropdown) {
                 key={item.label}
                 label={item.label}
                 uri={item.uri}
+                attributes={{
+                  onClick: () => setIsOpen(false)
+                }}
                 variant="secondary"
               />
             );

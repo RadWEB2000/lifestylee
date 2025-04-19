@@ -3,10 +3,10 @@ import { Inter } from "next/font/google";
 import "@/css/Globals.css";
 import { Navigation } from "@/layout/Navigation";
 import GET_MAIN_NAVIGATION from "@/data/queries/GET_MAIN_NAVIGATION";
+import { MenuProvider } from "@/provider";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
-  subsets: ["latin"]
+  subsets: ["latin", "latin-ext"]
 });
 
 export const metadata: Metadata = {
@@ -23,10 +23,12 @@ export default async function RootLayout({
 
   return (
     <html lang="pl_PL">
-      <body className={`${inter.className} antialiased`}>
-        <Navigation menu={menu} />
-        {children}
-      </body>
+      <MenuProvider>
+        <body className={`${inter.className} antialiased`}>
+          <Navigation menu={menu} />
+          {children}
+        </body>
+      </MenuProvider>
     </html>
   );
 }
