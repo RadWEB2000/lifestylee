@@ -12,28 +12,35 @@ type menuDropdown = {
   }>;
 };
 
-export default function MenuDropdown(props: menuDropdown) {
+export default function MenuDropdown({ label, submenu, uri }: menuDropdown) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  const styles = {
+    wrapper: `h-auto`,
+    container: `flex flex-row h-9 items-center space-x-1`,
+    button: `flex h-7 items-center justify-center rounded-sm text-lg w-7`,
+    dropdown: `flex flex-col my-2 px-2 py-1 space-y-2`
+  };
+
   return (
-    <li>
-      <span className="">
-        <MenuItem label={props.label} uri={props.uri} variant="primary" />
-        <button className="" onClick={() => setIsOpen(!isOpen)}>
+    <li className={styles.wrapper}>
+      <span className={styles.container}>
+        <MenuItem label={label} uri={uri} variant="primary" />
+        <button className={styles.button} onClick={() => setIsOpen(!isOpen)}>
           <Arrow />
         </button>
       </span>
       {isOpen && (
         <ul
-          className=""
+          className={styles.dropdown}
           // onMouseLeave={() => setIsOpen(false)}
         >
-          {props.submenu.map((item) => {
+          {submenu.map(({ label, uri }) => {
             return (
               <MenuItem
-                key={item.label}
-                label={item.label}
-                uri={item.uri}
+                key={label}
+                label={label}
+                uri={uri}
                 attributes={{
                   onClick: () => setIsOpen(false)
                 }}
