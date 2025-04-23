@@ -14,12 +14,12 @@ type menuDropdown = {
 
 export default function MenuDropdown({ label, submenu, uri }: menuDropdown) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  // const close: false = false;
   const styles = {
-    wrapper: `h-auto`,
-    container: `flex flex-row h-9 items-center space-x-1`,
-    button: `flex h-7 items-center justify-center rounded-sm text-lg w-7`,
-    dropdown: `flex flex-col my-2 px-2 py-1 space-y-2`
+    wrapper: `h-auto relative`,
+    container: `flex flex-row h-9 items-center space-x-1 lg:h-auto`,
+    button: `cursor-pointer flex h-7 items-center justify-center rounded-sm text-lg w-5 lh:h-6 lg:w-4`,
+    dropdown: `bg-lime-100 flex flex-col my-2 p-3 rounded-md space-y-2 lg:absolute lg:my-1 lg:p-1 lg:space-y-1`
   };
 
   return (
@@ -33,7 +33,7 @@ export default function MenuDropdown({ label, submenu, uri }: menuDropdown) {
       {isOpen && (
         <ul
           className={styles.dropdown}
-          // onMouseLeave={() => setIsOpen(false)}
+          onMouseLeave={() => setIsOpen(false)}
         >
           {submenu.map(({ label, uri }) => {
             return (
