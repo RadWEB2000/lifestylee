@@ -17,8 +17,8 @@ export default function MenuDropdown({ label, submenu, uri }: menuDropdown) {
   const styles = {
     wrapper: `h-auto relative`,
     container: `flex flex-row h-9 items-center space-x-1 lg:h-auto`,
-    button: `cursor-pointer flex h-7 items-center justify-center rounded-sm text-lg w-5 focus:bg-stone-200/75 hover:bg-stone-200/75 lh:h-6 lg:w-6`,
-    dropdown: `border-1 border-stone-200 flex flex-col my-2 p-3 rounded-md space-y-2 lg:absolute lg:border-0 lg:bg-stone-200 lg:my-0 lg:px-3 lg:py-2 lg:space-y-1`
+    button: `cursor-pointer flex h-7 items-center justify-center rounded-sm text-lg w-5 focus:bg-[#FFC017] hover:bg-[#FFC017] lh:h-6 lg:w-6`,
+    dropdown: `border-1 border-stone-200 flex flex-col my-2 p-3 rounded-md space-y-2 lg:absolute lg:border-0 lg:bg-stone-200 lg:my-0 lg:px-3 lg:py-2 lg:space-y-1 lg:z-[99] lg:shadow-md` 
   };
 
   return (

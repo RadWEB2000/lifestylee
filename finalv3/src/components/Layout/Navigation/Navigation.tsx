@@ -28,8 +28,8 @@ export default function Navigation({ menu }: navigation) {
     lg:flex lg:h-full lg:container`,
     brand: `col-span-3 row-[1] flex font-black font-serif items-center justify-start px-1 text-center text-xl 
     md:col-span-2 
-    lg:text-lg lg:px-1`,
-    search: `border-2 border-stone-300 cursor-pointer duration-200 ease-in-out flex items-center justify-center h-10 rounded-md w-10 focus:bg-stone-200 hover:bg-stone-200 lg:mx-auto`,
+    lg:text-2xl lg:px-1`,
+    search: `cursor-pointer duration-200 ease-in-out flex items-center justify-center h-10 rounded-md w-10 focus:bg-[#FFC017] hover:bg-[#FFC017] lg:mx-auto`,
     searchIcon: "h-6 w-6",
     settings: `col-span-2 flex flex-row items-center justify-end px-1 row-[1] space-x-2
     md:col-span-3 
