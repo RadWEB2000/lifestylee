@@ -24,17 +24,16 @@ export default function Navigation({ menu }: navigation) {
     wrapper: `bg-stone-50 duration-300 ease-in-out overflow-hidden px-2 sticky transition-[height] top-0 w-screen z-[99] 
     ${open ? 'h-screen lg:h-full' : 'h-[4rem]'}
     lg:overflow-visible`,
-    container: `container grid grid-cols-5 grid-rows-[4rem_1fr] h-screen mx-auto 
-    md:max-w-[90%] 
-    lg:flex lg:h-full lg:max-w-[98%]`,
-    brand: `col-span-3 row-[1] flex font-black font-serif items-center justify-start px-1 text-xl 
+    container: `container grid grid-cols-5 grid-rows-[4rem_1fr] h-screen mx-auto
+    lg:flex lg:h-full lg:container`,
+    brand: `col-span-3 row-[1] flex font-black font-serif items-center justify-start px-1 text-center text-xl 
     md:col-span-2 
     lg:text-lg lg:px-1`,
-    search: `bg-yellow-500 cursor-pointer flex items-center justify-center h-10 rounded-sm w-10`,
+    search: `border-2 border-stone-300 cursor-pointer duration-200 ease-in-out flex items-center justify-center h-10 rounded-md w-10 focus:bg-stone-200 hover:bg-stone-200 lg:mx-auto`,
     searchIcon: "h-6 w-6",
     settings: `col-span-2 flex flex-row items-center justify-end px-1 row-[1] space-x-2
     md:col-span-3 
-    lg:px-1 lg:justify-center`
+    lg:px-1 lg:justify-center lg:items-center`
   };
 
   return (

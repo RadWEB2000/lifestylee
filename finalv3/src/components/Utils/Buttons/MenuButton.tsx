@@ -8,7 +8,7 @@ export default function MenuButton() {
   const { open, toggle } = useContext(MenuContext);
 
   const styles = {
-    wrapper: 'bg-amber-300 cursor-pointer flex flex-col h-10 items-center justify-around p-1 relative w-10 lg:hidden',
+    wrapper: 'cursor-pointer flex flex-col h-10 items-center justify-around p-1 relative w-10 focus:bg-stone-200 hover:bg-stone-200 lg:hidden',
     line: {
       base: "w-full block h-[2px] bg-slate-900 rounded-md duration-200 linear",
       rotated: "absolute origin-center"

@@ -19,14 +19,15 @@ export default function Menu({ menu }: menu) {
 
   const styles = {
     wrapper: `
-    col-span-full overflow-hidden w-full 
+    col-span-full overflow-y-hidden text-white w-full 
     ${open ? 'block opacity-[1] visible' : 'hidden opacity-[0] invisible lg:block lg:opacity-[1] lg:visible'} 
-    lg:overflow-visible`,
+    lg:overflow-auto`,
     container: `
-    flex flex-col max-h-full mx-auto mt-2 overflow-scroll py-4 px-3 space-y-3 w-[95%] 
-    ${open ? 'max-h-full' : 'h-[0] lg:h-auto'} 
-    md:space-y-5 
-    lg:flex-row lg:flex-nowrap lg:gap-1 lg:items-center lg:justify-center lg:overflow-visible lg:px-2 lg:w-full  lg:align-middle lg:self-center`
+    flex flex-col max-h-full mx-auto mt-2 overflow-y-scroll py-4 px-3 space-y-3 text-black w-[95%] 
+    ${open ? 'max-h-full' : 'h-[0] lg:h-full'} 
+    md:space-y-5 md:overflow-y-visible
+    lg:mt-0
+    lg:flex-row lg:flex-nowrap lg:gap-1 lg:items-center lg:justify-center lg:overflow-y-visible lg:px-2 lg:space-y-0 lg:w-full lg:align-middle lg:self-center`
   };
 
   return (
@@ -52,7 +53,7 @@ export default function Menu({ menu }: menu) {
             );
           }
         })}
-        <span className="hidden" />
+        {/* <span className="hidden" /> */}
       </ul>
     </div>
   );

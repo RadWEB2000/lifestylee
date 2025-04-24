@@ -16,9 +16,9 @@ export default function MenuItem({
   attributes
 }: menuItem) {
   const styles = {
-    base: `duration-150 linear px-2 rounded-sm w-fit whitespace-nowrap focus:bg-slate-200 hover:bg-slate-200`,
-    primary: `font-semibold text-md lg:text-sm`,
-    secondary: `py-1 text-sm`
+    base: `duration-150 linear px-2 rounded-sm w-fit whitespace-nowrap focus:bg-stone-200/75 hover:bg-stone-200/75`,
+    primary: `font-semibold py-1 px-2 text-xl lg:text-lg`,
+    secondary: `py-1 text-base`
   };
 
   return (
