@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   return <>
@@ -10,10 +11,21 @@ export default function HomePage() {
         </p>
       </div>
     </header >
+    <div className="flex justify-center py-8 w-full bg-blue-400 ">
+      <div className="container px-4 mx-auto bg-red-300">
+        <h2 className="font-black text-4xl">LifeeStylee poleca</h2>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-5 gap-4">
+          <Link className="block w-full border-1 border-stone-200 duration-150 linear py-4 rounded-xl focus:border-stone-600 hover:border-stone-600" href='#'>
+            <h3 className="font-bold line-clamp-2 text-balance text-xl" >The 8 Most Important PPC KPIs You Should Be Tracking PPC KPIs You Should Be Tracking</h3>
+            <time className="uppercase text-xs" dateTime="Sat Mar 15 2025 17:48:53 GMT+0100 (Central European Standard Time)">15 mar 2025</time>
+          </Link>
+        </ul>
+      </div>
+    </div>
     <div className="container mx-auto my-2 grid grid-cols-12">
-      <div className="bg-green-200 col-span-3">ads</div>
-      <main className="bg-yellow-300 col-span-6">content</main>
-      <div className="col-span-3 bg-red-300">ads</div>
+      <div className="bg-green-200 col-span-2">ads</div>
+      <main className="bg-yellow-300 col-span-8">content</main>
+      <div className="col-span-2 bg-red-300">ads</div>
     </div>
   </>;
 }
