@@ -1,0 +1,1 @@
+export {default as RegularPostCard} from '@/cards/RegularPostCard';
