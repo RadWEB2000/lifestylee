@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         hostname: 'images.pexels.com'
+      },
+      {
+        hostname: 'cms.lifeestylee.pl'
       }
     ]
   }

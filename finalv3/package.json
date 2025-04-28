@@ -13,6 +13,7 @@
     "clsx": "^2.1.1",
     "graphql": "^16.10.0",
     "graphql-request": "^7.1.2",
+    "moment-timezone": "^0.5.48",
     "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
