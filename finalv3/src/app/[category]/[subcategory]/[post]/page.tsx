@@ -1,7 +1,10 @@
+import GET_POST_PAGE from "@/data/queries/GET_POST_PAGE";
 import Link from "next/link";
 import { HiSlash } from "react-icons/hi2";
 
-export default function PostPage() {
+export default async function PostPage() {
+    const page = await GET_POST_PAGE('/uroda/brwi/henna-pudrowa-vs-klasyczna-ktora-wybrac');
+    console.log(page)
     return (
         <>
             <header className="bg-[#FFC017] py-15 px-12" >
@@ -24,8 +27,10 @@ export default function PostPage() {
                 </ul>
                 <h1 className="text-9xl font-bold leading-32" >Kategoria</h1>
                 <p className="text-lg max-w-[85ch] text-pretty mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at quas, similique natus numquam neque earum velit iusto cum voluptatibus alias. Veritatis tempore consequatur modi, quidem maxime cupiditate repudiandae aliquam.</p>
-
             </header>
+                <main>
+                    <article dangerouslySetInnerHTML={{__html:page.content}} />
+                </main>
         </>
     )
 }

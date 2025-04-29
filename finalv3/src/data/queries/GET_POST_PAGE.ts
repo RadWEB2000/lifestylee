@@ -2,7 +2,7 @@ import { QueryClient } from "@/lib/configs";
 import { gql } from "graphql-request";
 
 const query = gql`
-    query POST_PAGE_QUERY ($id){
+    query POST_PAGE_QUERY ($id: ID!){
   post(
     id: $id
     idType: URI
@@ -147,6 +147,7 @@ export default async function GET_POST_PAGE(uri: string) {
             date: request.post.date,
             entry: request.post.articlePage.entry,
             excerpt: request.post.articlePage.introduction,
+            uri: request.post.uri,
             image: {
                 alt: request.post.featuredImage.node.altText,
                 src: request.post.featuredImage.node.sourceUrl,
@@ -161,5 +162,8 @@ export default async function GET_POST_PAGE(uri: string) {
             tags: request.post.tags.nodes,
             title: request.post.title
         }
+        return response;
+    }  catch {
+      throw new Error("‼️Błąd przy pobieraniu danych");
     }
 }
