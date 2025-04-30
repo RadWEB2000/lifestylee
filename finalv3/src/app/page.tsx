@@ -1,7 +1,8 @@
 import { RegularPostCard } from "@/components/Utils/Cards";
 import GET_HOME_PAGE from "@/data/queries/GET_HOME_PAGE";
-import Image from "next/image";
 import Link from "next/link";
+import "moment/locale/pl";
+import moment from "moment-timezone";
 
 export default async function HomePage() {
   const { page, sponsors, topics } = await GET_HOME_PAGE()
@@ -19,9 +20,9 @@ export default async function HomePage() {
           {
             sponsors.posts.map((item) => {
               return (
-                <Link className="block w-full border-1 border-stone-200 duration-150 linear p-2 rounded-xl h-full focus:border-stone-600 hover:border-stone-600" href='#'>
+                <Link className="block w-full border-1 border-stone-200 duration-150 linear p-2 rounded-xl h-full focus:border-stone-600 hover:border-stone-600" href={item.uri}>
                   <h3 className="font-bold line-clamp-3 text-pretty text-start text-base" >{item.title}</h3>
-                  <time className="uppercase text-xs" dateTime={item.date}>15 mar 2025</time>
+                  <time className="uppercase text-xs" dateTime={item.date}>{moment(item.date).format('DD MMM YYYY')}</time>
                 </Link>
               )
             })
@@ -71,7 +72,7 @@ export default async function HomePage() {
             {
               topics.list.map((item) => {
                 return (
-                  <Link className="block py-1 px-2 duration-150 linear bg-stone-100 rounded-md text-md focus:bg-[#FFC017] hover:bg-[#FFC017]" href="" >
+                  <Link className="block py-1 px-2 duration-150 linear bg-stone-100 rounded-md text-md focus:bg-[#FFC017] hover:bg-[#FFC017]" href={item.uri} >
                     {item.name}
                   </Link>
                 )

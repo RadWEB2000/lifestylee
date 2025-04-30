@@ -9,13 +9,13 @@ query HOME_PAGE_QUERY {
       uri
     }
   }
-  categories(where: {hideEmpty: true, parent: 0}, first: 45) {
+   categories(where: {hideEmpty: true, parent: 0}, first: 45) {
     nodes {
       name
       categoryPage {
         entry
       }
-      posts(first: 6, where: {orderby: {field: DATE, order: ASC}}) {
+      posts(first: 6, where: {orderby: {field: DATE, order: DESC}}) {
         nodes {
           categories(first: 2) {
             nodes {
@@ -34,7 +34,7 @@ query HOME_PAGE_QUERY {
           title(format: RENDERED)
           uri
           articlePage {
-            entry
+            introduction
           }
         }
       }
@@ -103,7 +103,7 @@ type request = {
           title: string;
           uri: string;
           articlePage: {
-            entry: string | null;
+            introduction: string | null;
           }
         }>
       }
@@ -205,14 +205,18 @@ export default async function GET_HOME_PAGE() {
                   }
                 }),
                 date: item.date,
-                image: {
+                image: item.featuredImage?.node ? {
                   alt: item.featuredImage.node.altText,
                   src: item.featuredImage.node.sourceUrl,
                   title: item.featuredImage.node.title
+                } : {
+                  alt: "",
+                  src: "",
+                  title: ""
                 },
                 title: item.title,
                 uri: item.uri,
-                excerpt: item.articlePage.entry ? item.articlePage.entry : null,
+                excerpt: item.articlePage.introduction ? item.articlePage.introduction : null,
               }
             })
           }
@@ -247,7 +251,8 @@ export default async function GET_HOME_PAGE() {
       }
     }
     return response
-  } catch {
+  } catch (error) {
+    console.log('error', error)
     throw new Error("‼️Błąd przy pobieraniu danych");
   }
 }

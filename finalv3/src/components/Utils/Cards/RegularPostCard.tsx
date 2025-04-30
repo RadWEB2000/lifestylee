@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import "moment/locale/pl";
+import moment from "moment-timezone";
 type regularPostCard = {
     categories: Array<{
         name: string;
@@ -39,17 +40,13 @@ export default function RegularPostCard({ categories, date, excerpt, image, titl
     getSubcategory();
     getCategory()
 
-    console.log('category', getCategory())
-    console.log('subcategory', getSubcategory())
-
-
     return (
         <li className="flex flex-col">
             <Image alt={image.alt} className="block relative w-full aspect-[16/10] rounded-lg" src={image.src} loading="lazy" height={500} title={image.title} width={750} quality={45} />
-            <h3 className="text-lg  duration-150 linear font-bold mt-1 focus:text-amber-300 hover:text-amber-300 " ><Link href={uri}>{title}</Link></h3>
+            <h3 className="text-lg cursor-pointer duration-150 linear font-bold mt-1 focus:text-amber-300 hover:text-amber-300 " ><Link href={uri}>{title}</Link></h3>
             <p className="text-sm line-clamp-3 my-1" >{excerpt}</p>
             <footer className="md:grid grid-cols-3 text-xs border-t-1 border-stone-800/40 p-1 items-center mt-auto mb-0" >
-                <time className=" block col-span-1 text-center w-full md:text-start" dateTime="">25 lip 2025</time>
+                <time className=" block col-span-1 text-center w-full md:text-start" dateTime={date}>{moment(date).format('DD MMM YYYY')}</time>
                 <div className="col-span-2 flex flex-wrap text-center items-center justify-center md:justify-end space-x-2">
                     <Link className="px-3 py-1 duration-75 linear bg-stone-200/50 font-semibold rounded-lg foucs:bg-stone-300 hover:bg-stone-300" href={getSubcategory().uri} hrefLang="pl_PL">
                         {getSubcategory().name}
