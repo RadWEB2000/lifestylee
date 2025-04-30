@@ -2,9 +2,20 @@ import { RegularPostCard } from "@/components/Utils/Cards";
 import GET_BLOG_PAGE from "@/data/queries/GET_BLOG_PAGE";
 import Link from "next/link";
 import { HiSlash } from "react-icons/hi2";
+import dynamic from 'next/dynamic'
+const Pagination = dynamic(() => import('@/ui/Pagination/Pagination'));
 
-export default async function BlogPage() {
-    const { posts } = await GET_BLOG_PAGE()
+type Props = {
+    searchParams: {
+        page?: string;
+    };
+};
+
+export default async function BlogPage({ searchParams }: Props) {
+    console.log('search', searchParams)
+    const currentPage = parseInt(searchParams.page || "1", 10);
+    const { posts, info } = await GET_BLOG_PAGE(currentPage, 15);
+
     return (
         <>
             <header className="bg-[#FFC017] py-15 px-12" >
@@ -42,6 +53,11 @@ export default async function BlogPage() {
                     }
                 </ul>
             </main>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={info.hasNextPage ? currentPage + 1 : currentPage}
+                basePath="/blog"
+            />
         </>
     )
 }
