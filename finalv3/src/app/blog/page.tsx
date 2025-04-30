@@ -1,7 +1,10 @@
+import { RegularPostCard } from "@/components/Utils/Cards";
+import GET_BLOG_PAGE from "@/data/queries/GET_BLOG_PAGE";
 import Link from "next/link";
 import { HiSlash } from "react-icons/hi2";
 
-export default function BlogPage() {
+export default async function BlogPage() {
+    const { posts } = await GET_BLOG_PAGE()
     return (
         <>
             <header className="bg-[#FFC017] py-15 px-12" >
@@ -25,6 +28,20 @@ export default function BlogPage() {
                 <h1 className="text-9xl font-bold leading-32" >Kategoria</h1>
                 <p className="text-lg max-w-[85ch] text-pretty mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at quas, similique natus numquam neque earum velit iusto cum voluptatibus alias. Veritatis tempore consequatur modi, quidem maxime cupiditate repudiandae aliquam.</p>
             </header>
+            <main className="w-[1075px] max-w-[95vw] mx-auto my-8">
+                <ul className="grid grid-cols-3 gap-2">
+                    {
+                        posts.map((item) => {
+                            return (
+                                <RegularPostCard
+                                    {...item}
+                                    key={item.title}
+                                />
+                            )
+                        })
+                    }
+                </ul>
+            </main>
         </>
     )
 }

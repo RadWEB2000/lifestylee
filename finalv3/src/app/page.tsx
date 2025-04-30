@@ -3,6 +3,37 @@ import GET_HOME_PAGE from "@/data/queries/GET_HOME_PAGE";
 import Link from "next/link";
 import "moment/locale/pl";
 import moment from "moment-timezone";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { page: { seo: { metaDescription, metaTitle, openGraphDescription, openGraphTitle } } } = await GET_HOME_PAGE()
+
+  return {
+    title: metaTitle,
+    description: metaDescription,
+    openGraph: {
+      title: openGraphTitle,
+      description: openGraphDescription,
+      type: "website",
+      alternateLocale: 'pl_PL',
+      countryName: 'Poland',
+      siteName: 'LifeeStylee',
+      url: `https://lifeestylee.pl/`,
+    },
+    twitter: {
+      site: 'LifeeStylee',
+      title: openGraphTitle,
+      description: openGraphDescription,
+    },
+    applicationName: 'LifeeStylee',
+    robots: {
+      index: true,
+      follow: true,
+      "max-image-preview": "standard",
+    }
+  }
+}
+
 
 export default async function HomePage() {
   const { page, sponsors, topics } = await GET_HOME_PAGE()

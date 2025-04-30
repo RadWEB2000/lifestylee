@@ -4,6 +4,8 @@ import "@/css/Globals.css";
 import { Navigation } from "@/layout/Navigation";
 import GET_MAIN_NAVIGATION from "@/data/queries/GET_MAIN_NAVIGATION";
 import { MenuProvider } from "@/provider";
+import Script from "next/script";
+
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"]
@@ -21,8 +23,26 @@ export default async function RootLayout({
 }>) {
   const menu = await GET_MAIN_NAVIGATION();
 
+
   return (
     <html lang="pl_PL">
+      <head>
+        <link rel="canonical" href="" />
+        <Script
+          id="clarity-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "rc8xjj2n9v");
+            `,
+          }}
+        />
+        <meta name="google-site-verification" content="Ff8M9SgTYgIi3oyAqDXMx1nZOJsOzMLLQBE3dEB1sPc" />
+      </head>
       <MenuProvider>
         <body className={`${inter.className} antialiased`}>
           <Navigation menu={menu} />
