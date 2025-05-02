@@ -33,6 +33,9 @@ const query = gql`
         hasNextPage
       }
     }
+    postsMeta {
+      count
+    }
   }
 `;
 
@@ -56,6 +59,9 @@ type request = {
             hasNextPage: boolean;
         };
     };
+    postsMeta: {
+      count:number;
+    }
 };
 
 type response = {
@@ -78,6 +84,7 @@ type response = {
         endCursor: string;
         hasNextPage: boolean;
     };
+    postsCount:number;
 };
 
 export default async function GET_BLOG_PAGE(page = 1, postsPerPage = 10): Promise<response> {
@@ -94,13 +101,13 @@ export default async function GET_BLOG_PAGE(page = 1, postsPerPage = 10): Promis
             cursor = intermediate.posts.pageInfo.endCursor;
         }
 
-        const req: request = await QueryClient.request(query, {
+        const request: request = await QueryClient.request(query, {
             first: postsPerPage,
             after: cursor,
         });
 
         const data: response = {
-            posts: req.posts.edges.map((item) => {
+            posts: request.posts.edges.map((item) => {
                 const imageNode = item.node.featuredImage?.node;
                 return {
                     categories: item.node.categories.nodes,
@@ -115,7 +122,8 @@ export default async function GET_BLOG_PAGE(page = 1, postsPerPage = 10): Promis
                     uri: item.node.uri,
                 };
             }),
-            info: req.posts.pageInfo,
+            postsCount:request.postsMeta.count,
+            info: request.posts.pageInfo,
         };
 
         return data;

@@ -2,8 +2,7 @@ import { RegularPostCard } from "@/components/Utils/Cards";
 import GET_BLOG_PAGE from "@/data/queries/GET_BLOG_PAGE";
 import Link from "next/link";
 import { HiSlash } from "react-icons/hi2";
-import dynamic from 'next/dynamic'
-const Pagination = dynamic(() => import('@/ui/Pagination/Pagination'));
+import Pagination from "@/components/Utils/Pagination/Pagination";
 
 type Props = {
     searchParams: {
@@ -12,13 +11,13 @@ type Props = {
 };
 
 export default async function BlogPage({ searchParams }: Props) {
-    console.log('search', searchParams)
-    const currentPage = parseInt(searchParams.page || "1", 10);
-    const { posts, info } = await GET_BLOG_PAGE(currentPage, 15);
-
+    const currentPage = parseInt(searchParams?.page || "1", 10);
+    const { posts, postsCount } = await GET_BLOG_PAGE(currentPage, 15);
     return (
         <>
             <header className="bg-[#FFC017] py-15 px-12" >
+            <div className="container w-[875px] max-w-[95vw] bg-green-800/0 mx-auto py-8">
+
                 <ul className="bg-aqua-200 flex flex-row items-center mb-5 justify-start gap-0.5">
                     <Link className="uppercase duration-200 linear font-bold text-sm px-2 py-1 rounded-lg cursor-pointer hover:bg-stone-900 hover:text-white focus:bg-stone-900 focus:text-white" href='#'>
                         Start
@@ -26,18 +25,13 @@ export default async function BlogPage({ searchParams }: Props) {
                     <i>
                         <HiSlash />
                     </i>
-                    <Link className="uppercase duration-200 linear font-bold text-sm px-2 py-1 rounded-lg cursor-pointer hover:bg-stone-900 hover:text-white focus:bg-stone-900 focus:text-white" href='#'>
-                        Zdrowie
-                    </Link>
-                    <i>
-                        <HiSlash />
-                    </i>
-                    <Link className="uppercase duration-200 linear font-bold text-sm px-2 py-1 rounded-lg cursor-pointer hover:bg-stone-900 hover:text-white focus:bg-stone-900 focus:text-white" href='#'>
-                        Profilaktyka
+                    <Link className="uppercase duration-200 linear font-bold text-sm px-2 py-1 rounded-lg cursor-pointer hover:bg-stone-900 hover:text-white focus:bg-stone-900 focus:text-white" href='/blog'>
+                        Blog
                     </Link>
                 </ul>
-                <h1 className="text-9xl font-bold leading-32" >Kategoria</h1>
-                <p className="text-lg max-w-[85ch] text-pretty mt-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis at quas, similique natus numquam neque earum velit iusto cum voluptatibus alias. Veritatis tempore consequatur modi, quidem maxime cupiditate repudiandae aliquam.</p>
+                <h1 className="text-9xl font-bold leading-32" >Blog</h1>
+                <p className="text-lg max-w-[85ch] text-pretty mt-6"></p>
+                </div>
             </header>
             <main className="w-[1075px] max-w-[95vw] mx-auto my-8">
                 <ul className="grid grid-cols-3 gap-2">
@@ -55,7 +49,7 @@ export default async function BlogPage({ searchParams }: Props) {
             </main>
             <Pagination
                 currentPage={currentPage}
-                totalPages={info.hasNextPage ? currentPage + 1 : currentPage}
+                totalPages={Math.max(1, Math.ceil(postsCount / 15))}
                 basePath="/blog"
             />
         </>
