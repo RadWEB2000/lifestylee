@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default async function BlogPage({ searchParams }: Props) {
-    const currentPage = parseInt(searchParams?.page || "1", 10);
+    const currentPage = parseInt(searchParams.page || "1", 10);
     const { posts, postsCount } = await GET_BLOG_PAGE(currentPage, 15);
     return (
         <>
