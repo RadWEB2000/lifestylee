@@ -28,7 +28,6 @@ export default async function RootLayout({
   return (
     <html lang="pl_PL">
       <head>
-        <link rel="canonical" href="" />
         <meta name="google-site-verification" content="Ff8M9SgTYgIi3oyAqDXMx1nZOJsOzMLLQBE3dEB1sPc" />
         <Script
           id="gtm-script"
