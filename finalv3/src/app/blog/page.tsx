@@ -4,12 +4,19 @@ import Link from "next/link";
 import { HiSlash } from "react-icons/hi2";
 import Pagination from "@/components/Utils/Pagination/Pagination";
 
-type Props = {
-    searchParams: Record<string, string | string[] | undefined>;
-};
+// type Props = {
+//     searchParams: Record<string, string | string[] | undefined>;
+// };
 
-export default async function BlogPage({ searchParams }: Props) {
-    const currentPage = parseInt(Array.isArray(searchParams.page) ? searchParams.page[0] : searchParams.page || "1", 10);
+export default async function BlogPage({
+    searchParams,
+  }: {
+    searchParams?: Record<string, string | string[] | undefined>;
+  }) {
+    const currentPage = parseInt(
+      Array.isArray(searchParams?.page) ? searchParams.page[0] : searchParams?.page || "1",
+      10
+    );
     const { posts, postsCount } = await GET_BLOG_PAGE(currentPage, 15);
     return (
         <>
