@@ -18,6 +18,7 @@ export default async function CategoryPage({params}:categoryPage) {
     return (
         <>
             <header className="bg-[#FFC017] py-15 px-12" >
+            <div className="container w-[875px] max-w-[95vw] bg-green-800/0 mx-auto py-8">
                 <ul className="bg-aqua-200 flex flex-row items-center mb-5 justify-start gap-0.5">
                     <Link className="uppercase duration-200 linear font-bold text-sm px-2 py-1 rounded-lg cursor-pointer hover:bg-stone-900 hover:text-white focus:bg-stone-900 focus:text-white" href='#'>
                         Start
@@ -49,11 +50,12 @@ export default async function CategoryPage({params}:categoryPage) {
                         }
                     </ul>
                 }
+                </div>
             </header>
             <main>
                 {
                     posts &&
-                <ul className="grid grid-cols-4 container gap-4 mx-auto my-4" >
+                    <ul className="w-[1075px] max-w-[95vw] grid grid-cols-3 container gap-4 mx-auto my-4" >
                     {
                         posts.map((item) => {
                             return (
