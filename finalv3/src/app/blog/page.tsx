@@ -11,10 +11,11 @@ import Pagination from "@/components/Utils/Pagination/Pagination";
 export default async function BlogPage({
     searchParams,
   }: {
-    searchParams?: Record<string, string | string[] | undefined>;
+    searchParams?: { [key: string]: string | string[] | undefined };
   }) {
+    const pageParam = searchParams?.page;
     const currentPage = parseInt(
-      Array.isArray(searchParams?.page) ? searchParams.page[0] : searchParams?.page || "1",
+      Array.isArray(pageParam) ? pageParam[0] : pageParam ?? "1",
       10
     );
     const { posts, postsCount } = await GET_BLOG_PAGE(currentPage, 15);
