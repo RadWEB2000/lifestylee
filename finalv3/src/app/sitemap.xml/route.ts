@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+
+
 export async function GET() {
   const baseUrl = 'https://lifeestylee.pl'
   const apiUrl = 'https://cms.lifeestylee.pl/wp-json/wp/v2'

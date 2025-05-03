@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+
+
 export function GET() {
   const content = `
     User-agent: *
