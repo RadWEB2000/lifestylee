@@ -1,56 +1,41 @@
-import { MetadataRoute } from "next";
+export async function GET() {
+  const baseUrl = 'https://lifeestylee.pl'
+  const apiUrl = 'https://cms.lifeestylee.pl/wp-json/wp/v2'
 
-export default async function generateSitemap():Promise<MetadataRoute.Sitemap>{
-    const baseUrl = 'https://lifeestylee.pl';
-    const apiUrl = 'https://cms.lifeestylee.pl/wp-json/wp/v2';
-    
-    const [posts, categories, tags] = await Promise.all([
-        fetch(`${apiUrl}/posts?per_page=100`).then(res => res.json()),
-        fetch(`${apiUrl}/categories?per_page=100`).then(res => res.json()),
-        fetch(`${apiUrl}/tags?per_page=100`).then(res => res.json()),
-      ]);
+  const [posts, categories, tags] = await Promise.all([
+    fetch(`${apiUrl}/posts?per_page=100`).then(res => res.json()),
+    fetch(`${apiUrl}/categories?per_page=100`).then(res => res.json()),
+    fetch(`${apiUrl}/tags?per_page=100`).then(res => res.json()),
+  ])
 
-      const staticRoutes = [
-        '/blog'
-      ]
+  const urls: string[] = []
 
-      const postRoutes = posts.map((post: any) => {
-        const url = new URL(post.link);
-        const path = url.pathname; // np. /zdrowie/post-title/
-        return {
-          url: `https://lifeestylee.pl${path.replace(/\/$/, '')}`, // bez końcowego slasha
-          lastModified: post.modified ? new Date(post.modified) : new Date(),
-        };
-      });
-    
-      const categoryRoutes = categories.map((cat: any) => {
-        const url = new URL(cat.link);
-        const path = url.pathname; 
-        return {
-            url: `https://lifeestylee.pl${path.replace(/\/$/, '')}`, // bez końcowego slasha
-            lastModified: cat.modified ? new Date(cat.modified) : new Date(),
-        }
+  const mapItems = (items: any[]) => {
+    return items.map(item => {
+      const url = new URL(item.link)
+      const path = url.pathname.replace(/\/$/, '')
+      const fullUrl = `${baseUrl}${path}`
+      const lastmod = new Date(item.modified ?? new Date()).toISOString()
+
+      return `<url><loc>${fullUrl}</loc><lastmod>${lastmod}</lastmod></url>`
     })
-    
-    const tagRoutes = tags.map((tag: any) => {
-        const url = new URL(tag.link);
-        const path = url.pathname;
-        return {
-            url: `https://lifeestylee.pl${path.replace(/\/$/, '')}`, // bez końcowego slasha
-            lastModified: tag.modified ? new Date(tag.modified) : new Date(),
-        }
-    })
+  }
 
-    
-      const staticRouteEntries = staticRoutes.map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: new Date(),
-      }));
+  urls.push(`<url><loc>${baseUrl}/blog</loc><lastmod>${new Date().toISOString()}</lastmod></url>`)
+  urls.push(...mapItems(posts))
+  urls.push(...mapItems(categories))
+  urls.push(...mapItems(tags))
 
-      return [
-        ...staticRouteEntries,
-        ...postRoutes,
-        ...categoryRoutes,
-        ...tagRoutes,
-      ];
+  const xml = `
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${urls.join('\n')}
+    </urlset>
+  `.trim()
+
+  return new Response(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
+    },
+  })
 }

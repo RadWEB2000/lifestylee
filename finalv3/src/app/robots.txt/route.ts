@@ -1,11 +1,13 @@
-import type { MetadataRoute } from 'next'
- 
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
+export function GET() {
+  const content = `
+    User-agent: *
+    Allow: /
+    Sitemap: https://www.lifeestylee.pl/sitemap.xml
+  `.trim()
+
+  return new Response(content, {
+    headers: {
+      'Content-Type': 'text/plain',
     },
-    sitemap: 'https://www.lifeestylee.pl/sitemap.xml',
-  }
+  })
 }
