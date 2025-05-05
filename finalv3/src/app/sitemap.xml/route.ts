@@ -2,8 +2,7 @@ export const dynamic = 'force-dynamic'
 
 
 export async function GET() {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-  const baseUrl = 'https://lifeestylee.pl'
+  const baseUrl = 'https://www.lifeestylee.pl'
   const apiUrl = 'https://cms.lifeestylee.pl/wp-json/wp/v2'
 
   const [posts, categories, tags] = await Promise.all([
