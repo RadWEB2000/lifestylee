@@ -11,7 +11,7 @@ import Pagination from "@/components/Utils/Pagination/Pagination";
 export default async function BlogPage({
     searchParams,
 }: {
-    searchParams?: { [key: string]: string | string[] | undefined };
+    searchParams: Record<string, string | string[] | undefined>;
 }) {
     const pageParam = searchParams?.page;
     const currentPage = parseInt(
