@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts: Array<t_sitemapElement> = await fetch(`https://cms.lifeestylee.pl/wp-json/wp/v2/posts?per_page=75`).then(res => res.json()).then((res: Array<WP_REST_API_POSTS>) => res.map((item: WP_REST_API_POSTS) => ({
     url: replaceBase(item.link),
     lastModified: new Date(item.date).toISOString(),
-    priority: 0.8,
+    priority: 0.9,
     changeFrequency: "daily"
   })));
 
@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return {
         url: replaceBase(item.link),
         lastModified: new Date().toISOString(),
-        priority: 0.6,
+        priority: 0.8,
         changeFrequency: "weekly",
       }
     })
@@ -31,7 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return {
         url: replaceBase(item.link, '/tag', '/tematy'),
         lastModified: new Date().toISOString(),
-        priority: 0.6,
+        priority: 0.8,
         changeFrequency: "weekly",
       }
     })
@@ -40,6 +40,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...posts,
     ...categories,
-    ...tags
+    ...tags,
+    {
+      url: baseUrl,
+      lastModified: new Date().toISOString(),
+      priority: 1,
+      changeFrequency: 'daily'
+    }
   ]
 }
