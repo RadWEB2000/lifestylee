@@ -139,8 +139,6 @@ type response = {
 
 export default async function GET_CATEGORY_PAGE(id: string) {
     try {
-        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
         const request: request = await QueryClient.request(query, {
             id: id
         })

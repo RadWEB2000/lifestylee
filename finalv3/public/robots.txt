@@ -1,5 +1,2 @@
 User-agent: *
 Allow: 
-
-Sitemap: https://www.lifeestylee.pl/sitemap.xml
-Sitemap: https://www.lifeestylee.pl/sitemap.rss

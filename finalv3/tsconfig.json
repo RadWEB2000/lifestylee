@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,28 +23,77 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/css/*": ["./src/styles/*"],
-      "@/parts/*": ["./src/components/*"],
-      "@/ts/*": ["./src/types/*"],
-      "@/app/*": ["./src/app/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/data/*": ["./src/data/*"],
-      "@/queries/*": ["./src/data/queries/*"],
-      "@/static/*": ["./src/data/static/*"],
-      "@/layout/*": ["./src/components/Layout/*"],
-      "@/ui/*": ["./src/components/Utils/*"],
-      "@/hooks/*": ["./src/lib/hooks/*"],
-      "@/funcs/*": ["./src/lib/functions/*"],
-      "@/configs/*": ["./src/lib/configs/*"],
-      "@/nav/*": ["./src/components/Layout/Navigation/*"],
-      "@/footer/*": ["./src/components/Layout/Footer/*"],
-      "@/cards/*": ["./src/components/Utils/Cards/*"],
-      "@/buttons/*": ["./src/components/Utils/Buttons/*"],
-      "@/context/*": ["./src/context/*"],
-      "@/provider/*": ["./src/provider/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/css/*": [
+        "./src/styles/*"
+      ],
+      "@/parts/*": [
+        "./src/components/*"
+      ],
+      "@/ts/*": [
+        "./src/types/*"
+      ],
+      "@/app/*": [
+        "./src/app/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
+      "@/data/*": [
+        "./src/data/*"
+      ],
+      "@/queries/*": [
+        "./src/data/queries/*"
+      ],
+      "@/static/*": [
+        "./src/data/static/*"
+      ],
+      "@/layout/*": [
+        "./src/components/Layout/*"
+      ],
+      "@/ui/*": [
+        "./src/components/Utils/*"
+      ],
+      "@/hooks/*": [
+        "./src/lib/hooks/*"
+      ],
+      "@/funcs/*": [
+        "./src/lib/functions/*"
+      ],
+      "@/configs/*": [
+        "./src/lib/configs/*"
+      ],
+      "@/nav/*": [
+        "./src/components/Layout/Navigation/*"
+      ],
+      "@/footer/*": [
+        "./src/components/Layout/Footer/*"
+      ],
+      "@/cards/*": [
+        "./src/components/Utils/Cards/*"
+      ],
+      "@/buttons/*": [
+        "./src/components/Utils/Buttons/*"
+      ],
+      "@/context/*": [
+        "./src/context/*"
+      ],
+      "@/provider/*": [
+        "./src/provider/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./src/types/common.d.ts",
+    "./src/types/wordpress.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

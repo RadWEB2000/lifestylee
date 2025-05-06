@@ -56,7 +56,6 @@ type response = Array<{
 
 export default async function GET_MAIN_NAVIGATION() {
   try {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     const request: request = await QueryClient.request(query);
 
     const response: response = request.menu.menuItems.nodes

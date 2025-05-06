@@ -5,7 +5,6 @@ import { Navigation } from "@/layout/Navigation";
 import GET_MAIN_NAVIGATION from "@/data/queries/GET_MAIN_NAVIGATION";
 import { MenuProvider } from "@/provider";
 import Script from "next/script";
-import Clarity from '@microsoft/clarity';
 
 
 const inter = Inter({
