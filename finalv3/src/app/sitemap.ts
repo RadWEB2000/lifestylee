@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return res.map((item: WP_REST_API_CATEGORIES) => {
       return {
         url: replaceBase(item.link),
-        lastModified: new Date(),
+        lastModified: new Date().toISOString(),
         priority: 0.6,
         changeFrequency: "weekly",
       }
@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return res.map((item: WP_REST_API_CATEGORIES) => {
       return {
         url: replaceBase(item.link, '/tag', '/tematy'),
-        lastModified: new Date(),
+        lastModified: new Date().toISOString(),
         priority: 0.6,
         changeFrequency: "weekly",
       }
