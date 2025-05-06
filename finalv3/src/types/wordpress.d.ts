@@ -3,7 +3,7 @@ export { }
 declare global {
 
     type WP_REST_API_POSTS = {
-        date_gmt: string;
+        date: string;
         link: string;
     }
 

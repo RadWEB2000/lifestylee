@@ -6,7 +6,7 @@ declare global {
     type t_sitemapElement = {
         url: string;
         lastModified: string;
-        property: number;
+        priority: number;
         changeFrequency: t_changeFrequency;
     }
 }
